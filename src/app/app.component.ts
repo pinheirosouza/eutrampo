@@ -39,7 +39,7 @@ export class AppComponent {
     {
       title: 'Explorar',
       url: '/discover',
-      icon: 'map'
+      icon: 'compass'
     },
     {
       title: 'Perfil',

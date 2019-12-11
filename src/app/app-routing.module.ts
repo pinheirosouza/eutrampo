@@ -36,17 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/schedule/schedule.module').then( m => m.SchedulePageModule)
   },
   {
-    path: 'bus',
-    loadChildren: () => import('./pages/discover/bus/bus.module').then( m => m.BusPageModule)
+    path: 'discover',
+    loadChildren: () => import('./pages/discover/discover.module').then( m => m.DiscoverPageModule)
   },
-  {
-    path: 'museums',
-    loadChildren: () => import('./pages/discover/museums/museums.module').then( m => m.MuseumsPageModule)
-  },
-  {
-    path: 'cycleways',
-    loadChildren: () => import('./pages/discover/cycleways/cycleways.module').then( m => m.CyclewaysPageModule)
-  },
+  
   
 ];
 
