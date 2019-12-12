@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 
-import { HomePage } from './home.page';
+import { IonicModule } from '@ionic/angular';
+
+import { LoginPageRoutingModule } from './login-routing.module';
+
+import { LoginPage } from './login.page';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @NgModule({
@@ -12,13 +14,8 @@ import { AuthService } from 'src/app/auth/services/auth.service';
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage
-      }
-    ])
+    LoginPageRoutingModule
   ],
-  declarations: [HomePage],
+  declarations: [LoginPage],
 })
-export class HomePageModule {}
+export class LoginPageModule {}

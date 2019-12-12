@@ -8,7 +8,38 @@
         </ion-title>
     </ion-toolbar>
   </ion-header>
-
+    
 <ion-content>
+  <ion-list>
+    <ion-item [routerDirection]="'root'" routerLink="user">
+      <ion-avatar slot="start">
+        <img src="./avatar-finn.png">
+      </ion-avatar>
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input placeholder="Pedro Souza"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating">Bio</ion-label>
+      <ion-textarea placeholder="Fale um pouco mais sobre você..."></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input placeholder="phpinheiros@outlook.com"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Telefone</ion-label>
+      <ion-input placeholder="+55 21 99032-8060"></ion-input>
+    </ion-item>
+
+    <ion-item [routerDirection]="'root'" routerLink="password">
+      <ion-label position="stacked">Senha</ion-label>
+      <p>••••••</p>
+    </ion-item>
+
+
+  </ion-list>
 </ion-content>
+

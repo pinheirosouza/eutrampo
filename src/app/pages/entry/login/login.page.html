@@ -1,0 +1,36 @@
+<ion-content padding>
+    <ion-grid>
+      <ion-row>
+      <ion-col class="ion-margin">
+        <img src="../../../assets/img/logo_colorido.png" class="center" width="250" alt="eutrampo-logo">
+        
+        <ion-item>
+          <ion-label class="label-form" position="floating">Email</ion-label>
+          <ion-input class="input-form" type="email" [(ngModel)]="userLogin.email"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label class="label-form" position="floating">Senha</ion-label>
+          <ion-input class="input-form" type="password" [(ngModel)]="userLogin.password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button id="entrar" expand="block" color="primary" (click)="login()">Entrar</ion-button>
+    
+        <div text-center style="margin-top: 20px; margin-bottom: 20px;">
+        <button style="text-align: center;" class="loginBtn loginBtn--facebook" (click)={}>
+          Login com Facebook
+        </button>
+    
+        <button style="text-align: center;" class="loginBtn loginBtn--google" (click)={}>
+          Login com Google
+        </button>
+        </div>
+    
+        <p text-center style="color: white;">Ainda não possui uma conta?</p>
+        <ion-button id="cadastro" expand="block" color="primary" (click)={}>Cadastrar-se</ion-button>
+    
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    </ion-content>

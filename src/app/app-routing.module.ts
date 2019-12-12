@@ -1,51 +1,74 @@
+import { LoginGuard } from './auth/guards/login.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    loadChildren: './pages/entry/login/login.module#LoginPageModule',
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'register',
+    loadChildren: './pages/entry/register/register.module#RegisterPageModule',
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'home',
+    loadChildren: './pages/home/home.module#HomePageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    loadChildren: './pages/profile/profile.module#ProfilePageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'chat',
+    loadChildren: './pages/chat/chat.module#ChatPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'provided',
+    loadChildren: './pages/activities/provided/provided.module#ProvidedPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'hired',
+    loadChildren: './pages/activities/hired/hired.module#HiredPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'news',
+    loadChildren: './pages/news/news.module#NewsPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'schedule',
+    loadChildren: './pages/schedule/schedule.module#SchedulePageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'discover',
+    loadChildren: './pages/discover/discover.module#DiscoverPageModule',
+    canActivate: [AuthGuard]
+  },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.UserPageModule)
-  },
-  {
-    path: 'chat',
-    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
-  },
-  {
-    path: 'provided',
-    loadChildren: () => import('./pages/activities/provided/provided.module').then( m => m.ProvidedPageModule)
-  },
-  {
-    path: 'hired',
-    loadChildren: () => import('./pages/activities/hired/hired.module').then( m => m.HiredPageModule)
-  },
-  {
-    path: 'news',
-    loadChildren: () => import('./pages/news/news.module').then( m => m.NewsPageModule)
-  },
-  {
-    path: 'schedule',
-    loadChildren: () => import('./pages/schedule/schedule.module').then( m => m.SchedulePageModule)
-  },
-  {
-    path: 'discover',
-    loadChildren: () => import('./pages/discover/discover.module').then( m => m.DiscoverPageModule)
-  },
-  
+    path: '**',
+    redirectTo: 'home'
+  }
   
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: true })
   ],
   exports: [RouterModule]
 })
