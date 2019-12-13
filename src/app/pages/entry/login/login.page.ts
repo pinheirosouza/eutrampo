@@ -30,6 +30,11 @@ export class LoginPage implements OnInit {
         this.router.navigate(['home']);
       })
       .catch(err => console.log(err));
+      
+  }
+  
+  signNav() {
+    this.router.navigate(['register'])
   }
 
 }
