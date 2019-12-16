@@ -10,9 +10,6 @@ export class HomePage {
 
   constructor(
     public menuCtrl: MenuController
-  ) {
-    this.menuCtrl.enable(true);
-  }
-
+  ) {}  
 
 }

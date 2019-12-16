@@ -11,15 +11,14 @@ export class LoginGuard implements CanActivate {
     private authService: AuthService,
     private router: Router
   ) {}
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log('LOGIN GUARD');
-    if (this.authService.getAuth().currentUser !== null) {
-      this.router.navigate(['home']);
-      return false
-    }
-    return true;
+  canActivate(): Promise<boolean> {
+    return new Promise(resolve => {
+      this.authService.getAuth().onAuthStateChanged(user=>{
+        if(user) this.router.navigate(['home']);
+
+        resolve(!user ? true : false);
+      })
+    });
   }
   
 }

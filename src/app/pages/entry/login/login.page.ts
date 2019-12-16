@@ -1,7 +1,7 @@
 import { User } from './../../../auth/interfaces/user';
 import { AuthService } from './../../../auth/services/auth.service';
-import { MenuController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { MenuController, NavController } from '@ionic/angular';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,32 +9,29 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   public userLogin: User = {};
 
   constructor(
+    // public navCtrl: NavController,
     public menuCtrl: MenuController,
     private router: Router,
     private authService: AuthService
-    ) { 
-    this.menuCtrl.enable(false);
-  }
-
-  ngOnInit() {
-  }
-
-  login() {
-    this.authService.login(this.userLogin)
-      .then(user => {
-        this.router.navigate(['home']);
-      })
-      .catch(err => console.log(err));
-      
+    ) { }
+    
+  async login() {
+    try {
+      await this.authService.login(this.userLogin);
+    } catch(error) {
+      console.log(error);
+    } finally {
+      this.router.navigate(['home']);
+    }
   }
   
   signNav() {
-    this.router.navigate(['register'])
+    this.router.navigate(['register']);
   }
 
 }

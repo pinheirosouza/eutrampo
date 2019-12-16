@@ -6,9 +6,12 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { StarRatingModule } from 'ionic4-star-rating';
 
 @NgModule({
   imports: [
+    FormsModule,
+    StarRatingModule,
     CommonModule,
     FormsModule,
     IonicModule,
