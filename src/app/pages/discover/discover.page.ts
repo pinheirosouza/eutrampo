@@ -9,10 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class DiscoverPage implements OnInit {
 
   constructor(
-    public menuCtrl: MenuController
-  ) { 
-    this.menuCtrl.enable(false);
-  }
+
+  ) {}
 
   ngOnInit() {
   }

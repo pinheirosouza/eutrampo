@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Platform, MenuController } from '@ionic/angular';
+import { Platform, MenuController, LoadingController, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './auth/services/auth.service';
-import { Router, NavigationStart, NavigationEnd, Event as NavigationEvent } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -51,16 +51,72 @@ export class AppComponent {
     
   ];
 
+  hideMenu: boolean;
+  private loading:any;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private authService: AuthService,
     private router: Router,
-    private menuCtrl: MenuController,
-  ) {}
-
-  
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController
+  ) {
+      this.router.events.subscribe((event: NavigationEnd) => {
+        if (event instanceof NavigationEnd) {
+          console.log(event.url);
+          switch (event.url) {
+            case "/login":
+            {
+              this.hideMenu = true;
+              break;
+            }
+            case "/register":
+            {
+              this.hideMenu = true;
+              break;
+            }
+            case "/chat":
+            {
+              this.hideMenu = true;
+              break;
+            }
+            case "/profile":
+            {
+              this.hideMenu = true;
+              break;
+            }
+            case "/profile/user":
+            {
+              this.hideMenu = true;
+              break;
+            }
+            case "/profile/settings":
+            {
+              this.hideMenu = true;
+              break;
+            }
+            case "/profile/help":
+            {
+              this.hideMenu = true;
+              break;
+            }
+            case "/profile/about":
+            {
+              this.hideMenu = true;
+              break;
+            }
+            default:
+            {
+              this.hideMenu = false;
+                break;
+            }
+          }
+        }
+        console.log('Menu:',this.hideMenu)
+    });
+    }
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -69,9 +125,32 @@ export class AppComponent {
     });
   }
 
-  logout() {
-    this.authService.logout().then(() => {
+  async logout() {
+    await this.presentLoading();
+
+    try {
+      await this.authService.logout();
+    } catch(error) {
+      console.log(error);
+      this.presentToast(error.message);   
+    } finally {
       this.router.navigate(['login']);
+      this.loading.dismiss();
+    }
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Aguarde',
     });
+    return this.loading.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 2000
+    });
+    toast.present();
   }
 }

@@ -7,52 +7,52 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: './pages/entry/login/login.module#LoginPageModule',
-    canActivate: [LoginGuard]
+    // canActivate: [LoginGuard]
   },
   {
     path: 'register',
     loadChildren: './pages/entry/register/register.module#RegisterPageModule',
-    canActivate: [LoginGuard]
+    // canActivate: [LoginGuard]
   },
   {
     path: 'home',
     loadChildren: './pages/home/home.module#HomePageModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'profile',
     loadChildren: './pages/profile/profile.module#ProfilePageModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'chat',
     loadChildren: './pages/chat/chat.module#ChatPageModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'provided',
     loadChildren: './pages/activities/provided/provided.module#ProvidedPageModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'hired',
     loadChildren: './pages/activities/hired/hired.module#HiredPageModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'news',
     loadChildren: './pages/news/news.module#NewsPageModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'schedule',
     loadChildren: './pages/schedule/schedule.module#SchedulePageModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'discover',
     loadChildren: './pages/discover/discover.module#DiscoverPageModule',
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: '',

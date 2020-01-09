@@ -16,40 +16,51 @@
     <img src="../../../../assets/img/perfil.jpg">
   </ion-avatar>
 
-  <ion-item [routerDirection]="'root'" routerLink="user">
+  <ion-item>
     <ion-label position="floating">Nome</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
+  
+
+  <ion-radio-group>
+    <ion-list-header>
+      <ion-label>Gênero</ion-label>
+    </ion-list-header>
+    <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Masculino</ion-label>
+            <ion-radio item-left slot="start" color="secondary" value="masculino"></ion-radio>
+          </ion-item>
+        </ion-col>
+        
+        <ion-col>
+          <ion-item>
+            <ion-label>Feminino</ion-label>
+            <ion-radio item-left slot="start" color="secondary" value="feminino"></ion-radio>
+          </ion-item>
+        </ion-col>
+    </ion-row>
+  </ion-radio-group>
+  
   <ion-item>
-    <ion-label position="stacked"></ion-label>
-    <ion-input placeholder="+55 21 99032-8060"></ion-input>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="stacked">Telefone</ion-label>
-    <ion-input placeholder="+55 21 99032-8060"></ion-input>
+    <ion-label position="floating">Telefone</ion-label>
+    <ion-input></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="stacked">Telefone</ion-label>
-    <ion-input placeholder="+55 21 99032-8060"></ion-input>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password"></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Email</ion-label>
-    <ion-input placeholder="phpinheiros@outlook.com"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="stacked">Telefone</ion-label>
-    <ion-input placeholder="+55 21 99032-8060"></ion-input>
-  </ion-item>
-
-  <ion-item [routerDirection]="'root'" routerLink="password">
-    <ion-label position="stacked">Senha</ion-label>
-    <p>••••••</p>
-  </ion-item>
+  <br>
+  <ion-button expand="block" color="secondary" (click)="register()" [routerLink]="['home']">Cadastrar</ion-button>
 
 
 </ion-list>

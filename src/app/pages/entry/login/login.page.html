@@ -27,7 +27,7 @@
         </div>
     
         <p text-center style="color: white;">Ainda não possui uma conta?</p>
-        <ion-button id="cadastro" expand="block" color="primary" (click)="signNav()">Cadastrar-se</ion-button>
+        <ion-button id="cadastro" expand="block" color="primary" [routerDirection]="'root'" [routerLink]="'/register'">Cadastrar-se</ion-button>
     
       </ion-col>
       </ion-row>
