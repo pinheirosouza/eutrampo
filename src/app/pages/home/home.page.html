@@ -16,73 +16,74 @@
       Últimos Serviços Contratados
     </ion-list-header>
 
-    <ion-item >
+    <ion-item *ngFor="let service of recent_services" [href]=service.redirectTo>
       <ion-avatar slot="start">
-        <img src="../../../assets/img/pedreiro.png">
+        <img [src]=service.pic>
       </ion-avatar>
       <ion-col>
         <ion-label>
-          <h2>Pedro Souza</h2>
-          <h3>Pedreiro</h3>
-          <p>125 serviços prestados</p>
+          <h2>{{service.name}}</h2>
+          <h3>{{service.servicetype}}</h3>
+          <p>{{service.provided}} Serviços Prestados</p>
         </ion-label>
       </ion-col>
       <ion-col class="center" size="8px">
-        <ion-button expand="block" color="secondary" item-end>Contratar</ion-button>
         <ion-label>
-          <p>R$45,00/h</p>
+          <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
         </ion-label>
       </ion-col>
-    </ion-item >
+    </ion-item>
+
   </ion-list>
 
   <ion-list>
     <ion-list-header>
-      Online
+      Serviços Mais Contratados
     </ion-list-header>
 
-    <ion-item>
+    <ion-item *ngFor="let service of recent_services" [href]=service.redirectTo>
       <ion-avatar slot="start">
-        <img src="./avatar-poe.png">
+        <img [src]=service.pic>
       </ion-avatar>
-      <ion-label>
-        <h2>Poe</h2>
-        <h3>New Ride</h3>
-        <p>I just upgraded my X-Wing. Next time...</p>
-      </ion-label>
+      <ion-col>
+        <ion-label>
+          <h2>{{service.name}}</h2>
+          <h3>{{service.servicetype}}</h3>
+          <p>{{service.provided}} Serviços Prestados</p>
+        </ion-label>
+      </ion-col>
+      <ion-col class="center" size="8px">
+        <ion-label>
+          <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
+        </ion-label>
+      </ion-col>
     </ion-item>
 
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="./avatar-ben.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Ben</h2>
-        <h3>Move Along</h3>
-        <p>These aren't the droids you're looking for...</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="./avatar-leia.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Leia</h2>
-        <h3>You're My Only Hope</h3>
-        <p>I've placed information vital to the survival...</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="./avatar-yoda.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Yoda</h2>
-        <h3>Size matters not</h3>
-        <p>Do or do not. There is no try...</p>
-      </ion-label>
-    </ion-item>
   </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Serviços Mais Bem Avaliados
+    </ion-list-header>
+
+    <ion-item *ngFor="let service of recent_services" [href]=service.redirectTo>
+      <ion-avatar slot="start">
+        <img [src]=service.pic>
+      </ion-avatar>
+      <ion-col>
+        <ion-label>
+          <h2>{{service.name}}</h2>
+          <h3>{{service.servicetype}}</h3>
+          <p>{{service.provided}} Serviços Prestados</p>
+        </ion-label>
+      </ion-col>
+      <ion-col class="center" size="8px">
+        <ion-label>
+          <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
+        </ion-label>
+      </ion-col>
+    </ion-item>
+
+  </ion-list>
+  
 </ion-content>
