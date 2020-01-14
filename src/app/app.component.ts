@@ -34,6 +34,11 @@ export class AppComponent {
       icon: 'chatboxes'
     },
     {
+      title: 'Notícias',
+      url: '/news',
+      icon: 'paper'
+    },
+    {
       title: 'Minha Agenda',
       url: '/schedule',
       icon: 'calendar'
