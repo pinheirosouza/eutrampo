@@ -14,6 +14,7 @@ import { AuthService } from './auth/services/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,13 +24,15 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthService, AuthGuard, LoginGuard,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    GoogleMaps
   ],
   bootstrap: [AppComponent]
 })
