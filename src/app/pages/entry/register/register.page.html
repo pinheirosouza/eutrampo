@@ -46,7 +46,7 @@
   
   <ion-item>
     <ion-label position="floating">Email</ion-label>
-    <ion-input type="email"></ion-input>
+    <ion-input type="email" [(ngModel)]="userRegister.email"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -56,11 +56,11 @@
 
   <ion-item>
     <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" [(ngModel)]="userRegister.password"></ion-input>
   </ion-item>
 
   <br>
-  <ion-button expand="block" color="secondary" (click)="register()" [routerLink]="['home']">Cadastrar</ion-button>
+  <ion-button expand="block" color="secondary" (click)="register()">Cadastrar</ion-button>
 
 
 </ion-list>

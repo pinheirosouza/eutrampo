@@ -16,7 +16,7 @@
       Últimos Serviços Contratados
     </ion-list-header>
 
-    <ion-item *ngFor="let service of recent_services" [href]=service.redirectTo>
+    <ion-item *ngFor="let service of recent_services" (click)= 'showModal()'>
       <ion-avatar slot="start">
         <img [src]=service.pic>
       </ion-avatar>
