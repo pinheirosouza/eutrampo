@@ -1,4 +1,4 @@
-  ion-toolbar {
+ion-toolbar {
     --ion-background-color: var(--ion-color-secondary);
     
   
@@ -16,7 +16,10 @@
         background: transparent;
     }
   }
-
-  #box{
-    max-width: 300px;
+  #map {
+      width: 100%;
+      height: 100%;
+      border-radius:3px;
+      box-shadow:1px 1px 1px #111111;
   }
+    
