@@ -83,6 +83,7 @@ export class RegisterPage implements OnInit {
     const toast = await this.toastCtrl.create({
       showCloseButton: true,
       message,
+      duration: 2000
     });
     toast.present();
   }

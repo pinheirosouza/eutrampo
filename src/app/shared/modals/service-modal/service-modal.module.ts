@@ -18,6 +18,6 @@ import { ServiceModalPage } from './service-modal.page';
     FormsModule,
     StarRatingModule
   ],
-  declarations: [ServiceModalPage]
+  declarations: [ServiceModalPage],
 })
 export class ServiceModalPageModule {}

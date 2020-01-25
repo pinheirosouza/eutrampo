@@ -1,9 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>provided</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        Meus Serviços
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+<ion-tabs>
+  <ion-tab-bar color="secondary" slot="bottom">
+    <ion-tab-button tab="my-services-tab">
+      <ion-icon name="hammer"></ion-icon>
+      <ion-label>Meus Serviços</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="history-services-tab">
+      <ion-icon name="time"></ion-icon>
+      <ion-label>Histórico</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
 
 </ion-content>
