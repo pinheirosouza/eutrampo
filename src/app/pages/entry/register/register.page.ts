@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { User } from './../../../auth/interfaces/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../profile/user/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,81 +12,85 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
-  public userRegister: User = {};
-  private loading: any;
+  users: any;
+  userName: string;
+  userAge: number;
+  userAddress: string;
+  userPhone: string;
+  userEmail: string;
+  userGender: string;
+  userBio: string;
+  userPassword: string;
 
   constructor(
     private router: Router,
-    private authService: AuthService,
-    private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+    private userService: UserService
   ) { }
 
   ngOnInit() {
-  }
-
-  async register() {
-    await this.presentLoading();
-
-    try {
-      await this.authService.register(this.userRegister);
-    } catch(error) {
-      console.log(error);
-      switch (error.code) {
-        case "auth/invalid-email":
-          this.presentToast("Email Inválido");          
-          break;
-        case "auth/wrong-password":
-          this.presentToast("Senha Inválida");         
-          break;
-        case "auth/user-not-found":
-          this.presentToast("Usuário Não Cadastrado");          
-          break;
-        case "auth/argument-error":
-          this.presentToast("Usuário ou Senha Inválidos ");          
-          break;
-        case "auth/too-many-requests":
-          this.presentToast("Limite de tentativas atingido. Tente novamente mais tarde.");          
-          break;
-        case "auth/network-request-failed":
-          this.presentToast("Erro ao logar. Verifique sua conexão com a internet.");          
-          break;
-        case "auth/weak-password":
-          this.presentToast("A senha deve conter ao menos 6 caracteres.");          
-        break;
-        case "auth/email-already-in-use":
-          this.presentToast("Este email já está sendo utilizado.");          
-        break;
-        
-          
-        default:
-          this.presentToast("Algo deu errado");   
-          break;
-      }
-      this.router.navigate(['register']);
-      
-    } finally {
-      
-      this.loading.dismiss();
-    }
-  }
-
-  async presentLoading() {
-    this.loading = await this.loadingCtrl.create({
-      message: 'Aguarde',
-      spinner:"dots",
-      cssClass: 'loading'
+    this.userService.read_users().subscribe(data => {
+ 
+      this.users = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          isEdit: false,
+          Name: e.payload.doc.data()['Name'],
+          // Age: e.payload.doc.data()['Age'],
+          // Address: e.payload.doc.data()['Address'],
+          Phone: e.payload.doc.data()['Phone'],
+          Email: e.payload.doc.data()['Email'],   
+          Gender: e.payload.doc.data()['Gender'],
+          // Bio: e.payload.doc.data()['Bio'],
+          Password: e.payload.doc.data()['Password'],
+        };
+      })
+      console.log(this.users);
+ 
     });
-    return this.loading.present();
   }
 
-  async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({
-      showCloseButton: true,
-      message,
-      duration: 2000
-    });
-    toast.present();
+  CreateRecord(){
+    let record = {};
+    record['Name'] = this.userName;
+    // record['Address'] = this.userAddress;
+    record['Phone'] = this.userPhone;
+    record['Email'] = this.userEmail;   
+    record['Gender'] = this.userGender; 
+    // record['Bio'] = this.userBio;
+    record['Password'] = this.userPassword;
+    this.userService.create_NewUser(record).then(resp => {
+      this.userName = "";
+      // this.userAddress = "";
+      this.userPhone = "";
+      this.userEmail = "";
+      this.userGender = "";
+      // this.userBio = "";
+      this.userPassword = "";
+      console.log(resp);
+    })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  RemoveRecord(rowID) {
+    this.userService.delete_user(rowID);
+  }
+ 
+  EditRecord(record) {
+    record.isEdit = true;
+    record.EditName = record.Name;
+    record.EditAge = record.Age;
+    record.EditAddress = record.Address;
+  }
+ 
+  UpdateRecord(recordRow) {
+    let record = {};
+    record['Name'] = recordRow.EditName;
+    record['Age'] = recordRow.EditAge;
+    record['Address'] = recordRow.EditAddress;
+    this.userService.update_user(recordRow.id, record);
+    recordRow.isEdit = false;
   }
 
 }
