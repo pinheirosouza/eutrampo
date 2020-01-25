@@ -66,8 +66,10 @@ const routes: Routes = [
   {
     path: 'service-modal',
     loadChildren: () => import('./shared/modals/service-modal/service-modal.module').then( m => m.ServiceModalPageModule)
-  },
-  
+  },  {
+    path: 'hired-modal',
+    loadChildren: () => import('./shared/modals/hired-modal/hired-modal.module').then( m => m.HiredModalPageModule)
+  }
 
 
   
