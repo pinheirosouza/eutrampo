@@ -30,6 +30,7 @@
     "cordova-plugin-googlemaps": "^2.6.2",
     "core-js": "^2.5.4",
     "firebase": "^7.6.2",
+    "ionic2-calendar": "^0.5.7",
     "ionic4-star-rating": "^1.1.1",
     "rxjs": "^6.5.4",
     "tslib": "^1.9.0",
