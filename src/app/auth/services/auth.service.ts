@@ -26,4 +26,8 @@ export class AuthService {
   getAuth() {
     return this.afa.auth;
   }
+
+  getId() {
+    return this.afa.auth.currentUser.uid
+  }
 }

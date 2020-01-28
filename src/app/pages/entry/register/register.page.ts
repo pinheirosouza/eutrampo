@@ -12,66 +12,34 @@ import { UserService } from '../../profile/user/user.service';
 })
 export class RegisterPage implements OnInit {
 
-  users: any;
-  userName: string;
-  userAge: number;
-  userAddress: string;
-  userPhone: string;
-  userEmail: string;
-  userGender: string;
-  userBio: string;
-  userPassword: string;
+  public userRegister: User = {};
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService,
   ) { }
 
-  ngOnInit() {
-    this.userService.read_users().subscribe(data => {
- 
-      this.users = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          isEdit: false,
-          Name: e.payload.doc.data()['Name'],
-          // Age: e.payload.doc.data()['Age'],
-          // Address: e.payload.doc.data()['Address'],
-          Phone: e.payload.doc.data()['Phone'],
-          Email: e.payload.doc.data()['Email'],   
-          Gender: e.payload.doc.data()['Gender'],
-          // Bio: e.payload.doc.data()['Bio'],
-          Password: e.payload.doc.data()['Password'],
-        };
-      })
-      console.log(this.users);
- 
-    });
+  ngOnInit() {}
+  
+  async createRecord()
+  {
+    //Registrando no Auth
+    try {await this.authService.register(this.userRegister);
+    } catch(error){
+      console.log(error);
+    } finally {
+      return new Promise(async resolve => {
+        try {
+          await this.userService.create_NewUser(this.userRegister, this.authService.getId());
+          console.log(this.userRegister);
+        } catch(error) {
+            console.log(error);
+          };
+      }) ;
+    }
   }
 
-  CreateRecord(){
-    let record = {};
-    record['Name'] = this.userName;
-    // record['Address'] = this.userAddress;
-    record['Phone'] = this.userPhone;
-    record['Email'] = this.userEmail;   
-    record['Gender'] = this.userGender; 
-    // record['Bio'] = this.userBio;
-    record['Password'] = this.userPassword;
-    this.userService.create_NewUser(record).then(resp => {
-      this.userName = "";
-      // this.userAddress = "";
-      this.userPhone = "";
-      this.userEmail = "";
-      this.userGender = "";
-      // this.userBio = "";
-      this.userPassword = "";
-      console.log(resp);
-    })
-      .catch(error => {
-        console.log(error);
-      });
-  }
 
   RemoveRecord(rowID) {
     this.userService.delete_user(rowID);

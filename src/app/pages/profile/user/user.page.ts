@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { AuthService } from './../../../auth/services/auth.service';
+import { User } from './../../../auth/interfaces/user';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 
@@ -8,53 +11,22 @@ import { UserService } from './user.service';
 })
 export class UserPage implements OnInit {
 
-  users: any;
-  userName: string;
-  userAge: number;
-  userAddress: string;
-  userPhone: string;
-  userEmail: string;
-  
-  constructor(private userService: UserService) { }
+  public user: Observable<User>
+
+  constructor(
+    private userService: UserService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit() {
-    this.userService.read_users().subscribe(data => {
- 
-      this.users = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          isEdit: false,
-          Name: e.payload.doc.data()['Name'],
-          // Age: e.payload.doc.data()['Age'],
-          // Address: e.payload.doc.data()['Address'],
-          Phone: e.payload.doc.data()['Phone'],
-          Email: e.payload.doc.data()['Email'],   
-          Gender: e.payload.doc.data()['Gender'],
-          // Bio: e.payload.doc.data()['Bio'],
-          Password: e.payload.doc.data()['Password'],
-        };
-      })
-      console.log(this.users);
- 
-    });
+    this.user = this.userService.readUser(this.authService.getId()).valueChanges();
+    console.log(this.authService.getId());
+    console.log(this.user)
   }
 
-  CreateRecord() {
-    let record = {};
-    record['Name'] = this.userName;
-    record['Age'] = this.userAge;
-    record['Address'] = this.userAddress;
-    this.userService.create_NewUser(record).then(resp => {
-      this.userName = "";
-      this.userAge = undefined;
-      this.userAddress = "";
-      console.log(resp);
-    })
-      .catch(error => {
-        console.log(error);
-      });
-  }
  
+
+
   RemoveRecord(rowID) {
     this.userService.delete_user(rowID);
   }

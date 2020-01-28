@@ -10,28 +10,28 @@
   </ion-header>
     
 <ion-content>
-  <ion-list *ngFor="let item of users">
+  <ion-list>
     <ion-item [routerDirection]="'root'" routerLink="user">
       <ion-avatar slot="start">
         <img src="./avatar-finn.png">
       </ion-avatar>
       <ion-label position="stacked">Nome</ion-label>
-      <ion-input placeholder="{{item.Name}}"></ion-input>
+      <ion-input placeholder="{{ (user | async)?.name }}"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Bio</ion-label>
-      <ion-textarea placeholder="Fale um pouco mais sobre você..."></ion-textarea>
+      <ion-textarea placeholder="{{ (user | async)?.bio }}"></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Email</ion-label>
-      <ion-input placeholder="{{item.Email}}"></ion-input>
+      <ion-input placeholder="{{ (user | async)?.email }}"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Telefone</ion-label>
-      <ion-input placeholder="{{item.Phone}}"></ion-input>
+      <ion-input placeholder="{{ (user | async)?.phone }}"></ion-input>
     </ion-item>
 
     <ion-item [routerDirection]="'root'" routerLink="password">

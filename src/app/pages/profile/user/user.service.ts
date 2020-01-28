@@ -1,21 +1,21 @@
+import { User } from './../../../auth/interfaces/user';
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private PATH = 'user';
-
   constructor(private firestore: AngularFirestore) { }
 
-  create_NewUser(record) {
-    return this.firestore.collection('users').add(record);
+  create_NewUser(user: User, uid) {
+    return this.firestore.collection("users").doc(uid).set(user);;
   }
  
-  read_users() {
-    return this.firestore.collection('users').snapshotChanges();
+  readUser(uid:string): AngularFirestoreDocument<User> {
+    return this.firestore.collection('users').doc(uid);
   }
  
   update_user(recordID,record){

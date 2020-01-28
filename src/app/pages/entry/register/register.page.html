@@ -18,7 +18,7 @@
 
   <ion-item>
     <ion-label position="floating">Nome</ion-label>
-    <ion-input [(ngModel)]="userName"></ion-input>
+    <ion-input [(ngModel)]="userRegister.name"></ion-input>
   </ion-item>
 
   <ion-radio-group>
@@ -29,14 +29,14 @@
         <ion-col>
           <ion-item>
             <ion-label>Masculino</ion-label>
-            <ion-radio item-left slot="start" color="secondary" value="masculino" [(ngModel)]="userGender"></ion-radio>
+            <ion-radio item-left slot="start" color="secondary" value="masculino" [(ngModel)]="userRegister.gender"></ion-radio>
           </ion-item>
         </ion-col>
         
         <ion-col>
           <ion-item>
             <ion-label>Feminino</ion-label>
-            <ion-radio item-left slot="start" color="secondary" value="feminino" [(ngModel)]="userGender"></ion-radio>
+            <ion-radio item-left slot="start" color="secondary" value="feminino" [(ngModel)]="userRegister.gender"></ion-radio>
           </ion-item>
         </ion-col>
     </ion-row>
@@ -44,21 +44,21 @@
   
   <ion-item>
     <ion-label position="floating">Email</ion-label>
-    <ion-input type="email" [(ngModel)]="userEmail"></ion-input>
+    <ion-input type="email" [(ngModel)]="userRegister.email"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Telefone</ion-label>
-    <ion-input [(ngModel)]="userPhone"></ion-input>
+    <ion-input [(ngModel)]="userRegister.phone"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password" [(ngModel)]="userPassword"></ion-input>
+    <ion-input type="password" [(ngModel)]="userRegister.password"></ion-input>
   </ion-item>
 
   <br>
-  <ion-button expand="block" color="secondary" (click)="CreateRecord()" [disabled]="!userName || !userEmail || !userPhone || !userPassword">Cadastrar</ion-button>
+  <ion-button expand="block" color="secondary" (click)="createRecord()" [disabled]="!userRegister.name || !userRegister.email || !userRegister.phone || !userRegister.password">Cadastrar</ion-button>
 
 
 </ion-list>

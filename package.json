@@ -35,6 +35,7 @@
     "firebase": "^7.6.2",
     "ionic2-calendar": "^0.5.7",
     "ionic4-star-rating": "^1.1.1",
+    "mx.ferreyra.callnumber": "0.0.2",
     "rxjs": "^6.5.4",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -86,7 +87,8 @@
         "PLAY_SERVICES_VERSION": "15.0.1",
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
-      "mx.ferreyra.callnumber": {}
+      "mx.ferreyra.callnumber": {},
+      "call-number": {}
     },
     "platforms": [
       "android",
