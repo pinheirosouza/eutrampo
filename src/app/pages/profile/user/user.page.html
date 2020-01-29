@@ -11,27 +11,27 @@
     
 <ion-content>
   <ion-list>
-    <ion-item [routerDirection]="'root'" routerLink="user">
+    <ion-item>
       <ion-avatar slot="start">
         <img src="./avatar-finn.png">
       </ion-avatar>
       <ion-label position="stacked">Nome</ion-label>
-      <ion-input placeholder="{{ (user | async)?.name }}"></ion-input>
+      <ion-input [(ngModel)]="userUpdate.name" placeholder="{{ (user | async)?.name }}"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Bio</ion-label>
-      <ion-textarea placeholder="{{ (user | async)?.bio }}"></ion-textarea>
+      <ion-textarea [(ngModel)]="userUpdate.bio" placeholder="{{ (user | async)?.bio }}"></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Email</ion-label>
-      <ion-input placeholder="{{ (user | async)?.email }}"></ion-input>
+      <ion-input [(ngModel)]="userUpdate.email" placeholder="{{ (user | async)?.email }}"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Telefone</ion-label>
-      <ion-input placeholder="{{ (user | async)?.phone }}"></ion-input>
+      <ion-input [(ngModel)]="userUpdate.phone" placeholder="{{ (user | async)?.phone }}"></ion-input>
     </ion-item>
 
     <ion-item [routerDirection]="'root'" routerLink="password">
@@ -39,7 +39,9 @@
       <p>••••••</p>
     </ion-item>
 
+    <br>
+  <ion-button expand="block" color="secondary" (click)="updateRecord()" >Cadastrar</ion-button>
+
 
   </ion-list>
 </ion-content>
-

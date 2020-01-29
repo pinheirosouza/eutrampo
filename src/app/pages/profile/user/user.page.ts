@@ -11,7 +11,8 @@ import { UserService } from './user.service';
 })
 export class UserPage implements OnInit {
 
-  public user: Observable<User>
+  public user: Observable<User>;
+  public userUpdate: User = {};
 
   constructor(
     private userService: UserService,
@@ -19,12 +20,11 @@ export class UserPage implements OnInit {
     ) { }
 
   ngOnInit() {
+    console.log(this.user)
     this.user = this.userService.readUser(this.authService.getId()).valueChanges();
     console.log(this.authService.getId());
     console.log(this.user)
   }
-
- 
 
 
   RemoveRecord(rowID) {
@@ -45,6 +45,11 @@ export class UserPage implements OnInit {
     record['Address'] = recordRow.EditAddress;
     this.userService.update_user(recordRow.id, record);
     recordRow.isEdit = false;
+  }
+
+  updateRecord(){
+    this.authService.updateEmail(this.userUpdate.email);
+    this.userService.update_user(this.authService.getId(),this.userUpdate);
   }
 
 }

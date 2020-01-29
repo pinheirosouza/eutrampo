@@ -18,12 +18,16 @@ export class UserService {
     return this.firestore.collection('users').doc(uid);
   }
  
-  update_user(recordID,record){
-    this.firestore.doc('users/' + recordID).update(record);
+  update_user(uid,newData){
+    this.firestore.doc('users/' + uid).update(newData);
   }
  
   delete_user(record_id) {
     this.firestore.doc('users/' + record_id).delete();
+  }
+
+  sendToBack(){
+    return 
   }
 
 }

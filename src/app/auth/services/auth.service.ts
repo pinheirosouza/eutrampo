@@ -27,6 +27,14 @@ export class AuthService {
     return this.afa.auth;
   }
 
+  updateEmail(email) {
+    return this.afa.auth.currentUser.updateEmail(email)
+  }
+
+  updatePassword(password) {
+    return this.afa.auth.currentUser.updatePassword(password)
+  }
+
   getId() {
     return this.afa.auth.currentUser.uid
   }
