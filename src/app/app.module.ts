@@ -22,7 +22,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { environment } from 'src/environments/environment';
 import { GoogleMaps } from '@ionic-native/google-maps';
-import { UserService } from 'src/app/pages/profile/user/user.service';
+import { UserService } from 'src/app/shared/services/user_services/user.service';
 
 @NgModule({
   declarations: [AppComponent],

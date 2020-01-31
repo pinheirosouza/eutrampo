@@ -1,4 +1,4 @@
-import { User } from './../../../auth/interfaces/user';
+import { User } from '../../../auth/interfaces/user';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
@@ -22,8 +22,8 @@ export class UserService {
     this.firestore.doc('users/' + uid).update(newData);
   }
  
-  delete_user(record_id) {
-    this.firestore.doc('users/' + record_id).delete();
+  deleteUser(uid) {
+    this.firestore.doc('users/' + uid).delete();
   }
 
   sendToBack(){

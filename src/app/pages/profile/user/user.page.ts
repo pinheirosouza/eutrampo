@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './../../../auth/services/auth.service';
 import { User } from './../../../auth/interfaces/user';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './user.service';
+import { UserService } from '../../../shared/services/user_services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -26,30 +26,14 @@ export class UserPage implements OnInit {
     console.log(this.user)
   }
 
-
-  RemoveRecord(rowID) {
-    this.userService.delete_user(rowID);
-  }
- 
-  EditRecord(record) {
-    record.isEdit = true;
-    record.EditName = record.Name;
-    record.EditAge = record.Age;
-    record.EditAddress = record.Address;
-  }
- 
-  UpdateRecord(recordRow) {
-    let record = {};
-    record['Name'] = recordRow.EditName;
-    record['Age'] = recordRow.EditAge;
-    record['Address'] = recordRow.EditAddress;
-    this.userService.update_user(recordRow.id, record);
-    recordRow.isEdit = false;
-  }
-
   updateRecord(){
     this.authService.updateEmail(this.userUpdate.email);
     this.userService.update_user(this.authService.getId(),this.userUpdate);
+  }
+
+  deleteRecord() {
+    this.authService.deleteCurrentUser()
+    this.userService.deleteUser(this.authService.getId());
   }
 
 }
