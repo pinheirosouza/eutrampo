@@ -1,0 +1,55 @@
+{
+    "museums": [
+        {
+          "name": "Museu Oceanográfico “Prof. Eliézer de Carvalho Rios”",
+          "desc":"O maior museu oceanográfico da América latina. Fundado em 8 de setembro de 1953, o Museu Oceanográfico mantém uma exposição pública sobre a vida e a dinâmica dos oceanos, apresentada em painéis, maquetes e diversos equipamentos utilizados em pesquisas oceanográficas.",
+          "latitude":-32.027063,
+          "longitude": -52.1059715,
+          "address": "R. Capitao-Tenente Heitor Perdigão, 10 - Centro"
+        },
+        {
+          "name": "Museu Antártico",
+          "desc":"Sua exposição mostra um pouco da vida no continente gelado e a presença do Brasil na Antártica. O prédio do Museu Antártico é uma reprodução das primeiras instalações da Estação Antártica “Comandante Ferraz” e está localizado anexo ao Museu Oceanográfico.",
+          "latitude": -32.0269427,
+          "longitude":-52.1059118,
+          "address":"R. Capitao-Tenente Heitor Perdigão, 10 - Centro"
+        },
+        {
+          "name": "Eco-Museu da Ilha da Pólvora",
+          "desc":"Fundado em 1999 tem como objetivo  uma ação ambiental no sentido de dar uma  proteção mais eficaz do patrimônio natural e cultural da região.",
+          "latitude": -32.0217783,
+          "longitude": -52.1048086,
+          "address":"Ilha da Pólvora"
+        },
+        {
+          "name": "Museu Histórico da cidade do Rio grande",
+          "desc":"O museu da cidade guarda hoje os mais variados objetos relativos à pré-história e a história do município.",
+          "latitude": -32.029702,
+          "longitude": -52.094932,
+          "address":"Rua Riachuelo, sem número - Centro"
+  
+        },
+        {
+          "name": "Museu Naval",
+          "desc":" Coloca à disposição dos visitantes a história e a ação da Marinha no extremo Sul do Brasil.",
+          "latitude": -32.0314144,
+          "longitude": -52.0835368,
+          "address":"R. Alm. Garnier, 179 - Vila Militar"
+        },
+        {
+          "name": "Museu Náutico",
+          "desc":"Seu acervo dispõe de embarcações, equipamentos de navegação, pesca e sinalização náutica, mapas e maquetes de acordo com os modernos princípios da museologia. Tem como finalidade resgatar, preservar e divulgar a cultura e o conhecimento náutico local.",
+          "latitude": -32.0296084,
+          "longitude": -52.0939254,
+          "address":"Rua Riachuelo, portão 4, nos fundos do Museu Náutico da FURG. - Centro"
+  
+        },
+        {
+          "name": "Biblioteca Riograndense",
+          "desc":" ",
+          "latitude": -32.0298747,
+          "longitude": -52.0973297,
+          "address":"R. Gen. Osório, 454 - Centro"
+        }
+        ]
+  }

@@ -1,3 +1,6 @@
+import { HiredModalPageModule } from './shared/modals/hired-modal/hired-modal.module';
+import { ServiceModalPageModule } from './shared/modals/service-modal/service-modal.module';
+import { StarRatingModule } from 'ionic4-star-rating';
 import { LoginGuard } from './auth/guards/login.guard';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NgModule } from '@angular/core';
@@ -11,9 +14,15 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth/services/auth.service';
+
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 import { environment } from 'src/environments/environment';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { UserService } from 'src/app/pages/profile/user/user.service';
 import {IonicStorageModule} from '@ionic/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {AngularFireStorageModule} from '@angular/fire/storage';
@@ -33,6 +42,8 @@ import { FilePath } from '@ionic-native/file-path/ngx';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
     IonicModule.forRoot(),
     AppRoutingModule, IonicStorageModule.forRoot(), 
     HttpClientModule
@@ -40,12 +51,14 @@ import { FilePath } from '@ionic-native/file-path/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    UserService,
     AuthService, AuthGuard, LoginGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     File,
     WebView,
     FilePath
+    GoogleMaps
   ],
   bootstrap: [AppComponent]
 })

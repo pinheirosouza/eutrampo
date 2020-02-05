@@ -1,5 +1,6 @@
+import { ServiceModalPage } from './../../shared/modals/service-modal/service-modal.page';
 import { Component } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ export class HomePage {
   public recent_services;
 
   constructor(
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    private modalCtrl: ModalController
   ) {
     this.recent_services = [
       { name:'Pedro Souza', 
@@ -37,4 +39,12 @@ export class HomePage {
     ]
   }  
 
+  async showModal(){
+    const modal = await this.modalCtrl.create({
+      component:ServiceModalPage
+    });
+    
+    modal.present();
+      
+  }
 }

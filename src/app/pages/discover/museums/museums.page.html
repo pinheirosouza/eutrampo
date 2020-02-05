@@ -1,14 +1,26 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar color='secondary'>
+    <ion-title >Museus</ion-title>
+    <ion-buttons slot='start'>
       <ion-back-button defaultHref="discover"></ion-back-button>
     </ion-buttons>
-    <ion-title>
-        Museus
-      </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerDirection]="'root'" routerLink="mapview">
+        <ion-text color='primary'>Ver no Mapa</ion-text>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
 
+      <ion-item class="box" *ngFor="let museum of museumData">
+       <ion-icon color="danger"  name="pin" slot="start"></ion-icon>
+        <ion-text (click)='showMuseum(museum)' class="label-form">{{ museum.name }}. </ion-text>
+        <ion-button slot='end' color="secondary" (click)=showAddress(museum)>Endereço</ion-button>
+        
+      </ion-item>
+   
+  
 </ion-content>

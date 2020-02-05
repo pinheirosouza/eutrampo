@@ -1,0 +1,14 @@
+{
+    "hired":[
+        {
+            "name":"Zé",
+            "type":"Pedreiro",
+            "bio":"Bio",
+            "price": 22.4,
+            "ratingList":[4,5,2,3,4,1,5,2,1,4,2,3,3,2],
+            "total": 4,
+            "rated":false
+            
+        }
+    ]
+}

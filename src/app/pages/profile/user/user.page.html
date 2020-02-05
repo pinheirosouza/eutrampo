@@ -24,7 +24,7 @@
   <ion-list>
     <ion-item>
       <ion-label position="stacked">Nome</ion-label>
-      <ion-input placeholder="Pedro Souza"></ion-input>
+      <ion-input placeholder="{{item.Name}}"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -34,12 +34,12 @@
 
     <ion-item>
       <ion-label position="stacked">Email</ion-label>
-      <ion-input placeholder="phpinheiros@outlook.com"></ion-input>
+      <ion-input placeholder="{{item.Email}}"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Telefone</ion-label>
-      <ion-input placeholder="+55 21 99032-8060"></ion-input>
+      <ion-input placeholder="{{item.Phone}}"></ion-input>
     </ion-item>
 
     <ion-item [routerDirection]="'root'" routerLink="password">

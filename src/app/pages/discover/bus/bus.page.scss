@@ -9,3 +9,21 @@ ion-content div.scroll{
     padding: 1rem;
     overflow:hidden;
  }
+ ion-toolbar {
+   --ion-background-color: var(--ion-color-secondary);
+   
+ 
+   ion-buttons{
+       color: var(--ion-color-secondary-contrast);
+   }
+ 
+   ion-toolbar {
+       --ion-text-color: var(--ion-color-secondary);
+       --background: var(--ion-color-primary);
+   }
+ 
+   ion-list {
+       --ion-text-color: var(--ion-color-secondary-contrast);
+       background: transparent;
+   }
+ }

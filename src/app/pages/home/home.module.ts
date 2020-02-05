@@ -1,3 +1,4 @@
+import { ServiceModalPage } from './../../shared/modals/service-modal/service-modal.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +23,7 @@ import { StarRatingModule } from 'ionic4-star-rating';
       }
     ])
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, ServiceModalPage],
+  entryComponents: [ServiceModalPage]
 })
 export class HomePageModule {}
