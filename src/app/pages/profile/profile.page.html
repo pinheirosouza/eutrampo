@@ -13,17 +13,17 @@
     <ion-list>
         <ion-item [routerDirection]="'root'" routerLink="user">
           <ion-avatar slot="start">
-            <img src="../../../assets/img/perfil.jpg">
+            <img src="{{ (user | async)?.img }}">
           </ion-avatar>
           <ion-label>
-            <h2>Pedro Souza</h2>
+            <h2>{{ (user | async)?.name }}</h2>
             <ion-grid>
               <ion-row>
                 <ion-col>
-                  <h3>293 Prestações</h3>
+                  <h3>{{ (user | async)?.provided }} Prestações</h3>
                 </ion-col>
                 <ion-col>
-                  <h3>35 Contratações</h3>
+                  <h3>{{ (user | async)?.hired }} Contratações</h3>
                 </ion-col>
               </ion-row>
             </ion-grid>

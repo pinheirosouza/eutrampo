@@ -8,4 +8,7 @@ export interface User {
     gender?: string,
     bio?: string,
     uid?: string,
+    img?: string,
+    hired?: number,
+    provided?: number,
 }

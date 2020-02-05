@@ -13,7 +13,7 @@
   <ion-list>
     <ion-item>
       <ion-avatar slot="start">
-        <img src="./avatar-finn.png">
+        <img src="{{ (user | async)?.img }}">
       </ion-avatar>
       <ion-label position="stacked">Nome</ion-label>
       <ion-input [(ngModel)]="userUpdate.name" placeholder="{{ (user | async)?.name }}"></ion-input>
@@ -40,9 +40,9 @@
     </ion-item>
 
     <br>
-  <ion-button expand="block" color="secondary" (click)="updateRecord()" >Editar Dadods</ion-button>
+  <ion-button expand="block" color="secondary" (click)="updateRecord()" >Editar Dados</ion-button>
   <br>
-  <ion-button expand="block" color="secondary" (click)="deleteRecord()" >Excluir Conta</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteRecord()" >Excluir Conta</ion-button>
 
 
   </ion-list>

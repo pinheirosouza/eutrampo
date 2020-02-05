@@ -119,8 +119,7 @@ export class AppComponent {
             }
           }
         }
-        console.log('Menu:',this.hideMenu)
-    });
+        console.log('Menu:',this.hideMenu)    });
     }
 
   initializeApp() {

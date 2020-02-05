@@ -1,3 +1,5 @@
+import { UploadService } from './shared/services/upload_service/upload.service';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { HiredModalPageModule } from './shared/modals/hired-modal/hired-modal.module';
 import { ServiceModalPageModule } from './shared/modals/service-modal/service-modal.module';
 import { StarRatingModule } from 'ionic4-star-rating';
@@ -19,10 +21,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from 'src/environments/environment';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { UserService } from 'src/app/shared/services/user_services/user.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import * as firebase from 'firebase';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +38,7 @@ import { UserService } from 'src/app/shared/services/user_services/user.service'
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     
@@ -41,9 +47,11 @@ import { UserService } from 'src/app/shared/services/user_services/user.service'
     StatusBar,
     SplashScreen,
     UserService,
-    AuthService, AuthGuard, LoginGuard,
+    AuthService, AuthGuard, LoginGuard, UploadService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    GoogleMaps
+    GoogleMaps,
+    Camera,
+    ImagePicker
   ],
   bootstrap: [AppComponent]
 })
