@@ -62,7 +62,12 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'home'
+  },
+  {
+    path: 'profile-picture',
+    loadChildren: () => import('./pages/profile/user/profile-picture/profile-picture.module').then( m => m.ProfilePicturePageModule)
   }
+
   
 ];
 

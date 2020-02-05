@@ -1,0 +1,106 @@
+ion-content {
+    --ion-background-color: whiteSmoke;
+}
+ion-title{
+    float:left;
+    margin-top: 0px;
+    color: white;
+    font-weight: 700;
+}
+ion-icon#seta{
+    margin-left: 4%;
+    font-size: 30px;
+    float: left;
+    margin-top: 2px;
+}
+ion-card{
+    background-color:green;
+}
+ion-card-content{
+    background-color: blue;
+}
+ion-card-header{
+    background-color: green;
+}
+ion-searchbar{
+    --placeholder-color: unset;
+    --placeholder-font-weight: bolder;
+    --background: aliceblue;
+    --icon-color: unset; 
+}
+// ion-row{
+//     background-color: aliceblue;
+//     width: 100%;
+// }
+ion-row#titulo{
+    background-color: transparent;
+    width: 100%;
+    height: 40%;
+}
+ion-row#header-noticia{
+    background-color: transparent;
+    height: 50px;
+    width: -webkit-fill-available;
+    border-bottom: solid 1px;
+    border-bottom-color: white;
+}
+ion-row#data{
+    height: 5%;
+ }
+ion-avatar {
+    float: left;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+}
+h1.nome_parceiro{
+    margin-top: 0.5%;
+    margin-left: 5px;
+    color:black;
+    font-size: 17px;
+    line-height: normal;
+    font-weight: 600;
+}
+h1.hora{
+    margin-top: 2.5%;
+    margin-left: auto;
+    color: black;
+    font-size: 11px;
+    line-height: normal;
+    
+}
+h2.mensagem{
+    margin-top: 0.5%;
+    font-size: 80%;
+    margin-left: 5px;
+    color: black;
+}
+
+ion-col#noticia{
+    width: 5%;
+}
+ion-col#hora{
+    width: 5%;
+}
+ion-item{
+    --border-color: transparent;
+
+    /*.item-native{
+        background-color: green;
+        .item-inner{
+            background-color: blue;
+            .input-wrapper{
+                background-color:yellow;
+            }
+
+        }
+    }*/
+}
+
+ion-item#novo{
+    --border-color: aliceblue;
+}
+ion-button#Adicionar{
+    margin-left: 80px;
+}

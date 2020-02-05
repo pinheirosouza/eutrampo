@@ -7,6 +7,7 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  private foto_perfil = "../../../assets/img/perfil.jpg";
 
   constructor(
     public menuCtrl: MenuController

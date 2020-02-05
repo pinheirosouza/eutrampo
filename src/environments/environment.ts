@@ -5,12 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAkpDakYRsSM3gyryT_ZwM8RFETNcaEbnA",
-    authDomain: "eutrampo-34a6b.firebaseapp.com",
-    databaseURL: "https://eutrampo-34a6b.firebaseio.com",
-    projectId: "eutrampo-34a6b",
-    storageBucket: "eutrampo-34a6b.appspot.com",
-    messagingSenderId: "509695405336",
+    apiKey: "AIzaSyBJn9gIphZ4x3jnSEEmvgpiqsYlYF5f1XA", 
+    authDomain: "eutrampoapp.firebaseapp.com", 
+    databaseURL: "https://eutrampoapp.firebaseio.com",
+    projectId: "eutrampoapp", 
+    storageBucket: "eutrampoapp.appspot.com", 
+    messagingSenderId: "998779479014", 
+    appId: "1:998779479014:web:060ad5a8f7288e2127ec27", 
+    measurementId: "G-8J5ZFK63C7"
   }
   
 };
