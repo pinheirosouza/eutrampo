@@ -9,6 +9,7 @@ import { UserService } from '../../../shared/services/user_services/user.service
 import { Camera, CameraOptions  } from '@ionic-native/camera/ngx'
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,8 @@ import { observable } from 'rxjs';
 export class RegisterPage implements OnInit {
 
   public userRegister: User = {};
+  private image;
+  private tempImg;
 
   constructor(
     private router: Router,
@@ -27,7 +30,8 @@ export class RegisterPage implements OnInit {
     public camera: Camera,
     private storage: AngularFireStorage,
     private imagePicker: ImagePicker,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private DomSanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {}
@@ -43,42 +47,48 @@ export class RegisterPage implements OnInit {
     }
     console.log("take pic")
     this.camera.getPicture(options).then((imageData) => {
-      console.log(imageData)
-      this.uploadImageToFirebase('data:image/jpeg;base64,' + imageData);
+      this.image = imageData;
+      console.log(this.image);
+      
     }, (err) => {
       console.log('error', err);
     });
-    }
+  }
 
-    uploadImageToFirebase(image){
-      console.log("try up")
-      //uploads img to firebase storage
-      this.uploadService.uploadImage(image)
-      .then( 
+  uploadImageToFirebase(image){
+    console.log("try up")
+    //uploads img to firebase storage
+    return this.uploadService.uploadImage(image, this.authService.getId());
+    
+  }
 
-      )
-      }
-
-      async createRecord()
-      {
-        //Registrando no Auth
-        try {await this.authService.register(this.userRegister);
-        } catch(error){
-          console.log(error);
+  async createRecord()
+  {
+    //Registrando no Auth
+    try {await this.authService.register(this.userRegister);
+    } catch(error){
+      console.log(error);
+    } finally {
+      return new Promise( resolve => {
+        try {
+          this.uploadImageToFirebase('data:image/jpeg;base64,' + this.image).then( (img) => {
+            console.log("IMAGEM: ", img);
+            this.userRegister.provided = 0; 
+            this.userRegister.hired  = 0;
+            this.userRegister.password = "hided";
+            this.userRegister.img = img;
+            this.userService.create_NewUser(this.userRegister, this.authService.getId());
+            console.log(this.userRegister);
+          }).catch(async (err) => {
+            console.log("OCORREU UM ERRO");
+          })
+        } catch(err){
+          console.log(err)
         } finally {
-          return new Promise(async resolve => {
-            try {
-              this.userRegister.provided = 0; 
-              this.userRegister.hired  = 0;
-              this.userRegister.password = "hided";
-              await this.userService.create_NewUser(this.userRegister, this.authService.getId());
-              console.log(this.userRegister);
-            } catch(error) {
-                console.log(error);
-              };
-          }) ;
-        }
-      }
+        } 
+      }) ;
+    }
+  }
       
   
   

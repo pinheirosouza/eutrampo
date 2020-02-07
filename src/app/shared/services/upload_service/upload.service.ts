@@ -11,26 +11,34 @@ export class UploadService {
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
-  task: AngularFireUploadTask;
+  // task: AngularFireUploadTask;
   complete: boolean;
   caminhoImagem: string;
+  imgUrl: Observable<string>;
+  
 
   constructor(
     private storage: AngularFireStorage
   ) { }
 
-  uploadImage(imageURI){
+  async uploadImage(imageURI, uid): Promise<any>{
     return new Promise<any>((resolve, reject) => {
+      
       let storageRef = firebase.storage().ref();
-      let imageRef = storageRef.child('users').child('imageName');
+      let imageRef = storageRef.child('users').child(uid + ".jpg");//todo
       this.encodeImageUri(imageURI, function(image64){
-        imageRef.putString(image64, 'data_url')
-        .then(snapshot => {
-          resolve(snapshot.downloadURL)
-        }, err => {
-          reject(err);
-        })
+        let task = imageRef.putString(image64, 'data_url');
+        
+        // task.then(snapshot => {
+          
+        //   console.log(snapshot.downloadURL);
+        // }, err => {
+        //   reject(err);
+        // })
+
+        console.log("img uploaded");
       })
+       
     })
   }
 
@@ -48,9 +56,5 @@ export class UploadService {
     };
     img.src = imageUri;
   };
-
-  imageUrl(){
-    return this.downloadURL
-  }
   
 }

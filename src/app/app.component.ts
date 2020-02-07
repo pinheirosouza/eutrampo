@@ -53,6 +53,7 @@ export class AppComponent {
       url: '/profile',
       icon: 'contact'
     },
+   
     
   ];
 
@@ -112,6 +113,7 @@ export class AppComponent {
               this.hideMenu = true;
               break;
             }
+          
             default:
             {
               this.hideMenu = false;

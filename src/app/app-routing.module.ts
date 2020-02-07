@@ -54,6 +54,16 @@ const routes: Routes = [
     loadChildren: './pages/discover/discover.module#DiscoverPageModule',
     canActivate: [AuthGuard]
   },
+  
+  {
+    path: 'service-modal',
+    loadChildren: () => import('./shared/modals/service-modal/service-modal.module').then( m => m.ServiceModalPageModule)
+  },
+  {
+    path: 'hired-modal',
+    loadChildren: () => import('./shared/modals/hired-modal/hired-modal.module').then( m => m.HiredModalPageModule)
+  },
+
   {
     path: '',
     redirectTo: 'home',
@@ -63,13 +73,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'home'
   },
-  {
-    path: 'service-modal',
-    loadChildren: () => import('./shared/modals/service-modal/service-modal.module').then( m => m.ServiceModalPageModule)
-  },  {
-    path: 'hired-modal',
-    loadChildren: () => import('./shared/modals/hired-modal/hired-modal.module').then( m => m.HiredModalPageModule)
-  }
+ 
 
 
   
