@@ -25,3 +25,20 @@ ion-toolbar {
 .center{
   text-align: center;
 }
+
+ion-searchbar{
+  --placeholder-color: unset;
+  --placeholder-font-weight: bolder;
+  --background: aliceblue;
+  --icon-color: unset; 
+}
+
+img.noticiaimg{
+  margin-top:5px;
+  margin-bottom: 5px;
+}
+
+h1.titulo_noticia{
+  color:black;
+  text-align: center;
+}

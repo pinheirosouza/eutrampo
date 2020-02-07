@@ -34,14 +34,19 @@ export class AppComponent {
       icon: 'chatboxes'
     },
     {
+      title: 'Minha Agenda',
+      url: '/schedule',
+      icon: 'calendar'
+    },
+    {
       title: 'Notícias',
       url: '/news',
       icon: 'paper'
     },
     {
-      title: 'Minha Agenda',
-      url: '/schedule',
-      icon: 'calendar'
+      title: 'Oportunidades',
+      url: '/opportunities',
+      icon: 'briefcase'
     },
     {
       title: 'Explorar',

@@ -1,6 +1,3 @@
-import { HiredModalPageModule } from './shared/modals/hired-modal/hired-modal.module';
-import { ServiceModalPageModule } from './shared/modals/service-modal/service-modal.module';
-import { StarRatingModule } from 'ionic4-star-rating';
 import { LoginGuard } from './auth/guards/login.guard';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NgModule } from '@angular/core';
@@ -57,7 +54,7 @@ import { FilePath } from '@ionic-native/file-path/ngx';
     Camera,
     File,
     WebView,
-    FilePath
+    FilePath,
     GoogleMaps
   ],
   bootstrap: [AppComponent]

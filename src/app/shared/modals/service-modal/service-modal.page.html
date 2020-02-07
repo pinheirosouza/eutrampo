@@ -13,23 +13,23 @@
 <ion-content padding-top>
   <ion-card>
     <ion-card-title padding-start>
-      <h1>Pedro Souza</h1>
+      <h1>{{Obj_worker.title}}</h1>
     </ion-card-title>
     <img src="../../../../assets/img/pedro.jpg" />
     <ion-card-header>
       <ion-card-subtitle>Serviço:</ion-card-subtitle>
-      <ion-card-title>Pedreiro</ion-card-title>
+      <ion-card-title>{{Obj_worker.subcategory[0].title}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      Aqui entra a Bio de quem fornece o serviço Founded in 1829 on an isthmus between Lake Monona and Lake Mendota.
+      {{Obj_worker.description}}
     </ion-card-content>
   </ion-card>
 
   
     <ion-col>
       <ion-row no-padding justify-content-center>
-        <h5>R$</h5>
-        <h2 style="font-size: 35px;">45,00</h2>
+        <!-- <h5>R$</h5> -->
+        <h2 style="font-size: 35px;">R$ {{Obj_worker.price}}</h2>
       </ion-row>
       <ion-row justify-content-center align-items-center>
         <ionic4-star-rating 

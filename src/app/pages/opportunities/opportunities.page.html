@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        Oportunidades
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar placeholder="Busque Oportunidades" [(ngModel)]="searchTerm" (ionChange)="setFilteredOportunidades()"></ion-searchbar>
+  <ion-card *ngFor="let oportunidade of lista_oportunidades">
+    
+    <ion-card-content>
+      <h1 class="titulo_noticia">{{oportunidade.title}}</h1>
+      <a href={{oportunidade.link}}> 
+        <img class="noticiaimg" [src]= "oportunidade.image">
+      </a>
+      <h3>{{oportunidade.description}}</h3>
+    </ion-card-content>
+  </ion-card> 
+
+</ion-content>

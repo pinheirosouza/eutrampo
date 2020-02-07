@@ -36,8 +36,6 @@ export class UserPage implements OnInit {
   userAddress: string;
   userPhone: string;
   userEmail: string;
-  
-  constructor(private userService: UserService) { }
 
   constructor(
     private router : Router,
@@ -48,51 +46,51 @@ export class UserPage implements OnInit {
     private storage: AngularFireStorage) { }
 
   ngOnInit() {
-    this.userService.read_users().subscribe(data => {
+    // this.userService.read_users().subscribe(data => {
  
-      this.users = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          isEdit: false,
-          Name: e.payload.doc.data()['Name'],
-          // Age: e.payload.doc.data()['Age'],
-          // Address: e.payload.doc.data()['Address'],
-          Phone: e.payload.doc.data()['Phone'],
-          Email: e.payload.doc.data()['Email'],   
-          Gender: e.payload.doc.data()['Gender'],
-          // Bio: e.payload.doc.data()['Bio'],
-          Password: e.payload.doc.data()['Password'],
-        };
-      })
-      console.log(this.users);
+    //   this.users = data.map(e => {
+    //     return {
+    //       id: e.payload.doc.id,
+    //       isEdit: false,
+    //       Name: e.payload.doc.data()['Name'],
+    //       // Age: e.payload.doc.data()['Age'],
+    //       // Address: e.payload.doc.data()['Address'],
+    //       Phone: e.payload.doc.data()['Phone'],
+    //       Email: e.payload.doc.data()['Email'],   
+    //       Gender: e.payload.doc.data()['Gender'],
+    //       // Bio: e.payload.doc.data()['Bio'],
+    //       Password: e.payload.doc.data()['Password'],
+    //     };
+    //   })
+    //   console.log(this.users);
  
-    });
+    // });
   }
-   async selectImage() {
-    const actionSheet = await this.actionSheetController.create({
-        header: "Foto de Perfil",
-        buttons: [{
-                text: 'Carregar da Galeria',
-                handler: () => {
-                    this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
-                }
-            },
-            {
-                text: 'Usar Câmera',
-                handler: () => {
-                    this.takePicture(this.camera.PictureSourceType.CAMERA);
-                }
-            },
-            {
-                text: 'Excluir Foto',
-                handler: () => {
-                    this.takePicture(this.camera.PictureSourceType.CAMERA);
-                }
-            }
+  //  async selectImage() {
+  //   const actionSheet = await this.actionSheetController.create({
+  //       header: "Foto de Perfil",
+  //       buttons: [{
+  //               text: 'Carregar da Galeria',
+  //               handler: () => {
+  //                   this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+  //               }
+  //           },
+  //           {
+  //               text: 'Usar Câmera',
+  //               handler: () => {
+  //                   this.takePicture(this.camera.PictureSourceType.CAMERA);
+  //               }
+  //           },
+  //           {
+  //               text: 'Excluir Foto',
+  //               handler: () => {
+  //                   this.takePicture(this.camera.PictureSourceType.CAMERA);
+  //               }
+  //           }
             
-        ]
-    });
-    await actionSheet.present();
-  }
+  //       ]
+  //   });
+  //   await actionSheet.present();
+  // }
 
 }

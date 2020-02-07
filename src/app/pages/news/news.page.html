@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>news</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        News
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-searchbar color="light" placeholder="Digita uma notícia" [(ngModel)]="searchTerm" (ionChange)="setFilteredNoticias()"></ion-searchbar>
+  <ion-card *ngFor="let noticia of lista_noticias; let i=index">
+    <ion-card-content>
+      <h1 class="titulo_noticia">{{noticia.title}}</h1>
+      <a href={{noticia.link}}> 
+        <img class="noticiaimg" [src]= "noticia.image">
+      </a>
+      <h3>{{noticia.description}}</h3>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

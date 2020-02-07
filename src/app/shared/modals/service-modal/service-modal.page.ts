@@ -1,4 +1,4 @@
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 
@@ -8,11 +8,15 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['./service-modal.page.scss'],
 })
 export class ServiceModalPage implements OnInit {
-
+  public Obj_worker;
   constructor(
     private modalCtrl: ModalController,
     public actionSheetCtrl: ActionSheetController,
-    ) { }
+    public navParams: NavParams
+    ) { 
+      this.Obj_worker = navParams.get("oWorker");
+      // console.log("Nome="+this.Obj_worker.title)
+    }
 
   ngOnInit() {
   }
