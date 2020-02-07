@@ -18,6 +18,10 @@ export class AuthService {
   register(user: User) {
     return this.afa.auth.createUserWithEmailAndPassword(user.email, user.password);
   }
+  
+  deleteCurrentUser() {
+    return this.afa.auth.currentUser.delete()
+  }
 
   logout() {
     return this.afa.auth.signOut();
@@ -25,5 +29,17 @@ export class AuthService {
 
   getAuth() {
     return this.afa.auth;
+  }
+
+  updateEmail(email) {
+    return this.afa.auth.currentUser.updateEmail(email)
+  }
+
+  updatePassword(password) {
+    return this.afa.auth.currentUser.updatePassword(password)
+  }
+
+  getId() {
+    return this.afa.auth.currentUser.uid
   }
 }

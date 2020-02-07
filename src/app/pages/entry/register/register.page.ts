@@ -1,9 +1,15 @@
+import { AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage';
+import { UploadService } from './../../../shared/services/upload_service/upload.service';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { User } from './../../../auth/interfaces/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../profile/user/user.service';
+import { UserService } from '../../../shared/services/user_services/user.service';
+import { Camera, CameraOptions  } from '@ionic-native/camera/ngx'
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -12,85 +18,79 @@ import { UserService } from '../../profile/user/user.service';
 })
 export class RegisterPage implements OnInit {
 
-  users: any;
-  userName: string;
-  userAge: number;
-  userAddress: string;
-  userPhone: string;
-  userEmail: string;
-  userGender: string;
-  userBio: string;
-  userPassword: string;
+  public userRegister: User = {};
+  private image;
+  private tempImg;
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService,
+    private uploadService: UploadService,
+    public camera: Camera,
+    private storage: AngularFireStorage,
+    private imagePicker: ImagePicker,
+    private toastCtrl: ToastController,
+    private DomSanitizer: DomSanitizer
   ) { }
 
-  ngOnInit() {
-    this.userService.read_users().subscribe(data => {
- 
-      this.users = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          isEdit: false,
-          Name: e.payload.doc.data()['Name'],
-          // Age: e.payload.doc.data()['Age'],
-          // Address: e.payload.doc.data()['Address'],
-          Phone: e.payload.doc.data()['Phone'],
-          Email: e.payload.doc.data()['Email'],   
-          Gender: e.payload.doc.data()['Gender'],
-          // Bio: e.payload.doc.data()['Bio'],
-          Password: e.payload.doc.data()['Password'],
-        };
-      })
-      console.log(this.users);
- 
+  ngOnInit() {}
+
+  openImagePicker(){
+    const options: CameraOptions = {
+      quality: 100,
+      targetHeight: 200,
+      targetWidth: 200,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    console.log("take pic")
+    this.camera.getPicture(options).then((imageData) => {
+      this.image = imageData;
+      console.log(this.image);
+      
+    }, (err) => {
+      console.log('error', err);
     });
   }
 
-  CreateRecord(){
-    let record = {};
-    record['Name'] = this.userName;
-    // record['Address'] = this.userAddress;
-    record['Phone'] = this.userPhone;
-    record['Email'] = this.userEmail;   
-    record['Gender'] = this.userGender; 
-    // record['Bio'] = this.userBio;
-    record['Password'] = this.userPassword;
-    this.userService.create_NewUser(record).then(resp => {
-      this.userName = "";
-      // this.userAddress = "";
-      this.userPhone = "";
-      this.userEmail = "";
-      this.userGender = "";
-      // this.userBio = "";
-      this.userPassword = "";
-      console.log(resp);
-    })
-      .catch(error => {
-        console.log(error);
-      });
+  uploadImageToFirebase(image){
+    console.log("try up")
+    //uploads img to firebase storage
+    return this.uploadService.uploadImage(image, this.authService.getId());
+    
   }
 
-  RemoveRecord(rowID) {
-    this.userService.delete_user(rowID);
+  async createRecord()
+  {
+    //Registrando no Auth
+    try {await this.authService.register(this.userRegister);
+    } catch(error){
+      console.log(error);
+    } finally {
+      return new Promise( resolve => {
+        try {
+          this.uploadImageToFirebase('data:image/jpeg;base64,' + this.image).then( (img) => {
+            console.log("IMAGEM: ", img);
+            this.userRegister.provided = 0; 
+            this.userRegister.hired  = 0;
+            this.userRegister.password = "hided";
+            this.userRegister.img = img;
+            this.userService.create_NewUser(this.userRegister, this.authService.getId());
+            console.log(this.userRegister);
+          }).catch(async (err) => {
+            console.log("OCORREU UM ERRO");
+          })
+        } catch(err){
+          console.log(err)
+        } finally {
+        } 
+      }) ;
+    }
   }
- 
-  EditRecord(record) {
-    record.isEdit = true;
-    record.EditName = record.Name;
-    record.EditAge = record.Age;
-    record.EditAddress = record.Address;
-  }
- 
-  UpdateRecord(recordRow) {
-    let record = {};
-    record['Name'] = recordRow.EditName;
-    record['Age'] = recordRow.EditAge;
-    record['Address'] = recordRow.EditAddress;
-    this.userService.update_user(recordRow.id, record);
-    recordRow.isEdit = false;
-  }
+      
+  
+  
 
 }

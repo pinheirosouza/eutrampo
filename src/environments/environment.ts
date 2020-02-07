@@ -12,7 +12,7 @@ export const environment = {
     storageBucket: "eutrampoapp.appspot.com",
     messagingSenderId: "998779479014",
     appId: "1:998779479014:web:060ad5a8f7288e2127ec27",
-    measurementId: "G-8J5ZFK63C7"
+    measurementId: "G-8J5ZFK63C7",
   }
   
 };
