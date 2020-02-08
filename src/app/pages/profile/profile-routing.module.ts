@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'meus-servicos',
+    loadChildren: () => import('./meus-servicos/meus-servicos.module').then(m => m.MeusServicosPageModule)
   }
 ];
 

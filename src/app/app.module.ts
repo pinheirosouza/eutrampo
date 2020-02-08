@@ -28,6 +28,16 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { UserService } from 'src/app/shared/services/user_services/user.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
+import {IonicStorageModule} from '@ionic/storage';
+import {HttpClientModule} from '@angular/common/http';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+
+//Câmera
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+ 
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,12 +46,13 @@ import * as firebase from 'firebase';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireStorageModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     IonicModule.forRoot(),
-    AppRoutingModule,
-    
+    AppRoutingModule, IonicStorageModule.forRoot(), 
+    HttpClientModule
   ],
   providers: [
     StatusBar,
@@ -49,8 +60,11 @@ import * as firebase from 'firebase';
     UserService,
     AuthService, AuthGuard, LoginGuard, UploadService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    GoogleMaps,
     Camera,
+    File,
+    WebView,
+    FilePath,
+    GoogleMaps
     ImagePicker
   ],
   bootstrap: [AppComponent]

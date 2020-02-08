@@ -12,31 +12,69 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header >
+    <ion-list-header>
       Últimos Serviços Contratados
     </ion-list-header>
 
-    <ion-item *ngFor="let service of recent_services" (click)= 'showModal()'>
-      <ion-avatar slot="start">
-        <img [src]=service.pic>
-      </ion-avatar>
-      <ion-col>
+    <ion-item *ngFor="let category of lista_categories" (click)= 'showModal()'>
         <ion-label>
-          <h2>{{service.name}}</h2>
-          <h3>{{service.servicetype}}</h3>
-          <p>{{service.provided}} Serviços Prestados</p>
+          <h1>{{category.title}} </h1>
         </ion-label>
-      </ion-col>
-      <ion-col class="center" size="8px">
-        <ion-label>
-          <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
-        </ion-label>
-      </ion-col>
     </ion-item>
 
-    <ion-item text-center routerLink="/hired">
-      <ion-label>Ver Mais</ion-label>
-    </ion-item>
+  </ion-list> -->
+
+  <ion-list *ngIf='searchTerm != ""'>
+    <ion-list-header>
+      Contrate um serviço
+    </ion-list-header>
+
+    <ion-card *ngFor="let worker of lista_workers; let i=index" (click)= 'showModal(worker)'>
+      <ion-item *ngIf='i<=4'>  
+        <ion-avatar slot="start">
+          <img src="../../../assets/img/pedro.jpg">
+        </ion-avatar>
+        <ion-col>
+          <ion-label>
+            <h2>{{worker.title}}</h2>
+            <h3>{{worker.subcategory[0].title}}</h3>
+            <p>0 Serviços Prestados</p>
+          </ion-label>
+        </ion-col>
+        <ion-col class="center" size="8px">
+          <ion-label>
+            <p>{{worker.price | currency:"BRL":true:"1.2" }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-item>
+    </ion-card>
+
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Últimos Serviços Contratados
+    </ion-list-header>
+
+    <ion-card *ngFor="let service of recent_services; let i=index" (click)= 'showModal()'>
+      <ion-item *ngIf='i<=4'> 
+        <ion-avatar slot="start">
+          <img [src]=service.pic>
+        </ion-avatar>
+        <ion-col>
+          <ion-label>
+            <h2>{{service.name}}</h2>
+            <h3>{{service.servicetype}}</h3>
+            <p>{{service.provided}} Serviços Prestados</p>
+          </ion-label>
+        </ion-col>
+        <ion-col class="center" size="8px">
+          <ion-label>
+            <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-item>
+    </ion-card>
 
   </ion-list>
 
@@ -45,23 +83,25 @@
       Serviços Mais Contratados
     </ion-list-header>
 
-    <ion-item *ngFor="let service of more_services" [href]=service.redirectTo>
-      <ion-avatar slot="start">
-        <img [src]=service.pic>
-      </ion-avatar>
-      <ion-col>
-        <ion-label>
-          <h2>{{service.name}}</h2>
-          <h3>{{service.servicetype}}</h3>
-          <p>{{service.provided}} Serviços Prestados</p>
-        </ion-label>
-      </ion-col>
-      <ion-col class="center" size="8px">
-        <ion-label>
-          <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
-        </ion-label>
-      </ion-col>
-    </ion-item>
+    <ion-card *ngFor="let service of recent_services; let i=index" [href]=service.redirectTo>
+      <ion-item *ngIf='i<=4'>
+        <ion-avatar slot="start">
+          <img [src]=service.pic>
+        </ion-avatar>
+        <ion-col>
+          <ion-label>
+            <h2>{{service.name}}</h2>
+            <h3>{{service.servicetype}}</h3>
+            <p>{{service.provided}} Serviços Prestados</p>
+          </ion-label>
+        </ion-col>
+        <ion-col class="center" size="8px">
+          <ion-label>
+            <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-item>
+    </ion-card>
 
     <ion-item text-center routerLink="">
       <ion-label>Buscar Serviços</ion-label>
@@ -71,32 +111,42 @@
 
   <ion-list>
     <ion-list-header>
-      Resumo de Notícias
+      Oportunidades
     </ion-list-header>
-  
-    <ion-card *ngFor="let card of cards">
-      <img src="https://s2.glbimg.com/rbnmstq8t_dC4WhQLWeVY1z8m9g=/0x1:998x563/540x304/smart/http://s2.glbimg.com/nvQHKDm3MkUWxKKsNJOn_vEoGVM=/0x0:998x563/998x563/s.glbimg.com/jo/g1/f/original/2020/02/05/whatsapp_image_2020-02-05_at_16.24.23.jpeg" />
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://cdn6.aptoide.com/imgs/e/c/4/ec46fb0b4c5bc375c9551e63fa14c221_icon.png?w=256">
-        </ion-avatar>
-        <ion-label>G1</ion-label>
-      </ion-item>
-      <ion-card-content>
-        Brasil descarta mais 3 casos suspeitos de coronavírus e investiga 9, diz Ministério da Saúde
+    <ion-card *ngFor="let oportunidade of lista_oportunidades; let i=index">
+      <ion-card-content *ngIf='i<=4'>
+        <h1 class="titulo_noticia">{{oportunidade.title}}</h1>
+        <a href={{oportunidade.link}}> 
+          <img class="noticiaimg" [src]= "oportunidade.image">
+        </a>
+        <h3>{{oportunidade.description}}</h3>
       </ion-card-content>
-      <ion-row text-center>
-        <ion-col>
-          Nome do jornal
-        </ion-col>
-        <ion-col>
-          11 horas atrás
-        </ion-col>
-      </ion-row >
     </ion-card>
-    <ion-item text-center routerLink="">
-      <ion-label>Ver Mais Notícias</ion-label>
-    </ion-item>
+
+    <ion-item text-center [routerDirection]="'root'" routerLink="../opportunities">
+      <ion-label>Ver Mais Oportunidades</ion-label>
+    </ion-item> 
   </ion-list>
-  
+
+  <ion-list>
+    <ion-list-header>
+      Notícias
+    </ion-list-header>
+
+    <ion-card *ngFor="let noticia of lista_noticias; let i=index">
+      <ion-card-content *ngIf='i<=4'>
+        <h1 class="titulo_noticia">{{noticia.title}}</h1>
+        <a href={{noticia.link}}> 
+          <img class="noticiaimg" [src]= "noticia.image">
+        </a>
+        <h3>{{noticia.description}}</h3>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item text-center [routerDirection]="'root'" routerLink="../news">
+      <ion-label>Ver Mais Notícias</ion-label>
+    </ion-item>  
+
+  </ion-list>
+
 </ion-content>

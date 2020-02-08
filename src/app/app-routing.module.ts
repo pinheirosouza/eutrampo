@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/guards/auth.guard';
 
+
 const routes: Routes = [
   {
     path: 'login',
@@ -65,6 +66,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'opportunities',
+    loadChildren: './pages/opportunities/opportunities.module#OpportunitiesPageModule',
+
+    // canActivate: [AuthGuard]
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -73,9 +80,14 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'home'
   },
- 
-
-
+  {
+    path: 'service-modal',
+    loadChildren: () => import('./shared/modals/service-modal/service-modal.module').then( m => m.ServiceModalPageModule)
+  },
+  {
+    path: 'hired-modal',
+    loadChildren: () => import('./shared/modals/hired-modal/hired-modal.module').then( m => m.HiredModalPageModule)
+  }
   
 ];
 

@@ -1,27 +1,41 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>
-        Meus Serviços
-      </ion-title>
+    <ion-title>Serviços Prestados</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
-<ion-tabs>
-  <ion-tab-bar color="secondary" slot="bottom">
-    <ion-tab-button tab="my-services-tab">
-      <ion-icon name="hammer"></ion-icon>
-      <ion-label>Meus Serviços</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="history-services-tab">
-      <ion-icon name="time"></ion-icon>
-      <ion-label>Histórico</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+    
+  <ion-card *ngFor="let servico of lista_servicos">
+    
+      <ion-row >
+  <!--       
+          <ion-avatar item-start>
+            <img src="../../assets/img/sebrae.png">
+          </ion-avatar> -->
+        
+        <ion-col id="noticia">
+          <ion-row id="titulo">
+            <h1 class="nome_parceiro">{{servico.categoria}}</h1>  
+          </ion-row>
+          <ion-row id="data">
+            <h2 class="data"> {{servico.sub_categoria}}</h2> 
+          </ion-row>
+        </ion-col>
 
+      </ion-row>
+    
+
+      <ion-card-content>
+        <h1 class="titulo_noticia">{{servico.nome}}</h1>
+        <h2 class="noticia">{{servico.preco}} </h2>
+      </ion-card-content>
+  </ion-card> 
+  
+  <ion-button id ="Adicionar" type="submit"  size="large" (click)="cadastrarServico()">
+    <h1 class="Salvar">Adicionar</h1>
+  </ion-button>
 </ion-content>

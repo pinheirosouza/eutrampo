@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBJn9gIphZ4x3jnSEEmvgpiqsYlYF5f1XA",
-    authDomain: "eutrampoapp.firebaseapp.com",
+    apiKey: "AIzaSyBJn9gIphZ4x3jnSEEmvgpiqsYlYF5f1XA", 
+    authDomain: "eutrampoapp.firebaseapp.com", 
     databaseURL: "https://eutrampoapp.firebaseio.com",
     projectId: "eutrampoapp",
     storageBucket: "eutrampoapp.appspot.com",
