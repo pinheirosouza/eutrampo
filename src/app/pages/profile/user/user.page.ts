@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../shared/services/user_services/user.service';
 
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
 import { FormBuilder } from '@angular/forms';
  
 const STORAGE_KEY = 'my_images';

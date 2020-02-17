@@ -1,8 +1,5 @@
 import { UploadService } from './shared/services/upload_service/upload.service';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { HiredModalPageModule } from './shared/modals/hired-modal/hired-modal.module';
-import { ServiceModalPageModule } from './shared/modals/service-modal/service-modal.module';
-import { StarRatingModule } from 'ionic4-star-rating';
+
 import { LoginGuard } from './auth/guards/login.guard';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { NgModule } from '@angular/core';
@@ -30,10 +27,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
 import {IonicStorageModule} from '@ionic/storage';
 import {HttpClientModule} from '@angular/common/http';
-import {AngularFireStorageModule} from '@angular/fire/storage';
 
 //Câmera
-import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
@@ -65,7 +60,7 @@ import { FilePath } from '@ionic-native/file-path/ngx';
     WebView,
     FilePath,
     GoogleMaps
-    ImagePicker
+ 
   ],
   bootstrap: [AppComponent]
 })

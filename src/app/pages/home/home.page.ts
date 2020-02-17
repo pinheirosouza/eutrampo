@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
 
   public recent_services;
   public cards;
+  public more_services;
 
   constructor(
     public menuCtrl: MenuController,
