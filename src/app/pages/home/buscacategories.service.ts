@@ -76,8 +76,5 @@ export class BuscacategoriesService {
       || (worker.category[0].title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
     });
   }
-  
-  
-
 
 }

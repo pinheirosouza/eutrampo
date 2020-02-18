@@ -50,42 +50,6 @@ export class HomePage implements OnInit {
         provided: 82, 
         price: 60, 
         redirectTo: "#"},
-    ],
-    
-    this.more_services = [
-      { name:'Pedro Souza', 
-        pic:"../../../assets/img/pedro.jpg", 
-        servicetype:'Pedreiro', 
-        provided: 145, 
-        price: 45, 
-        redirectTo: "#"},
-
-      { name:'Fernando Toledo', 
-        pic:"../../../assets/img/fernando.jpeg", 
-        servicetype:'Costureiro', 
-        provided: 184, 
-        price: 20, 
-        redirectTo: "#"},
-
-      { name:'Felipe Freitas', 
-        pic:"../../../assets/img/felipe.png", 
-        servicetype:'Professor Particular', 
-        provided: 82, 
-        price: 60, 
-        redirectTo: "#"},
-        { name:'Fernando Toledo', 
-        pic:"../../../assets/img/fernando.jpeg", 
-        servicetype:'Costureiro', 
-        provided: 184, 
-        price: 20, 
-        redirectTo: "#"},
-
-      { name:'Felipe Freitas', 
-        pic:"../../../assets/img/felipe.png", 
-        servicetype:'Professor Particular', 
-        provided: 82, 
-        price: 60, 
-        redirectTo: "#"},
     ]
   }
 
@@ -124,8 +88,8 @@ export class HomePage implements OnInit {
       data=>{
         const response = (data as any);
         this.lista_workers = response;
-        console.log("worker");
-        // console.log(this.lista_workers);
+        console.log("worker novo = ");
+        console.log(this.lista_workers);
         this.providerCategories.setWorkers(this.lista_workers);
       },
       error=>{
@@ -173,7 +137,6 @@ export class HomePage implements OnInit {
   }
 
   setFilteredServicos() {
-    // this.lista_categories = this.providerCategories.filterCategories(this.searchTerm);
     this.lista_workers = this.providerCategories.filterCategories(this.searchTerm);
     
   }

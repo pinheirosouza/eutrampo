@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-searchbar color="light" placeholder="Pesquisar serviços" ></ion-searchbar>
+    <ion-searchbar placeholder="Encontre Serviços" [(ngModel)]="searchTerm" (ionChange)="setFilteredServicos()"></ion-searchbar>
     <!-- <ion-buttons (click)={} slot="end">
       <ion-icon style="font-size: 25px;" name="more"></ion-icon>
     </ion-buttons> -->
@@ -11,14 +11,14 @@
 </ion-header>
 
 <ion-content>
-
-  <ion-list>
+  <!-- Eu trampo novo -->
+  <ion-list *ngIf='searchTerm != ""'>
     <ion-list-header>
       Contrate um serviço
     </ion-list-header>
 
-    <ion-card *ngFor="let worker of lista_workers;let i index" (click)="showModal()">
-      <ion-item *ngIf='i<=4'>  
+    <ion-card *ngFor="let worker of lista_workers |slice:0:6; let i = index" (click)="showModal(worker)">
+      <ion-item>  
         <ion-avatar slot="start">
           <img src="../../../assets/img/pedro.jpg">
         </ion-avatar>
@@ -39,7 +39,7 @@
 
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
       Últimos Serviços Contratados
     </ion-list-header>
@@ -66,7 +66,7 @@
 
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
       Serviços Mais Contratados
     </ion-list-header>
@@ -97,7 +97,7 @@
 
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
       Oportunidades
     </ion-list-header>
@@ -116,7 +116,7 @@
     </ion-item> 
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
       Notícias
     </ion-list-header>
