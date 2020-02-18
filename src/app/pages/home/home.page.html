@@ -12,12 +12,12 @@
 
 <ion-content>
 
-  <ion-list *ngIf='searchTerm != ""'>
+  <ion-list>
     <ion-list-header>
       Contrate um serviço
     </ion-list-header>
 
-    <ion-card *ngFor="let worker of lista_workers; let i=index" (click)= 'showModal(worker)'>
+    <ion-card *ngFor="let worker of lista_workers;let i index" (click)="showModal()">
       <ion-item *ngIf='i<=4'>  
         <ion-avatar slot="start">
           <img src="../../../assets/img/pedro.jpg">
