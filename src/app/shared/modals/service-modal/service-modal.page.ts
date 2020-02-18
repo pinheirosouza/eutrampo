@@ -15,7 +15,7 @@ export class ServiceModalPage implements OnInit {
     public navParams: NavParams
     ) { 
       this.Obj_worker = navParams.get("oWorker");
-      // console.log("Nome="+this.Obj_worker.title)
+      console.log("Nome="+this.Obj_worker.title)
     }
 
   ngOnInit() {
