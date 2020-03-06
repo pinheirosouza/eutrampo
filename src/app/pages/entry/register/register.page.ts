@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../shared/services/user_services/user.service';
 import { Camera, CameraOptions  } from '@ionic-native/camera/ngx'
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+///import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -29,7 +29,6 @@ export class RegisterPage implements OnInit {
     private uploadService: UploadService,
     public camera: Camera,
     private storage: AngularFireStorage,
-    private imagePicker: ImagePicker,
     private toastCtrl: ToastController,
     private DomSanitizer: DomSanitizer
   ) { }
