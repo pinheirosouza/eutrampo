@@ -14,6 +14,7 @@ export class SchedulePage implements OnInit {
 
   event = {
     title: '',
+    description: '',
     startTime: '',
     endTime: '',
     allDay: false
@@ -42,6 +43,7 @@ export class SchedulePage implements OnInit {
   resetEvent() {
     this.event = {
       title: '',
+      description: '',
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString(),
       allDay: false
@@ -52,6 +54,7 @@ export class SchedulePage implements OnInit {
   addNewEvent() {
     let eventCopy = {
       title: this.event.title,
+      description: this.event.description,
       startTime:  new Date(this.event.startTime),
       endTime: new Date(this.event.endTime),
       allDay: this.event.allDay
@@ -107,18 +110,38 @@ onViewTitleChanged(title) {
  
 // Calendar event was clicked
 async onEventSelected(event) {
+  let selectedEvent = event
   // Use Angular date pipe for conversion
   let start = formatDate(event.startTime, 'medium', this.locale);
   let end = formatDate(event.endTime, 'medium', this.locale);
  
   const alert = await this.alertCtrl.create({
     header: event.title,
-    message: 'De: ' + start + '<br><br>Até: ' + end,
-    buttons: ['OK']
+    subHeader:event.description,
+    message:'De: ' + start + '<br><br>Até: ' + end,
+    buttons: ['OK',
+    {
+      text:"Apagar",
+      handler:() => {
+        this.removeEvent(selectedEvent)
+      }
+    }]
   });
   alert.present();
 }
  
+removeEvent(event){
+  console.log(event);
+  for(var i=0; i< this.eventSource.length; i++){
+    if(event === this.eventSource[i]){
+      this.eventSource.splice(i,1)
+    }
+  }
+  this.myCal.loadEvents();
+  console.log(this.eventSource)
+  this.scheduleService.setTarefas(this.eventSource);
+}
+
 // Time slot was clicked
 onTimeSelected(ev) {
   let selected = new Date(ev.selectedTime);
