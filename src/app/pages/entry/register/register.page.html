@@ -12,7 +12,7 @@
 <ion-content>
 <ion-list>
 
-  <ion-avatar class="center" (click)= openImagePicker()>
+  <ion-avatar class="center">
     <img src="../../../../assets/img/perfil.jpg">
   </ion-avatar>
 
@@ -58,7 +58,7 @@
   </ion-item>
 
   <br>
-  <ion-button expand="block" color="secondary" (click)="createRecord()" [disabled]="!userRegister.name || !userRegister.email || !userRegister.phone || !userRegister.password">Cadastrar</ion-button>
+  <ion-button expand="block" color="secondary" (click)="createUser()" [disabled]="!userRegister.name || !userRegister.email || !userRegister.phone || !userRegister.password">Cadastrar</ion-button>
 
 
 </ion-list>

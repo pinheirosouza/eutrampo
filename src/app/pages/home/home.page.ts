@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/services/auth.service';
 import { ServiceModalPage } from './../../shared/modals/service-modal/service-modal.page';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
@@ -26,7 +27,8 @@ export class HomePage implements OnInit {
   constructor(
     public menuCtrl: MenuController,
     private modalCtrl: ModalController,
-    private providerCategories: BuscacategoriesService
+    private providerCategories: BuscacategoriesService,
+    private authSevice: AuthService
   )  
   {
     this.recent_services = [
@@ -51,6 +53,7 @@ export class HomePage implements OnInit {
         price: 60, 
         redirectTo: "#"},
     ]
+
   }
 
   ngOnInit() {
@@ -59,6 +62,7 @@ export class HomePage implements OnInit {
     this.getOpportunities();
     this.getNews();
     this.cards = new Array(5);
+    console.log("Tem usuário logado?" + this.authSevice.isLogged())
   }
 
   getCategories(){

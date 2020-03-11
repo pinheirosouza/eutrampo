@@ -1,3 +1,26 @@
+
 <ion-content>
-  blablavblas,dlsa,d
+  <ion-list>
+    <ion-card *ngFor="let provided of providedList | slice:0:6; let i=index" >
+      <ion-item>  
+        <ion-avatar slot="start">
+          <img src="../../../assets/img/pedro.jpg">
+        </ion-avatar>
+        <ion-col>
+          <ion-label>
+            <h2>{{provided.title}}</h2>
+            <h3>{{provided.servicetype}}</h3>
+            <p>{{provided.provided}} Serviços Prestados</p>
+          </ion-label>
+        </ion-col>
+        <ion-col class="center" size="8px">
+          <ion-label>
+            <p>{{provided.price | currency:"BRL":true:"1.2" }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-item>
+    </ion-card>
+
+  </ion-list>
+    
 </ion-content>

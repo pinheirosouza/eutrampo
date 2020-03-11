@@ -1,8 +1,14 @@
+import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { JokerService } from './../../../shared/services/joker_service/joker.service';
 import { User } from './../../../auth/interfaces/user';
 import { AuthService } from './../../../auth/services/auth.service';
-import { MenuController, NavController, LoadingController, ToastController } from '@ionic/angular';
+import { MenuController, NavController, LoadingController, ToastController, AlertController, Events } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { Validators, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -11,73 +17,69 @@ import { Router } from '@angular/router';
 })
 export class LoginPage {
 
+  result: any;
+  logoPrincipal: any = "in";
+  logoFundo: any = "in";
+  loginState: any = "in";
+  formState: any = "in";
+  formLogin : any;
+  submitAttempt:boolean = false;
+
   public userLogin: User = {};
   private loading: any;
 
-  constructor(
-    // public navCtrl: NavController,
-    public menuCtrl: MenuController,
-    private router: Router,
-    private authService: AuthService,
-    private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
-    ) { }
+  constructor(public navCtrl: NavController,
+    public events:Events, 
+    public jwtHelper:JwtHelperService , 
+    public shareSvc: JokerService, 
+    private auth:AuthService,
+    private formBuilder:FormBuilder, 
+    private alertCtrl:AlertController, 
+    // private facebook:Facebook
+    ) {
+    this.formLogin = formBuilder.group({
+      id: ['', Validators.required],
+      password: ['',Validators.required]
+    });
+  }
+
+  ngOnInit(){
+    console.log("Tem usuário logado?" + this.auth.isLogged())
+  }
     
-  async login() {
-    await this.presentLoading();
-
-    try {
-      await this.authService.login(this.userLogin);
-    } catch(error) {
-      console.log(error);
-      switch (error.code) {
-        case "auth/invalid-email":
-          this.presentToast("Email Inválido");          
-          break;
-        case "auth/wrong-password":
-          this.presentToast("Senha Inválida");         
-          break;
-        case "auth/user-not-found":
-          this.presentToast("Usuário Não Cadastrado");          
-          break;
-        case "auth/argument-error":
-          this.presentToast("Usuário ou Senha Inválidos ");          
-          break;
-        case "auth/too-many-requests":
-          this.presentToast("Limite de tentativas atingido. Tente novamente mais tarde.");          
-          break;
-        case "auth/network-request-failed":
-          this.presentToast("Erro ao logar. Verifique sua conexão com a internet.");          
-          break;
-          
-        default:
-          this.presentToast("Algo deu errado");   
-          break;
-      }
-      
-    } finally {
-      this.router.navigate(['home']);
-      this.loading.dismiss();
-    }
+  login(){
+    if(this.formLogin.valid)
+      this.submitAttempt = true;
+    else{
+      this.auth.login(this.userLogin).subscribe(
+        data => {
+          console.log(this.userLogin)
+          console.log(data)
+          if(data) {
+            // this.setHomePage();
+            // let decodedToken = this.jwtHelper.decodeToken(data.token);
+            // this.events.publish('user:created',decodedToken.user);
+            // this.shareSvc.setDecodedToken(decodedToken);
+            console.log("Token "+data["token"])
+            this.auth.setToken(data["token"]);
+          }else
+            // this.errorMessage("Usuário/senha incorreta!");
+            console.log("Erro")
+        },error => {
+          console.log('deu ruim');
+          console.log(error);
+          return Observable.throw(error);
+        }
+      )
+    };
   }
-
-  async presentLoading() {
-    this.loading = await this.loadingCtrl.create({
-      message: 'Aguarde',
-      spinner:"dots",
-      cssClass: 'loading'
-    });
-    return this.loading.present();
-  }
-
-  async presentToast(message: string) {
-    const toast = await this.toastCtrl.create({
-      showCloseButton: true,
-      message,
-      duration: 2000
-      
-    });
-    toast.present();
-  }
-
 }
+
+  // errorMessage(message){
+  //   let alert = this.alertCtrl.create({
+  //     header: 'Erro',
+  //     subHeader: message,
+  //     buttons: ['Ok']
+  //   });
+  //   alert.present();
+  // }
