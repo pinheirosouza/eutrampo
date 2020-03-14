@@ -17,7 +17,14 @@ export class SchedulePage implements OnInit {
     description: '',
     startTime: '',
     endTime: '',
-    allDay: false
+    allDay: false,
+    address: {
+      neighborhood: '',
+      number: '',
+      city: '',
+      state: '',
+      complement: '',
+      cep: '' },
   };
   mesAtual = {data:''};
  
@@ -37,6 +44,7 @@ export class SchedulePage implements OnInit {
  
   ngOnInit() {
     this.resetEvent();
+    // this.eventSource = JSON.parse(JSON.stringify(this.scheduleService.getTarefas(id)))
   }
   
  
@@ -46,7 +54,14 @@ export class SchedulePage implements OnInit {
       description: '',
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString(),
-      allDay: false
+      allDay: false,
+      address:  {
+        neighborhood:'' ,
+        number: '',
+        city: '',
+        state: '',
+        complement:'' ,
+        cep:'' },
     };
   }
  
@@ -57,7 +72,8 @@ export class SchedulePage implements OnInit {
       description: this.event.description,
       startTime:  new Date(this.event.startTime),
       endTime: new Date(this.event.endTime),
-      allDay: this.event.allDay
+      allDay: this.event.allDay,
+      address: this.event.address
     }
  
     if (eventCopy.allDay) {
@@ -72,7 +88,13 @@ export class SchedulePage implements OnInit {
     this.myCal.loadEvents();
     this.resetEvent();
     console.log(this.eventSource)
-    this.scheduleService.setTarefas(this.eventSource);
+    this.scheduleService.setTarefas(this.eventSource).then((res)=>{
+      console.log(res)
+      console.log("funcionou")
+    })
+    .catch(()=>{
+      console.log("não funcionou")
+    });
   }
    // Change current month/week/day
  next() {
@@ -118,7 +140,8 @@ async onEventSelected(event) {
   const alert = await this.alertCtrl.create({
     header: event.title,
     subHeader:event.description,
-    message:'De: ' + start + '<br><br>Até: ' + end,
+    message:'Endereço: '+event.address.complement+", "+event.address.number+", "
+    +event.address.neighborhood+", "+event.address.city,
     buttons: ['OK',
     {
       text:"Apagar",

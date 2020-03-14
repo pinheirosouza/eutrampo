@@ -1,33 +1,52 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../../auth/interfaces/user';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private http: HttpClient) { }
 
-  create_NewUser(user: User, uid) {
-    return this.firestore.collection("users").doc(uid).set(user);;
-  }
- 
-  readUser(uid:string): AngularFirestoreDocument<User> {
-    return this.firestore.collection('users').doc(uid);
-  }
- 
-  update_user(uid,newData){
-    this.firestore.doc('users/' + uid).update(newData);
-  }
- 
-  deleteUser(uid) {
-    this.firestore.doc('users/' + uid).delete();
+  getUserById( id: number ){
+    let url = "https://stagingeutrampo.herokuapp.com/admin/api/users/" + id;
+
+    return this.http.get(url).toPromise()
+    .then()
+    .catch();
+
   }
 
-  sendToBack(){
-    return 
+  createUser(usuario: User){
+    let url = "https://stagingeutrampo.herokuapp.com/admin/api/users/";
+    let headers = new HttpHeaders({'Content-Type' : 'application/json'});
+
+    return this.http.post(url, usuario, { headers : headers }).toPromise()
+    .then()
+    .catch();
   }
+
+  updateUser(usuario: User){
+    let url = "https://stagingeutrampo.herokuapp.com/admin/api/users/";
+    let headers = new HttpHeaders({'Content-Type' : 'application/json'});
+
+    return this.http.put(url, usuario, { headers : headers }).toPromise()
+    .then()
+    .catch();
+  }
+
+  deleteUserById( id: number ){
+    let url = "https://stagingeutrampo.herokuapp.com/admin/api/users/" + id;
+
+    return this.http.delete(url).toPromise()
+    .then()
+    .catch();
+
+  }
+
+  
 
 }

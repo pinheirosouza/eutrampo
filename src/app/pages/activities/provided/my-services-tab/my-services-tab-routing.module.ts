@@ -7,11 +7,8 @@ const routes: Routes = [
   {
     path: '',
     component: MyServicesTabPage
-  },
-  {
-    path: 'add-service',
-    loadChildren: () => import('./add-service/add-service.module').then( m => m.AddServicePageModule)
   }
+
 ];
 
 @NgModule({

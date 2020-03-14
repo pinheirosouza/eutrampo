@@ -27,10 +27,10 @@ export class UserPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    console.log(this.user)
-    this.user = this.userService.readUser(this.authService.getId()).valueChanges();
-    console.log(this.authService.getId());
-    console.log(this.user)
+    // console.log(this.user)
+    // this.user = this.userService.readUser(this.authService.getId()).valueChanges();
+    // console.log(this.authService.getId());
+    // console.log(this.user)
   }
   //  async selectImage() {
   //   const actionSheet = await this.actionSheetController.create({
@@ -60,13 +60,13 @@ export class UserPage implements OnInit {
   // }
 
   updateRecord(){
-    this.authService.updateEmail(this.userUpdate.email);
-    this.userService.update_user(this.authService.getId(),this.userUpdate);
+    let user = this.userUpdate;
+    this.userService.updateUser(user);
   }
 
-  deleteRecord() {
-    this.authService.deleteCurrentUser()
-    this.userService.deleteUser(this.authService.getId());
-  }
+  // deleteRecord() {
+  //   this.authService.deleteCurrentUser()
+  //   this.userService.deleteUser(this.authService.getId());
+  // }
 
 }

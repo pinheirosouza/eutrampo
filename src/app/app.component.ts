@@ -1,3 +1,4 @@
+import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';
 
 import { Platform, MenuController, LoadingController, ToastController } from '@ionic/angular';
@@ -72,7 +73,8 @@ export class AppComponent {
     private authService: AuthService,
     private router: Router,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private storage: Storage
   ) {
       this.router.events.subscribe((event: NavigationEnd) => {
         if (event instanceof NavigationEnd) {
@@ -136,17 +138,15 @@ export class AppComponent {
     });
   }
 
-  async logout() {
-    await this.presentLoading();
-
+  logout() {
     try {
-      await this.authService.logout();
+      this.storage.remove('currentUser')
+      console.log(this.storage.get('currentUser'))
     } catch(error) {
       console.log(error);
-      this.presentToast(error.message);   
     } finally {
-      this.router.navigate(['login']);
-      this.loading.dismiss();
+      // this.router.navigate(['login']);
+      
     }
   }
 

@@ -24,7 +24,7 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.userService.readUser(this.authService.getId()).valueChanges();
+    // this.user = this.userService.readUser(this.authService.getId()).valueChanges();
   }
 
 }

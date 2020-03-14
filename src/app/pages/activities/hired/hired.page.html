@@ -10,26 +10,27 @@
 </ion-header>
 
 <ion-content>
-    <ion-item *ngFor="let hired of hiredData" (click)="showModal(hired)">
-      <ion-label>
-      <ion-text>
-        <h1>
-          {{ hired.name }}
-        </h1>
-      </ion-text>
-      <ion-text>
-        <h2>
-        {{hired.total}} <ion-icon name="star" color='primary'></ion-icon>
-        </h2>
-     
-      </ion-text>
-      <ion-text>
-        <p>
-         R$ {{hired.price}} 
-        </p>
-      </ion-text>
-    </ion-label>
-      
-    </ion-item>
+  <ion-list>
+    <ion-card *ngFor="let hired of hiredList | slice:0:6; let i=index" (click)="showModal()">
+      <ion-item>  
+        <ion-avatar slot="start">
+          <img src="../../../assets/img/pedro.jpg">
+        </ion-avatar>
+        <ion-col>
+          <ion-label>
+            <h2>{{hired.title}}</h2>
+            <h3>{{hired.servicetype}}</h3>
+            <p>{{hired.provided}} Serviços Prestados</p>
+          </ion-label>
+        </ion-col>
+        <ion-col class="center" size="8px">
+          <ion-label>
+            <p>{{hired.price | currency:"BRL":true:"1.2" }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-item>
+    </ion-card>
+
+  </ion-list>
     
 </ion-content>
