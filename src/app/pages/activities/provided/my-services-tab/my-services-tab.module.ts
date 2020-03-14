@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { MyServicesTabPageRoutingModule } from './my-services-tab-routing.module';
 
 import { MyServicesTabPage } from './my-services-tab.page';
+import { AddServiceModalPage } from 'src/app/shared/modals/add-service-modal/add-service-modal.page';
+import { AddServiceModalPageModule } from 'src/app/shared/modals/add-service-modal/add-service-modal.module';
 
 
 @NgModule({
@@ -15,8 +17,10 @@ import { MyServicesTabPage } from './my-services-tab.page';
     FormsModule,
     IonicModule,
     MyServicesTabPageRoutingModule,
+    AddServiceModalPageModule
   ],
   declarations: [MyServicesTabPage],
+  entryComponents: [AddServiceModalPage]
 
 })
 export class MyServicesTabPageModule {}

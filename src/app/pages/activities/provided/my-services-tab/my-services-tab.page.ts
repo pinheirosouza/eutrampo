@@ -1,5 +1,6 @@
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { AddServiceModalPage } from 'src/app/shared/modals/add-service-modal/add-service-modal.page';
 
 @Component({
   selector: 'app-my-services-tab',
@@ -9,11 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class MyServicesTabPage implements OnInit {
 
   public recent_services;
-  private modalCtrl: ModalController;
+  
 
   myList: any;
 
-  constructor() {
+  constructor(private modalCtrl: ModalController) {
     {
       this.myList = [
         { name:'Pedro Souza', 
@@ -42,5 +43,15 @@ export class MyServicesTabPage implements OnInit {
 
   ngOnInit() {
   }
+  async cadastrarServico(){
+ 
+    const modal = await this.modalCtrl.create({
+      component:AddServiceModalPage
+    });
+    
+    modal.present();
+      
+  
+}
 
 }

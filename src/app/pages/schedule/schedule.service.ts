@@ -1,5 +1,6 @@
 
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -9,21 +10,36 @@ export class ScheduleService {
   tarefas: [];
   tarefa :{
         title: any,
+        description: any,
         startTime: Date,
         endTime: Date,
-        allDay: any;
+        allDay: any,
+        address:  {
+          neighborhood:any ,
+          number: any,
+          city: any,
+          state: any,
+          complement: any ,
+          cep:any };
     }
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
   
-  setTarefas(data) {
+
+  setTarefas(data : any) {
     this.tarefas = data;
+    let url= "https://stagingeutrampo.herokuapp.com/admin/api/appointment/user/"
+    let headers= new HttpHeaders({'Content-type':'application/json'})
+    return this.http.post(url, data, {headers : headers}).toPromise();
     console.log(this.tarefas)
   }
 
-  getTarefas() {
+  getTarefas(user_id) {
     console.log("ta funcionando");
-    return this.tarefas;
+    let url= "https://stagingeutrampo.herokuapp.com/admin/api/appointment/user/"+user_id
+
+    return this.http.get(url).toPromise()
+    //return this.tarefas;
   }
 
   setTarefa(data) {

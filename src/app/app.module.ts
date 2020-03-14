@@ -5,8 +5,8 @@ import { JokerService } from './shared/services/joker_service/joker.service';
 import { UploadService } from './shared/services/upload_service/upload.service';
 
 
-import { LoginGuard } from './auth/guards/login.guard';
-import { AuthGuard } from './auth/guards/auth.guard';
+// import { LoginGuard } from './auth/guards/login.guard';
+// import { AuthGuard } from './auth/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -87,7 +87,7 @@ export function jwtOptionsFactory(storage) {
     UserService,
     AuthService, 
     JokerService,
-    AuthGuard, LoginGuard, 
+    // AuthGuard, LoginGuard, 
     UploadService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,

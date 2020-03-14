@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddServicePageRoutingModule } from './add-service-routing.module';
+import { AddServiceModalPageRoutingModule } from './add-service-modal-routing.module';
 
-import { AddServicePage } from './add-service.page';
+import { AddServiceModalPage } from './add-service-modal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddServicePageRoutingModule
+    AddServiceModalPageRoutingModule
   ],
-  declarations: [AddServicePage]
+  declarations: [AddServiceModalPage]
 })
-export class AddServicePageModule {}
+export class AddServiceModalPageModule {}

@@ -14,9 +14,17 @@ export class SchedulePage implements OnInit {
 
   event = {
     title: '',
+    description: '',
     startTime: '',
     endTime: '',
-    allDay: false
+    allDay: false,
+    address: {
+      neighborhood: '',
+      number: '',
+      city: '',
+      state: '',
+      complement: '',
+      cep: '' },
   };
   mesAtual = {data:''};
  
@@ -36,15 +44,24 @@ export class SchedulePage implements OnInit {
  
   ngOnInit() {
     this.resetEvent();
+    // this.eventSource = JSON.parse(JSON.stringify(this.scheduleService.getTarefas(id)))
   }
   
  
   resetEvent() {
     this.event = {
       title: '',
+      description: '',
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString(),
-      allDay: false
+      allDay: false,
+      address:  {
+        neighborhood:'' ,
+        number: '',
+        city: '',
+        state: '',
+        complement:'' ,
+        cep:'' },
     };
   }
  
@@ -52,9 +69,11 @@ export class SchedulePage implements OnInit {
   addNewEvent() {
     let eventCopy = {
       title: this.event.title,
+      description: this.event.description,
       startTime:  new Date(this.event.startTime),
       endTime: new Date(this.event.endTime),
-      allDay: this.event.allDay
+      allDay: this.event.allDay,
+      address: this.event.address
     }
  
     if (eventCopy.allDay) {
@@ -69,7 +88,13 @@ export class SchedulePage implements OnInit {
     this.myCal.loadEvents();
     this.resetEvent();
     console.log(this.eventSource)
-    this.scheduleService.setTarefas(this.eventSource);
+    this.scheduleService.setTarefas(this.eventSource).then((res)=>{
+      console.log(res)
+      console.log("funcionou")
+    })
+    .catch(()=>{
+      console.log("não funcionou")
+    });
   }
    // Change current month/week/day
  next() {
@@ -107,18 +132,39 @@ onViewTitleChanged(title) {
  
 // Calendar event was clicked
 async onEventSelected(event) {
+  let selectedEvent = event
   // Use Angular date pipe for conversion
   let start = formatDate(event.startTime, 'medium', this.locale);
   let end = formatDate(event.endTime, 'medium', this.locale);
  
   const alert = await this.alertCtrl.create({
     header: event.title,
-    message: 'De: ' + start + '<br><br>Até: ' + end,
-    buttons: ['OK']
+    subHeader:event.description,
+    message:'Endereço: '+event.address.complement+", "+event.address.number+", "
+    +event.address.neighborhood+", "+event.address.city,
+    buttons: ['OK',
+    {
+      text:"Apagar",
+      handler:() => {
+        this.removeEvent(selectedEvent)
+      }
+    }]
   });
   alert.present();
 }
  
+removeEvent(event){
+  console.log(event);
+  for(var i=0; i< this.eventSource.length; i++){
+    if(event === this.eventSource[i]){
+      this.eventSource.splice(i,1)
+    }
+  }
+  this.myCal.loadEvents();
+  console.log(this.eventSource)
+  this.scheduleService.setTarefas(this.eventSource);
+}
+
 // Time slot was clicked
 onTimeSelected(ev) {
   let selected = new Date(ev.selectedTime);
