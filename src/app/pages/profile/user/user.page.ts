@@ -1,8 +1,9 @@
+import { AuthService } from './../../../shared/services/auth/auth.service';
+import { UserService } from '../../../shared/services/user/user.service'
+import { User } from './../../../shared/interfaces/user';
 import { Observable } from 'rxjs';
-import { AuthService } from './../../../auth/services/auth.service';
-import { User } from './../../../auth/interfaces/user';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../shared/services/user_services/user.service';
+
 
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { FormBuilder } from '@angular/forms';
@@ -19,7 +20,7 @@ export class UserPage implements OnInit {
   private imagteste;
 
   public user: Observable<User>;
-  public userUpdate: User = {};
+  public userUpdate: User ;
 
   constructor(
     private userService: UserService,
@@ -59,10 +60,10 @@ export class UserPage implements OnInit {
   //   await actionSheet.present();
   // }
 
-  updateRecord(){
-    let user = this.userUpdate;
-    this.userService.updateUser(user);
-  }
+  // updateRecord(){
+  //   let user = this.userUpdate;
+  //   this.userService.updateUser(user);
+  // }
 
   // deleteRecord() {
   //   this.authService.deleteCurrentUser()

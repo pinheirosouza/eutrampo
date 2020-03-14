@@ -1,4 +1,4 @@
-import { AuthService } from './../../auth/services/auth.service';
+
 import { ServiceModalPage } from './../../shared/modals/service-modal/service-modal.page';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
@@ -16,7 +16,6 @@ export class HomePage implements OnInit {
   public lista_workers= new Array<any>();
   public lista_oportunidades= new Array<any>();
   public lista_noticias= new Array<any>();
-
   public searchTerm: string = "";
   public resp: any;
 
@@ -28,7 +27,6 @@ export class HomePage implements OnInit {
     public menuCtrl: MenuController,
     private modalCtrl: ModalController,
     private providerCategories: BuscacategoriesService,
-    private authSevice: AuthService
   )  
   {
     this.recent_services = [
@@ -62,7 +60,6 @@ export class HomePage implements OnInit {
     this.getOpportunities();
     this.getNews();
     this.cards = new Array(5);
-    console.log("Tem usuário logado?" + this.authSevice.isLogged())
   }
 
   getCategories(){

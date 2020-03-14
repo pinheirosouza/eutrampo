@@ -11,10 +11,10 @@ export class NewsPage implements OnInit {
   public searchTerm: string = "";
   public resp: any;
 
-  constructor(private providerNoticia: BuscanoticiaService) { }
+  constructor(private providerNoticia: BuscanoticiaService) {this.getNews(); }
 
   ngOnInit() {
-    this.getNews();
+    
   }
   getNews(){
     console.log("to aqui");
@@ -28,6 +28,7 @@ export class NewsPage implements OnInit {
         this.lista_noticias = response;
         console.log(this.lista_noticias);
         this.providerNoticia.setNoticias(this.lista_noticias);
+        console.log(this.lista_noticias)
       },
       error=>{
         console.log("Eroo"+error);

@@ -1,70 +1,73 @@
-import { Storage } from '@ionic/storage';
-import { Component } from '@angular/core';
+import { Storage } from "@ionic/storage";
+import { Component } from "@angular/core";
 
-import { Platform, MenuController, LoadingController, ToastController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AuthService } from './auth/services/auth.service';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import {
+  Platform,
+  MenuController,
+  LoadingController,
+  ToastController
+} from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { AuthService } from "./shared/services/auth/auth.service";
+import { Router, NavigationEnd, NavigationStart } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"]
 })
 export class AppComponent {
   public appPages = [
     {
-      title: 'Página Inicial',
-      url: '/home',
-      icon: 'home'
+      title: "Página Inicial",
+      url: "/home",
+      icon: "home"
     },
     {
-      title: 'Serviços Contratados',
-      url: '/hired',
-      icon: 'bookmarks'
+      title: "Serviços Contratados",
+      url: "/hired",
+      icon: "bookmarks"
     },
     {
-      title: 'Serviços Prestados',
-      url: '/provided',
-      icon: 'hammer'
+      title: "Serviços Prestados",
+      url: "/provided",
+      icon: "hammer"
     },
     {
-      title: 'Conversas',
-      url: '/chat',
-      icon: 'chatboxes'
+      title: "Conversas",
+      url: "/chat",
+      icon: "chatboxes"
     },
     {
-      title: 'Minha Agenda',
-      url: '/schedule',
-      icon: 'calendar'
+      title: "Minha Agenda",
+      url: "/schedule",
+      icon: "calendar"
     },
     {
-      title: 'Notícias',
-      url: '/news',
-      icon: 'paper'
+      title: "Notícias",
+      url: "/news",
+      icon: "paper"
     },
     {
-      title: 'Oportunidades',
-      url: '/opportunities',
-      icon: 'briefcase'
+      title: "Oportunidades",
+      url: "/opportunities",
+      icon: "briefcase"
     },
     {
-      title: 'Explorar',
-      url: '/discover',
-      icon: 'compass'
+      title: "Explorar",
+      url: "/discover",
+      icon: "compass"
     },
     {
-      title: 'Perfil',
-      url: '/profile',
-      icon: 'contact'
-    },
-   
-    
+      title: "Perfil",
+      url: "/profile",
+      icon: "contact"
+    }
   ];
 
   hideMenu: boolean;
-  private loading:any;
+  private loading: any;
 
   constructor(
     private platform: Platform,
@@ -76,60 +79,60 @@ export class AppComponent {
     private toastCtrl: ToastController,
     private storage: Storage
   ) {
-      this.router.events.subscribe((event: NavigationEnd) => {
-        if (event instanceof NavigationEnd) {
-          console.log(event.url);
-          switch (event.url) {
-            case "/login":
-            {
-              this.hideMenu = true;
-              break;
-            }
-            case "/register":
-            {
-              this.hideMenu = true;
-              break;
-            }
-            case "/chat":
-            {
-              this.hideMenu = true;
-              break;
-            }
-            case "/profile":
-            {
-              this.hideMenu = true;
-              break;
-            }
-            case "/profile/user":
-            {
-              this.hideMenu = true;
-              break;
-            }
-            case "/profile/settings":
-            {
-              this.hideMenu = true;
-              break;
-            }
-            case "/profile/help":
-            {
-              this.hideMenu = true;
-              break;
-            }
-            case "/profile/about":
-            {
-              this.hideMenu = true;
-              break;
-            }
-          
-            default:
-            {
-              this.hideMenu = false;
-                break;
-            }
+    this.router.events.subscribe((event: NavigationEnd) => {
+      if (event instanceof NavigationEnd) {
+        console.log(event.url);
+        switch (event.url) {
+          case "/login": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/register": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/chat": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile/user": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile/settings": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile/help": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile/about": {
+            this.hideMenu = true;
+            break;
+          }
+
+          default: {
+            this.hideMenu = false;
+            break;
           }
         }
-        console.log('Menu:',this.hideMenu)    });
-    }
+      }
+      console.log("Menu:", this.hideMenu);
+    });
+    
+    this.authService.authenticationState.subscribe(state => {
+      if (state) {
+        this.router.navigate(["home"]);
+      } else {
+        this.router.navigate(["login"]);
+      }
+    });
+  }
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -139,20 +142,12 @@ export class AppComponent {
   }
 
   logout() {
-    try {
-      this.storage.remove('currentUser')
-      console.log(this.storage.get('currentUser'))
-    } catch(error) {
-      console.log(error);
-    } finally {
-      // this.router.navigate(['login']);
-      
-    }
+    this.authService.logout();
   }
 
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({
-      message: 'Aguarde',
+      message: "Aguarde"
     });
     return this.loading.present();
   }

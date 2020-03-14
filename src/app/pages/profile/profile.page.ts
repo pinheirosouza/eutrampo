@@ -1,7 +1,8 @@
+import { AuthService } from './../../shared/services/auth/auth.service';
+import { UserService } from './../../shared/services/user/user.service';
+import { User } from './../../shared/interfaces/user';
 import { Observable } from 'rxjs';
-import { User } from './../../auth/interfaces/user';
-import { AuthService } from 'src/app/auth/services/auth.service';
-import { UserService } from 'src/app/shared/services/user_services/user.service';
+
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
