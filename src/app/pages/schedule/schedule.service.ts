@@ -9,6 +9,7 @@ export class ScheduleService {
   tarefas: [];
   tarefa :{
         title: any,
+        description: any,
         startTime: Date,
         endTime: Date,
         allDay: any;
