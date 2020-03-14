@@ -18,10 +18,4 @@ export class LoginPage {
     this.authService.login(this.userLogin).subscribe();
   }
 
-  register() {
-    this.authService.register(this.userLogin).subscribe(res => {
-      // Call Login to automatically login the new user
-      this.authService.login(this.userLogin).subscribe();
-    });
-  }
 }

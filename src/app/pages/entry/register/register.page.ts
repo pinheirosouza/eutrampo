@@ -1,3 +1,4 @@
+import { AuthService } from './../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../shared/services/user/user.service';
@@ -12,17 +13,10 @@ import { User } from '../../../shared/interfaces/user';
 })
 export class RegisterPage implements OnInit {
 
-  result: any;
+  userRegister: User = {};
 
-  public userRegister: User;
-  private image;
-  private tempImg;
+  constructor(private authService: AuthService) {}
 
-  constructor(
-    private router: Router,
-    private userService: UserService,
-    
-  ) { }
 
   ngOnInit() {
     console.log(this.userRegister);
@@ -40,22 +34,12 @@ export class RegisterPage implements OnInit {
   //   })
   // }
       
-  // createUser(){
-  //   let user = this.userRegister;
-
-  //   //chamar tela de aguarde
-  //   this.userService.createUser(user)
-  //   .then(( response ) => {
-  //     this.result = JSON.stringify(response);
-  //     //fechar tela de aguarde
-  //     console.log(user)
-  //   })
-  //   .catch(( response ) => {
-  //     this.result = JSON.stringify(response);
-  //     console.log(user)
-  //   })
-    
-  // }
+  register() {
+    this.authService.register(this.userRegister).subscribe(res => {
+      // Call Login to automatically login the new user
+      this.authService.login(this.userRegister).subscribe();
+    });
+  }
 
   // updateUser(){
   //   let user = this.user;
