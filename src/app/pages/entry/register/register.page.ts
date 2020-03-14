@@ -1,7 +1,8 @@
-import { User } from './../../../auth/interfaces/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../../shared/services/user_services/user.service';
+import { UserService } from '../../../shared/services/user/user.service';
+
+import { User } from '../../../shared/interfaces/user';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class RegisterPage implements OnInit {
 
   result: any;
 
-  public userRegister: User = {};
+  public userRegister: User;
   private image;
   private tempImg;
 
@@ -39,22 +40,22 @@ export class RegisterPage implements OnInit {
   //   })
   // }
       
-  createUser(){
-    let user = this.userRegister;
+  // createUser(){
+  //   let user = this.userRegister;
 
-    //chamar tela de aguarde
-    this.userService.createUser(user)
-    .then(( response ) => {
-      this.result = JSON.stringify(response);
-      //fechar tela de aguarde
-      console.log(user)
-    })
-    .catch(( response ) => {
-      this.result = JSON.stringify(response);
-      console.log(user)
-    })
+  //   //chamar tela de aguarde
+  //   this.userService.createUser(user)
+  //   .then(( response ) => {
+  //     this.result = JSON.stringify(response);
+  //     //fechar tela de aguarde
+  //     console.log(user)
+  //   })
+  //   .catch(( response ) => {
+  //     this.result = JSON.stringify(response);
+  //     console.log(user)
+  //   })
     
-  }
+  // }
 
   // updateUser(){
   //   let user = this.user;

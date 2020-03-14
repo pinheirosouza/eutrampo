@@ -2,19 +2,10 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: "AIzaSyBJn9gIphZ4x3jnSEEmvgpiqsYlYF5f1XA", 
-    authDomain: "eutrampoapp.firebaseapp.com", 
-    databaseURL: "https://eutrampoapp.firebaseio.com",
-    projectId: "eutrampoapp",
-    storageBucket: "eutrampoapp.appspot.com",
-    messagingSenderId: "998779479014",
-    appId: "1:998779479014:web:060ad5a8f7288e2127ec27",
-    measurementId: "G-8J5ZFK63C7",
-  }
-  
+  url: 'https://stagingeutrampo.herokuapp.com/admin/api/'
 };
 
 /*
