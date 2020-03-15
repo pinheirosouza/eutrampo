@@ -8,6 +8,7 @@ import { RouterModule } from "@angular/router";
 import { HomePage } from "./home.page";
 import { StarRatingModule } from "ionic4-star-rating";
 
+
 @NgModule({
   imports: [
     FormsModule,
@@ -15,6 +16,8 @@ import { StarRatingModule } from "ionic4-star-rating";
     CommonModule,
     FormsModule,
     IonicModule,
+    // ModalsModule,
+    
     RouterModule.forChild([
       {
         path: "",
@@ -24,5 +27,6 @@ import { StarRatingModule } from "ionic4-star-rating";
   ],
   declarations: [HomePage, ServiceModalPage],
   entryComponents: [ServiceModalPage]
+  
 })
 export class HomePageModule {}

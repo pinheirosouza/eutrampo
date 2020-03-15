@@ -56,15 +56,11 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   
-  // {
-  //   path: 'service-modal',
-  //   loadChildren: () => import('./shared/modals/service-modal/service-modal.module').then( m => m.ServiceModalPageModule)
-  // },
   {
-    path: 'hired-modal',
-    loadChildren: () => import('./shared/modals/hired-modal/hired-modal.module').then( m => m.HiredModalPageModule)
+    path: 'conversas',
+    loadChildren: './pages/chat/conversas/conversas/conversas.module#ConversasPageModule',
+    canActivate: [AuthGuard]
   },
-
   {
     path: 'opportunities',
     loadChildren: './pages/opportunities/opportunities.module#OpportunitiesPageModule',
