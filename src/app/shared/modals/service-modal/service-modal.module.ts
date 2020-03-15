@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { ConversasPage } from './../../../pages/chat/conversas/conversas/conversas.page';
+
 import { IonicModule } from '@ionic/angular';
 
-import { ServiceModalPageRoutingModule } from './service-modal-routing.module';
+
 
 import { ServiceModalPage } from './service-modal.page';
 
@@ -14,10 +16,11 @@ import { ServiceModalPage } from './service-modal.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ServiceModalPageRoutingModule,
     FormsModule,
     StarRatingModule
   ],
   declarations: [ServiceModalPage],
+  // entryComponents:[ServiceModalPage]
+  exports:[ServiceModalPage]
 })
 export class ServiceModalPageModule {}

@@ -32,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
+import { ServiceModalPageModule } from './shared/modals/service-modal/service-modal.module';
  
 
 @NgModule({
