@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: ChatPage
+  },  {
+    path: 'conversas',
+    loadChildren: () => import('./conversas/conversas/conversas.module').then( m => m.ConversasPageModule)
   }
+
 ];
 
 @NgModule({

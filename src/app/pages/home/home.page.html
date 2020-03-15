@@ -17,7 +17,7 @@
       Contrate um serviço
     </ion-list-header>
 
-    <ion-card *ngFor="let worker of lista_workers |slice:0:6; let i = index" (click)="showModal(worker)">
+    <ion-card *ngFor="let worker of lista_workers | slice:0:6; let i=index" (click)="showModal(worker)">
       <ion-item>  
         <ion-avatar slot="start">
           <img src="../../../assets/img/pedro.jpg">
@@ -47,7 +47,7 @@
     <ion-card *ngFor="let service of recent_services; let i=index" (click)= 'showModal()'>
       <ion-item *ngIf='i<=4'> 
         <ion-avatar slot="start">
-          <img [src]=service.pic>
+          <img [src]="service.pic">
         </ion-avatar>
         <ion-col>
           <ion-label>
@@ -74,7 +74,7 @@
     <ion-card *ngFor="let service of recent_services; let i=index" [href]=service.redirectTo>
       <ion-item *ngIf='i<=4'>
         <ion-avatar slot="start">
-          <img [src]=service.pic>
+          <img [src]="service.pic">
         </ion-avatar>
         <ion-col>
           <ion-label>
@@ -105,13 +105,13 @@
       <ion-card-content *ngIf='i<=4'>
         <h1 class="titulo_noticia">{{oportunidade.title}}</h1>
         <a href={{oportunidade.link}}> 
-          <img class="noticiaimg" [src]= "oportunidade.image">
+          <img class="noticiaimg" [src]="oportunidade.image">
         </a>
         <h3>{{oportunidade.description}}</h3>
       </ion-card-content>
     </ion-card>
 
-    <ion-item text-center [routerDirection]="'root'" routerLink="../opportunities">
+    <ion-item text-center [routerDirection]="forward" routerLink="../opportunities">
       <ion-label>Ver Mais Oportunidades</ion-label>
     </ion-item> 
   </ion-list>
@@ -125,7 +125,7 @@
       <ion-card-content *ngIf='i<=4'>
         <h1 class="titulo_noticia">{{noticia.title}}</h1>
         <a href={{noticia.link}}> 
-          <img class="noticiaimg" [src]= "noticia.image">
+          <img class="noticiaimg" [src]="noticia.image">
         </a>
         <h3>{{noticia.description}}</h3>
       </ion-card-content>

@@ -1,15 +1,10 @@
-import { AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage';
-import { UploadService } from './../../../shared/services/upload_service/upload.service';
-import { LoadingController, ToastController } from '@ionic/angular';
-import { AuthService } from 'src/app/auth/services/auth.service';
-import { User } from './../../../auth/interfaces/user';
+import { AuthService } from './../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../../shared/services/user_services/user.service';
-import { Camera, CameraOptions  } from '@ionic-native/camera/ngx'
-///import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { observable } from 'rxjs';
-import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../../../shared/services/user/user.service';
+
+import { User } from '../../../shared/interfaces/user';
+
 
 @Component({
   selector: 'app-register',
@@ -18,78 +13,61 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class RegisterPage implements OnInit {
 
-  public userRegister: User = {};
-  private image;
-  private tempImg;
+  userRegister: User = {};
 
-  constructor(
-    private router: Router,
-    private userService: UserService,
-    private authService: AuthService,
-    private uploadService: UploadService,
-    public camera: Camera,
-    private storage: AngularFireStorage,
-    private toastCtrl: ToastController,
-    private DomSanitizer: DomSanitizer
-  ) { }
+  constructor(private authService: AuthService) {}
 
-  ngOnInit() {}
 
-  openImagePicker(){
-    const options: CameraOptions = {
-      quality: 100,
-      targetHeight: 200,
-      targetWidth: 200,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    }
-    console.log("take pic")
-    this.camera.getPicture(options).then((imageData) => {
-      this.image = imageData;
-      console.log(this.image);
+  ngOnInit() {
+    console.log(this.userRegister);
+  }
+
+  // getUser(){
+  //   //chamar tela de aguarde
+  //   this.userService.getUserById(/*user id*/)
+  //   .then(( response ) => {
+  //     this.result = JSON.stringify(response);
+  //     //fechar tela de aguarde
+  //   })
+  //   .catch(( response ) => {
+  //     this.result = JSON.stringify(response);
+  //   })
+  // }
       
-    }, (err) => {
-      console.log('error', err);
+  register() {
+    this.authService.register(this.userRegister).subscribe(res => {
+      // Call Login to automatically login the new user
+      this.authService.login(this.userRegister).subscribe();
     });
   }
 
-  uploadImageToFirebase(image){
-    console.log("try up")
-    //uploads img to firebase storage
-    return this.uploadService.uploadImage(image, this.authService.getId());
-    
-  }
+  // updateUser(){
+  //   let user = this.user;
 
-  async createRecord()
-  {
-    //Registrando no Auth
-    try {await this.authService.register(this.userRegister);
-    } catch(error){
-      console.log(error);
-    } finally {
-      return new Promise( resolve => {
-        try {
-          this.uploadImageToFirebase('data:image/jpeg;base64,' + this.image).then( (img) => {
-            console.log("IMAGEM: ", img);
-            this.userRegister.provided = 0; 
-            this.userRegister.hired  = 0;
-            this.userRegister.password = "hided";
-            this.userRegister.img = img;
-            this.userService.create_NewUser(this.userRegister, this.authService.getId());
-            console.log(this.userRegister);
-          }).catch(async (err) => {
-            console.log("OCORREU UM ERRO");
-          })
-        } catch(err){
-          console.log(err)
-        } finally {
-        } 
-      }) ;
-    }
-  }
-      
+  //   //chamar tela de aguarde
+  //   this.userService.updateUser(user)
+  //   .then(( response ) => {
+  //     this.result = JSON.stringify(response);
+  //     //fechar tela de aguarde
+  //   })
+  //   .catch(( response ) => {
+  //     this.result = JSON.stringify(response);
+  //   })
+  // }
   
+  // deleteUserById(){
+  //   let user = this.user;
+
+  //   //chamar tela de aguarde
+  //   this.userService.deleteUserById(/*user id*/)
+  //   .then(( response ) => {
+  //     this.result = JSON.stringify(response);
+  //     //fechar tela de aguarde
+  //   })
+  //   .catch(( response ) => {
+  //     this.result = JSON.stringify(response);
+  //   })
+  // }
   
 
 }

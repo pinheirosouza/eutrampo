@@ -1,6 +1,7 @@
 import { ModalController, NavParams } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
+import { ConversasPage } from 'src/app/pages/chat/conversas/conversas/conversas.page';
 
 @Component({
   selector: 'app-service-modal',
@@ -9,6 +10,7 @@ import { ActionSheetController } from '@ionic/angular';
 })
 export class ServiceModalPage implements OnInit {
   public Obj_worker;
+  
   constructor(
     private modalCtrl: ModalController,
     public actionSheetCtrl: ActionSheetController,
@@ -58,4 +60,6 @@ export class ServiceModalPage implements OnInit {
     await actionSheet.present();
   }
 
+  
 }
+

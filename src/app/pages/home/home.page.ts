@@ -1,3 +1,4 @@
+
 import { ServiceModalPage } from './../../shared/modals/service-modal/service-modal.page';
 import { Component, OnInit } from '@angular/core';
 import { MenuController, ModalController } from '@ionic/angular';
@@ -15,7 +16,6 @@ export class HomePage implements OnInit {
   public lista_workers= new Array<any>();
   public lista_oportunidades= new Array<any>();
   public lista_noticias= new Array<any>();
-
   public searchTerm: string = "";
   public resp: any;
 
@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
   constructor(
     public menuCtrl: MenuController,
     private modalCtrl: ModalController,
-    private providerCategories: BuscacategoriesService
+    private providerCategories: BuscacategoriesService,
   )  
   {
     this.recent_services = [
@@ -51,6 +51,7 @@ export class HomePage implements OnInit {
         price: 60, 
         redirectTo: "#"},
     ]
+
   }
 
   ngOnInit() {

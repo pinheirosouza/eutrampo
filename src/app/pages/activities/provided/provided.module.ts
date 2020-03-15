@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProvidedPageRoutingModule } from './provided-routing.module';
 
 import { ProvidedPage } from './provided.page';
+import { AddServiceModalPage } from 'src/app/shared/modals/add-service-modal/add-service-modal.page';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProvidedPage } from './provided.page';
     IonicModule,
     ProvidedPageRoutingModule,
   ],
-  declarations: [ProvidedPage],
+  declarations: [ProvidedPage]
+
 
 })
 export class ProvidedPageModule {}

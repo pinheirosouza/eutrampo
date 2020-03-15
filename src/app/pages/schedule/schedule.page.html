@@ -23,12 +23,27 @@
               <ion-input type="text" class="input-form" placeholder="Novo Evento" [(ngModel)]="event.title"></ion-input>
             </ion-item>
             <ion-item>
+              <ion-input type="text" class="input-form" placeholder="Descrição" [(ngModel)]="event.description"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" class="input-form" placeholder="Rua(opcional)" [(ngModel)]="event.address.complement"></ion-input>
+              <ion-input type="text" class="input-form" placeholder="Número(opcional)" [(ngModel)]="event.address.number"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" class="input-form" placeholder="CEP(opcional)" [(ngModel)]="event.address.cep"></ion-input>
+              <ion-input type="text" class="input-form" placeholder="Bairro(opcional)" [(ngModel)]="event.address.neighborhood"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" class="input-form" placeholder="Cidade(opcional)" [(ngModel)]="event.address.city"></ion-input>
+              <ion-input type="text" class="input-form" placeholder="Estado(opcional)" [(ngModel)]="event.address.state"></ion-input>
+            </ion-item>
+            <ion-item>
               <ion-label class="input-form">Início</ion-label>
               <ion-datetime color="secondary" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" monthShortNames="Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez"></ion-datetime>
             </ion-item>
             <ion-item>
               <ion-label class="input-form">Fim</ion-label>
-              <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime"  monthShortNames="Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez"></ion-datetime>
+              <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat= "MMM YYYY D HH:mm" [(ngModel)]="event.endTime"  monthShortNames="Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez"></ion-datetime>
             </ion-item>
             <ion-item>
               <ion-label class="input-form">Dia inteiro</ion-label>
@@ -79,7 +94,7 @@
       startingDayWeek="1"
       step="30"
       noEventsLabel="Sem eventos"
-      allDayLabel="integral">
+      allDayLabel="Integral">
       </calendar>
     
 

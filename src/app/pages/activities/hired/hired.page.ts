@@ -10,15 +10,37 @@ import { HiredModalPage } from 'src/app/shared/modals/hired-modal/hired-modal.pa
   styleUrls: ['./hired.page.scss'],
 })
 export class HiredPage implements OnInit {
-  hiredData=[]
-  rating= 0
+
+  hiredList: any;
   hired: any;
+  
   constructor(private hiredService: HiredService, private modalCtrl: ModalController)
-  { fetch('./assets/hiredList.json').then(res => res.json())
-  .then(data => {
-    this.hiredData = data.hired;
-    this.hiredService.setHiredList(this.hiredData);
-  })}
+  {
+    {
+      this.hiredList = [
+        { name:'Pedro Souza', 
+          pic:"../../../assets/img/pedro.jpg", 
+          servicetype:'Pedreiro', 
+          provided: 145, 
+          price: 45, 
+          redirectTo: "#"},
+  
+        { name:'Fernando Toledo', 
+          pic:"../../../assets/img/fernando.jpeg", 
+          servicetype:'Costureiro', 
+          provided: 184, 
+          price: 20, 
+          redirectTo: "#"},
+  
+        { name:'Felipe Freitas', 
+          pic:"../../../assets/img/felipe.png", 
+          servicetype:'Professor Particular', 
+          provided: 82, 
+          price: 60, 
+          redirectTo: "#"},
+      ]
+    }
+   }
 
   ngOnInit(){
   }

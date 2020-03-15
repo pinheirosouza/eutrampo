@@ -1,32 +1,35 @@
 <ion-content>
   <ion-fab padding horizontal="end" vertical="bottom" slot="fixed" position:fixed>
-    <ion-fab-button color="danger" href="provided/my-services-tab/add-service">
+    <ion-fab-button color="danger" (click)=cadastrarServico()>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
+  
+<ion-content>
   <ion-list>
-    <ion-list-header>
-      Serviços Mais Contratados
-    </ion-list-header>
-
-    <ion-item *ngFor="let service of recent_services" [href]=service.redirectTo>
-      <ion-avatar slot="start">
-        <img [src]=service.pic>
-      </ion-avatar>
-      <ion-col>
-        <ion-label>
-          <h2>{{service.name}}</h2>
-          <h3>{{service.servicetype}}</h3>
-          <p>{{service.provided}} Serviços Prestados</p>
-        </ion-label>
-      </ion-col>
-      <ion-col class="center" size="8px">
-        <ion-label>
-          <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
-        </ion-label>
-      </ion-col>
-    </ion-item>
+    <ion-card *ngFor="let my of myList | slice:0:6; let i=index" >
+      <ion-item>  
+        <ion-avatar slot="start">
+          <img src="../../../assets/img/pedro.jpg">
+        </ion-avatar>
+        <ion-col>
+          <ion-label>
+            <h2>{{my.title}}</h2>
+            <h3>{{my.servicetype}}</h3>
+            <p>{{my.provided}} Serviços Prestados</p>
+          </ion-label>
+        </ion-col>
+        <ion-col class="center" size="8px">
+          <ion-label>
+            <p>{{my.price | currency:"BRL":true:"1.2" }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-item>
+    </ion-card>
 
   </ion-list>
+    
+</ion-content>
+
 </ion-content>
