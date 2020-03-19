@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="profile"></ion-back-button>
+      <ion-back-button defaultHref="login"></ion-back-button>
     </ion-buttons>
     <ion-title>
         Cadastro
@@ -12,8 +12,12 @@
 <ion-content>
 <ion-list>
 
-  <ion-avatar class="center">
+  <ion-avatar *ngIf="!image" (click)="getImage()" class="center">
     <img src="../../../../assets/img/perfil.jpg">
+  </ion-avatar>
+
+  <ion-avatar *ngIf="image" (click)="getImage()" class="center">
+    <img [src]="image">
   </ion-avatar>
 
   <ion-item>
@@ -60,7 +64,7 @@
   <br>
   <ion-button expand="block" color="secondary" (click)="register()" [disabled]="!userRegister.name || !userRegister.email || !userRegister.phone || !userRegister.password">Cadastrar</ion-button>
 
-
-</ion-list>
+  
+  </ion-list>
 </ion-content>
 

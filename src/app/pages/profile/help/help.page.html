@@ -1,33 +1,33 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="profile"></ion-back-button>
-      </ion-buttons>
-      <ion-title>
-          Ajuda
-        </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Ajuda
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <ion-list>
 
-    <ion-item routerLink="howeutrampoworks">
+    <ion-item (click)="developing()">
       <ion-label>
         Como funciona o EuTrampo?
       </ion-label>
     </ion-item>
 
-    <ion-item routerLink="faq">
+    <ion-item (click)="developing()">
       <ion-label>
         Perguntas Frequentes
       </ion-label>
     </ion-item>
 
-  <ion-item routerLink="contacts">
+    <ion-item (click)="developing()">
       <ion-label>
         Contato
       </ion-label>
     </ion-item>
-</ion-list>
+  </ion-list>
 </ion-content>

@@ -1,16 +1,18 @@
+import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-conversas',
-  templateUrl: './conversas.page.html',
-  styleUrls: ['./conversas.page.scss'],
+  selector: 'app-chat',
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.scss'],
 })
-export class ConversasPage implements OnInit {
+export class ChatComponent implements OnInit {
+
   messages = [
     {
       user: 'Simon',
       createdAt: 1554090856000,
-      msg: 'Eai, tudo belezaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaooooooooooooooooi?'
+      msg: 'Eai, tudo belezaaaaaaaaaaaaaaaaaaaa?'
     },
     {
       user: 'Felipe',
@@ -25,9 +27,14 @@ export class ConversasPage implements OnInit {
   ];
   currentUser= 'Simon';
   newMsg='';
-  constructor() { }
+
+  constructor(public modalCtrl: ModalController) { }
 
   ngOnInit() {
+  }
+
+  modalClose() {
+    this.modalCtrl.dismiss();
   }
 
   sendMessage(){

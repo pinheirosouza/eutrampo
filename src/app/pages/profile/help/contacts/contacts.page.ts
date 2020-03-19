@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { Component, OnInit } from '@angular/core';
 import { CallNumber } from '@ionic-native/call-number/ngx'
@@ -11,7 +12,8 @@ export class ContactsPage implements OnInit {
 
   constructor(
     private callNumber: CallNumber,
-    private emailComposer: EmailComposer
+    private emailComposer: EmailComposer,
+    public alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -31,5 +33,15 @@ export class ContactsPage implements OnInit {
     }
     
     this.emailComposer.open(email);
+  }
+
+  async developing() {
+    const alert = await this.alertCtrl.create({
+      header: 'Em desenvolvimento',
+      message: 'Esta função está desativada no momento.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

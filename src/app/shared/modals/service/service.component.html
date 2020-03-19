@@ -2,12 +2,12 @@
   <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-button (click)="modalClose()">
-        <ion-icon  slot="icon-only" name="arrow-down"></ion-icon>
+        <ion-icon slot="icon-only" name="arrow-down"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
-      </ion-title>
-  </ion-toolbar >
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding-top>
@@ -25,53 +25,58 @@
     </ion-card-content>
   </ion-card>
 
-  
-    <ion-col>
-      <ion-row no-padding justify-content-center>
-        <!-- <h5>R$</h5> -->
-        <h2 style="font-size: 35px;">R$ {{Obj_worker.price}}</h2>
-      </ion-row>
-      <ion-row justify-content-center align-items-center>
-        <ionic4-star-rating 
-        activeIcon = "ios-star"
-        activeColor = "#FBEC08"
-        defaultColor = "#FBEC08" 
-        defaultIcon = "ios-star-outline"
-        readonly="true"
-        rating="4.3"
-        halfStar="true"
-        fontSize = "25px">
+
+  <ion-col>
+    <ion-row no-padding justify-content-center>
+      <!-- <h5>R$</h5> -->
+      <h2 style="font-size: 35px;">R$ {{Obj_worker.price}}</h2>
+    </ion-row>
+    <ion-row justify-content-center align-items-center>
+      <ionic4-star-rating activeIcon="ios-star" activeColor="#FBEC08" defaultColor="#FBEC08"
+        defaultIcon="ios-star-outline" readonly="true" rating="4.3" halfStar="true" fontSize="25px">
       </ionic4-star-rating>
       <p>4.3</p>
-      </ion-row>
-    </ion-col>
+    </ion-row>
+  </ion-col>
 
 
-  
+
 
   <!-- <ion-button padding color="secondary" expand="full" (click)="presentActionSheet()">
     Entrar em contato
   </ion-button> -->
 
-  <ion-fab style="margin-top: 10px; margin-bottom: 10px;"horizontal="center">
+  <ion-fab style="margin-top: 10px; margin-bottom: 10px;" horizontal="center">
     <ion-fab-button color="light">
       <ion-icon name="call"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="end">
-      <ion-fab-button color="dark" >
-        <ion-icon name="logo-whatsapp"></ion-icon>
+      <ion-fab-button (click)="openEmail()" color="dark">
+        <ion-icon name="mail-unread"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button color="dark">
+      <!-- <ion-fab-button (click)="openCall()" color="dark">
         <ion-icon name="call"></ion-icon>
-      </ion-fab-button>
+      </ion-fab-button> -->
     </ion-fab-list>
     <ion-fab-list side="start">
-      <ion-fab-button color="dark">
+      <!-- <ion-fab-button (click)="developing()" color="dark">
         <ion-icon name="logo-facebook"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="dark" routerLink="/chat/conversas">
+      </ion-fab-button> -->
+      <ion-fab-button (click)="developing()" color="dark">
         <ion-icon name="chatboxes"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
+
+    <!-- Temporary call button -->
+
+    <ion-fab-list side="bottom">
+      <ion-fab-button (click)="openCall()" color="dark">
+        <ion-icon name="call"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+
+    <!-- Temporary call button -->
+
   </ion-fab>
+  <br>
 </ion-content>

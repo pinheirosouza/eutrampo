@@ -1,4 +1,4 @@
-import { CallNumber } from '@ionic-native/call-number/ngx';
+
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 import { NgModule } from '@angular/core';
@@ -22,7 +22,6 @@ import { ContactsPage } from './contacts.page';
   ],
   declarations: [ContactsPage],
   providers:[
-    CallNumber,
     EmailComposer
   ]
 })

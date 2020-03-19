@@ -36,7 +36,7 @@ export class AppComponent {
     },
     {
       title: "Conversas",
-      url: "/chat",
+      url: "/conversations",
       icon: "chatboxes"
     },
     {
@@ -91,7 +91,7 @@ export class AppComponent {
             this.hideMenu = true;
             break;
           }
-          case "/chat": {
+          case "/conversations": {
             this.hideMenu = true;
             break;
           }

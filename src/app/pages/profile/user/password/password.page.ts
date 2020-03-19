@@ -1,3 +1,5 @@
+import { Password } from './../../../../shared/interfaces/password';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordPage implements OnInit {
 
-  constructor() { }
+  public password: Password = {}
+
+  constructor(
+    public authService: AuthService,
+  ) { }
 
   ngOnInit() {
   }
 
   changePassword() {
-    console.log("Trocar Senha")
+    console.log(this.password)
+    this.authService.updatePassword(this.password, this.authService.user._id).then(
+      res => console.log(res),
+      err => console.log(err)
+    )
   }
 
 }

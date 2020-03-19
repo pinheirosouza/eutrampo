@@ -41,24 +41,24 @@
 
   <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
-      Últimos Serviços Contratados
+      Serviços
     </ion-list-header>
 
-    <ion-card *ngFor="let service of recent_services; let i=index" (click)= 'showModal()'>
-      <ion-item *ngIf='i<=4'> 
+    <ion-card *ngFor="let worker of lista_workers | slice:0:3" (click)="showModal(worker)">
+      <ion-item> 
         <ion-avatar slot="start">
-          <img [src]="service.pic">
+          <img [src]="worker.pic">
         </ion-avatar>
         <ion-col>
           <ion-label>
-            <h2>{{service.name}}</h2>
-            <h3>{{service.servicetype}}</h3>
-            <p>{{service.provided}} Serviços Prestados</p>
+            <h2>{{worker.title}}</h2>
+            <h3>{{worker.description}}</h3>
+            <p>{{worker.provided}} Serviços Prestados</p>
           </ion-label>
         </ion-col>
         <ion-col class="center" size="8px">
           <ion-label>
-            <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
+            <p>{{worker.price | currency:"BRL":true:"1.2" }}</p>
           </ion-label>
         </ion-col>
       </ion-item>
@@ -66,7 +66,7 @@
 
   </ion-list>
 
-  <ion-list *ngIf='searchTerm == ""'>
+  <!-- <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
       Serviços Mais Contratados
     </ion-list-header>
@@ -95,7 +95,7 @@
       <ion-label>Buscar Serviços</ion-label>
     </ion-item>
 
-  </ion-list>
+  </ion-list> -->
 
   <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
@@ -111,7 +111,7 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-item text-center [routerDirection]="forward" routerLink="../opportunities">
+    <ion-item text-center routerLink="../opportunities">
       <ion-label>Ver Mais Oportunidades</ion-label>
     </ion-item> 
   </ion-list>
@@ -124,7 +124,7 @@
     <ion-card *ngFor="let noticia of lista_noticias; let i=index">
       <ion-card-content *ngIf='i<=4'>
         <h1 class="titulo_noticia">{{noticia.title}}</h1>
-        <a href={{noticia.link}}> 
+        <a href={{noticia.link}}>
           <img class="noticiaimg" [src]="noticia.image">
         </a>
         <h3>{{noticia.description}}</h3>

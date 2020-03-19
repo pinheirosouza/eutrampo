@@ -13,25 +13,25 @@
   <ion-list>
     <ion-item>
       <ion-avatar slot="start">
-        <img src="{{ (user | async)?.img }}">
+        <img [src]="userData.image">
       </ion-avatar>
       <ion-label position="stacked">Nome</ion-label>
-      <ion-input [(ngModel)]="userUpdate.name" placeholder="{{ (user | async)?.name }}"></ion-input>
+      <ion-input [(ngModel)]="userUpdate.name" placeholder="{{userData.name}}"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Bio</ion-label>
-      <ion-textarea [(ngModel)]="userUpdate.bio" placeholder="{{ (user | async)?.bio }}"></ion-textarea>
+      <ion-textarea [(ngModel)]="userUpdate.bio" placeholder="{{userData.bio}}"></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Email</ion-label>
-      <ion-input [(ngModel)]="userUpdate.email" placeholder="{{ (user | async)?.email }}"></ion-input>
+      <ion-input [(ngModel)]="userUpdate.email" placeholder="{{userData.email}}"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Telefone</ion-label>
-      <ion-input [(ngModel)]="userUpdate.phone" placeholder="{{ (user | async)?.phone }}"></ion-input>
+      <ion-input [(ngModel)]="userUpdate.phone" placeholder="{{userData.phone}}"></ion-input>
     </ion-item>
 
     <ion-item [routerDirection]="'root'" routerLink="password">
@@ -40,9 +40,9 @@
     </ion-item> 
 
     <br>
-  <ion-button expand="block" color="secondary" (click)="updateRecord()" >Editar Dados</ion-button>
+  <ion-button expand="block" color="secondary" (click)="updateUser()" >Editar Dados</ion-button>
   <br>
-  <ion-button expand="block" color="danger" (click)="deleteRecord()" >Excluir Conta</ion-button>
+  <!-- <ion-button expand="block" color="danger" (click)="deleteRecord()" >Excluir Conta</ion-button> -->
 
 
   </ion-list>
