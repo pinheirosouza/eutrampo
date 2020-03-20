@@ -1,3 +1,4 @@
+import { UploadService } from './shared/services/upload/upload.service';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
@@ -65,7 +66,8 @@ export function jwtOptionsFactory(storage) {
     CallNumber,
     EmailComposer,
     Camera,
-    FileTransfer
+    FileTransfer,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

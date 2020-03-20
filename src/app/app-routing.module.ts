@@ -75,13 +75,6 @@ const routes: Routes = [
       )
   },
   {
-    path: "add-service-modal",
-    loadChildren: () =>
-      import("./shared/modals/add-service-modal/add-service-modal.module").then(
-        m => m.AddServiceModalPageModule
-      )
-  },
-  {
     path: "",
     redirectTo: "login",
     pathMatch: "full"

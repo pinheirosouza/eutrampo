@@ -17,10 +17,10 @@
       Contrate um serviço
     </ion-list-header>
 
-    <ion-card *ngFor="let worker of lista_workers | slice:0:6; let i=index" (click)="showModal(worker)">
+    <ion-card *ngFor="let worker of lista_workers; let i=index" (click)="showModal(worker)">
       <ion-item>  
         <ion-avatar slot="start">
-          <img src="../../../assets/img/pedro.jpg">
+          <img src="../../../assets/img/tester.png">
         </ion-avatar>
         <ion-col>
           <ion-label>
@@ -47,7 +47,7 @@
     <ion-card *ngFor="let worker of lista_workers | slice:0:3" (click)="showModal(worker)">
       <ion-item> 
         <ion-avatar slot="start">
-          <img [src]="worker.pic">
+          <img src="../../../assets/img/tester.png">
         </ion-avatar>
         <ion-col>
           <ion-label>

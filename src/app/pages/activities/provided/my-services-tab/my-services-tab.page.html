@@ -1,6 +1,6 @@
 <ion-content>
   <ion-fab padding horizontal="end" vertical="bottom" slot="fixed" position:fixed>
-    <ion-fab-button color="danger" (click)=cadastrarServico()>
+    <ion-fab-button color="danger" (click)=addWorkerModal()>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -8,27 +8,28 @@
   
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let my of myList | slice:0:6; let i=index" >
-      <ion-item>  
+    <ion-card *ngFor="let worker of workersList">
+      <ion-item> 
         <ion-avatar slot="start">
-          <img src="../../../assets/img/pedro.jpg">
+          <img src="../../../../../assets/img/tester.png">
         </ion-avatar>
         <ion-col>
           <ion-label>
-            <h2>{{my.title}}</h2>
-            <h3>{{my.servicetype}}</h3>
-            <p>{{my.provided}} Serviços Prestados</p>
+            <h2>{{worker.title}}</h2>
+            <h3>{{worker.description}}</h3>
+            <p>{{worker.provided}} Serviços Prestados</p>
           </ion-label>
         </ion-col>
         <ion-col class="center" size="8px">
           <ion-label>
-            <p>{{my.price | currency:"BRL":true:"1.2" }}</p>
+            <p>{{worker.price | currency:"BRL":true:"1.2" }}</p>
           </ion-label>
         </ion-col>
       </ion-item>
     </ion-card>
 
   </ion-list>
+
     
 </ion-content>
 

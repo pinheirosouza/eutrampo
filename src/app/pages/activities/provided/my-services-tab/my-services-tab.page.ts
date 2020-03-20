@@ -1,57 +1,47 @@
-import { ModalController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
-import { AddServiceModalPage } from 'src/app/shared/modals/add-service-modal/add-service-modal.page';
+import { ResponseAlertService } from "./../../../../shared/services/response-alert/response-alert.service";
+import { WorkerService } from "./../../../../shared/services/worker/worker.service";
+import { AuthService } from "./../../../../shared/services/auth/auth.service";
+import { ModalController } from "@ionic/angular";
+import { Component, OnInit } from "@angular/core";
+import { AddWorkerComponent } from "src/app/shared/modals/add-worker/add-worker.component";
 
 @Component({
-  selector: 'app-my-services-tab',
-  templateUrl: './my-services-tab.page.html',
-  styleUrls: ['./my-services-tab.page.scss'],
+  selector: "app-my-services-tab",
+  templateUrl: "./my-services-tab.page.html",
+  styleUrls: ["./my-services-tab.page.scss"]
 })
 export class MyServicesTabPage implements OnInit {
+  7;
 
-  public recent_services;
-  
+  public workersList: any = [];
 
-  myList: any;
-
-  constructor(private modalCtrl: ModalController) {
-    {
-      this.myList = [
-        { name:'Pedro Souza', 
-          pic:"../../../assets/img/pedro.jpg", 
-          servicetype:'Pedreiro', 
-          provided: 145, 
-          price: 45, 
-          redirectTo: "#"},
-  
-        { name:'Fernando Toledo', 
-          pic:"../../../assets/img/fernando.jpeg", 
-          servicetype:'Costureiro', 
-          provided: 184, 
-          price: 20, 
-          redirectTo: "#"},
-  
-        { name:'Felipe Freitas', 
-          pic:"../../../assets/img/felipe.png", 
-          servicetype:'Professor Particular', 
-          provided: 82, 
-          price: 60, 
-          redirectTo: "#"},
-      ]
-    }
-   }
-
-  ngOnInit() {
+  constructor(
+    private modalCtrl: ModalController,
+    private authService: AuthService,
+    public workerService: WorkerService,
+    public responseService: ResponseAlertService
+  ) {
+    this.userWorkersList();
   }
-  async cadastrarServico(){
- 
-    const modal = await this.modalCtrl.create({
-      component:AddServiceModalPage
-    });
-    
-    modal.present();
-      
-  
-}
 
+  ngOnInit() {}
+
+  userWorkersList() {
+    this.workerService.getUserWorkers(this.authService.user._id).subscribe(
+      res => {
+        this.workersList = res;
+        console.log(res);
+      },
+      err => {
+        this.responseService.response("Sem serviços para carregar");
+      }
+    );
+  }
+
+  async addWorkerModal() {
+    const modal = await this.modalCtrl.create({
+      component: AddWorkerComponent
+    });
+    modal.present();
+  }
 }
