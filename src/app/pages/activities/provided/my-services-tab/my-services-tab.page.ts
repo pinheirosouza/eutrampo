@@ -1,3 +1,4 @@
+import { UpdateWorkerComponent } from './../../../../shared/modals/update-worker/update-worker.component';
 import { ResponseAlertService } from "./../../../../shared/services/response-alert/response-alert.service";
 import { WorkerService } from "./../../../../shared/services/worker/worker.service";
 import { AuthService } from "./../../../../shared/services/auth/auth.service";
@@ -44,4 +45,14 @@ export class MyServicesTabPage implements OnInit {
     });
     modal.present();
   }
+
+  async updateWorkerModal(worker_id) {
+    const modal = await this.modalCtrl.create({
+      component: UpdateWorkerComponent,
+      componentProps: { id: worker_id }
+    });
+    modal.present();
+  }
+
+
 }

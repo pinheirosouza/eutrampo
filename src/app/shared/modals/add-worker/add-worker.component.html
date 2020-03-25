@@ -16,14 +16,14 @@
     <img src="../../../../assets/img/tester.png">
   </ion-avatar>
 
-    <ion-select placeholder='Categoria' interface="action-sheet" [(ngModel)]="selectedCategory">
+    <ion-select placeholder='Categoria' interface="action-sheet" [(ngModel)]="selectedCategory" (ionChange)="clearSubcategory()" (ionCancel)="clearCategory()">
       <ion-select-option *ngFor="let category of categoriesList; let i = index" [value]="i">{{category.title}}</ion-select-option>
     </ion-select>
 
-    <ion-select *ngIf="!selectedCategory" [disabled]="true" placeholder='Subcategoria' interface="action-sheet">
+    <ion-select *ngIf="selectedCategory == null" [disabled]="true" placeholder='Subcategoria' interface="action-sheet">
     </ion-select>
     
-    <ion-select *ngIf="selectedCategory" placeholder='Subcategoria' interface="action-sheet" [(ngModel)]="selectedSubcategory">
+    <ion-select *ngIf="selectedCategory != null" placeholder='Subcategoria' interface="action-sheet" [(ngModel)]="selectedSubcategory">
       <ion-select-option *ngFor="let subcategory of categoriesList[this.selectedCategory].subcategory; let i = index" [value]="i">{{subcategory.title}}</ion-select-option>
     </ion-select>
 

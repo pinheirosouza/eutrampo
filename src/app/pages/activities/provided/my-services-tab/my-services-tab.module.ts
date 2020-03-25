@@ -1,3 +1,4 @@
+import { UpdateWorkerComponent } from './../../../../shared/modals/update-worker/update-worker.component';
 import { AddWorkerComponent } from 'src/app/shared/modals/add-worker/add-worker.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,8 +18,8 @@ import { MyServicesTabPage } from './my-services-tab.page';
     IonicModule,
     MyServicesTabPageRoutingModule,
   ],
-  declarations: [MyServicesTabPage, AddWorkerComponent],
-  entryComponents: [AddWorkerComponent]
+  declarations: [MyServicesTabPage, AddWorkerComponent, UpdateWorkerComponent],
+  entryComponents: [AddWorkerComponent, UpdateWorkerComponent]
 
 })
 export class MyServicesTabPageModule {}

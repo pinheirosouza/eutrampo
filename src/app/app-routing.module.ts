@@ -75,6 +75,12 @@ const routes: Routes = [
       )
   },
   {
+    path: "admin-home",
+    loadChildren: () =>
+      import("./admin/pages/home/home.module").then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: "",
     redirectTo: "login",
     pathMatch: "full"

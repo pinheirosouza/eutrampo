@@ -63,6 +63,11 @@ export class AppComponent {
       title: "Perfil",
       url: "/profile",
       icon: "contact"
+    },
+    {
+      title: "Admin",
+      url: "/admin-home",
+      icon: "cog"
     }
   ];
 
