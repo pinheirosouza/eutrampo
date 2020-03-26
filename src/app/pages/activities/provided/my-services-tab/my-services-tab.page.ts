@@ -12,8 +12,7 @@ import { AddWorkerComponent } from "src/app/shared/modals/add-worker/add-worker.
   styleUrls: ["./my-services-tab.page.scss"]
 })
 export class MyServicesTabPage implements OnInit {
-  7;
-
+  
   public workersList: any = [];
 
   constructor(
@@ -46,13 +45,13 @@ export class MyServicesTabPage implements OnInit {
     modal.present();
   }
 
-  async updateWorkerModal(worker_id) {
+  async updateWorkerModal(worker) {
     const modal = await this.modalCtrl.create({
       component: UpdateWorkerComponent,
-      componentProps: { id: worker_id }
+      componentProps: { workerData : worker }
     });
     modal.present();
-  }
+  } 
 
 
 }

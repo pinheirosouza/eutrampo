@@ -4,7 +4,7 @@ import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
 import { AuthService } from "./../../services/auth/auth.service";
 import { SearchCategoriesService } from "./../../services/search-categories/search-categories.service";
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { ModalController, ToastController, NavParams } from "@ionic/angular";
+import { ModalController, ToastController, NavParams, LoadingController } from "@ionic/angular";
 import { WorkerService } from "../../services/worker/worker.service";
 import { Worker } from "../../interfaces/worker";
 
@@ -14,7 +14,6 @@ import { Worker } from "../../interfaces/worker";
   styleUrls: ["./update-worker.component.scss"]
 })
 export class UpdateWorkerComponent implements OnInit {
-  public id;
   public worker;
 
   public categoriesList: any;
@@ -26,7 +25,11 @@ export class UpdateWorkerComponent implements OnInit {
 
   public image = "";
 
+  public dataIsLoaded = false;
+
+  public loadingData: any;
   public loadingImg: boolean = false;
+
 
   constructor(
     private modalCtrl: ModalController,
@@ -37,23 +40,25 @@ export class UpdateWorkerComponent implements OnInit {
     public camera: Camera,
     public upService: UploadService,
     public responseService: ResponseAlertService,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController
   ) {
-    this.id = this.navParams.get("id")
-    this.listCategories();
-    this.getWorker();
+    this.worker = this.navParams.get("workerData");
+    this.getData();
   }
 
   ngOnInit() {}
 
-  getWorker(){
-    console.log(this.id)
-    this.workerService.getWorker(this.id).subscribe(
-      res => {
-        this.worker = res[0];
-      },
-      err => console.log(err)
-    )
+  async getData(){
+    await this.presentLoading();
+    try{
+      await this.listCategories();
+    } catch(err){
+      console.log(err);
+    } finally {
+      this.loadingData.dismiss();
+      this.dataIsLoaded = true;
+    }
   }
 
   listCategories() {
@@ -74,7 +79,7 @@ export class UpdateWorkerComponent implements OnInit {
         this.selectedCategory
       ].subcategory[this.selectedSubcategory]._id;
       console.log(this.updateWorker);
-      this.workerService.updateWorker(this.id,this.updateWorker).subscribe(
+      this.workerService.updateWorker(this.worker._id,this.updateWorker).subscribe(
         res =>
           this.responseService.response(
             "Seu serviço foi cadastrado",
@@ -104,5 +109,10 @@ export class UpdateWorkerComponent implements OnInit {
   clearSubcategory() {
     console.log("sub clear");
     this.selectedSubcategory = null;
+  }
+
+  async presentLoading() {
+    this.loadingData = await this.loadingCtrl.create({message: 'Aguarde...'});
+    return this.loadingData.present();
   }
 }
