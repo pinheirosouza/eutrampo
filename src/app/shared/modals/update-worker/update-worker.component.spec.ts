@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AddServiceModalPage } from './add-service-modal.page';
+import { UpdateWorkerComponent } from './update-worker.component';
 
-describe('AddServiceModalPage', () => {
-  let component: AddServiceModalPage;
-  let fixture: ComponentFixture<AddServiceModalPage>;
+describe('UpdateWorkerComponent', () => {
+  let component: UpdateWorkerComponent;
+  let fixture: ComponentFixture<UpdateWorkerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddServiceModalPage ],
+      declarations: [ UpdateWorkerComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AddServiceModalPage);
+    fixture = TestBed.createComponent(UpdateWorkerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

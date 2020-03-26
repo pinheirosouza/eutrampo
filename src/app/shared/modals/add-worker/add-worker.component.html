@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="modalClose()">
+        <ion-icon  slot="icon-only" name="arrow-down"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Novo Serviço
+      </ion-title>
+  </ion-toolbar >
+</ion-header>
+
+<ion-content>
+
+  <ion-avatar class="center">
+    <img src="../../../../assets/img/tester.png">
+  </ion-avatar>
+
+    <ion-select placeholder='Categoria' interface="action-sheet" [(ngModel)]="selectedCategory" (ionChange)="clearSubcategory()" (ionCancel)="clearCategory()">
+      <ion-select-option *ngFor="let category of categoriesList; let i = index" [value]="i">{{category.title}}</ion-select-option>
+    </ion-select>
+
+    <ion-select *ngIf="selectedCategory == null" [disabled]="true" placeholder='Subcategoria' interface="action-sheet">
+    </ion-select>
+    
+    <ion-select *ngIf="selectedCategory != null" placeholder='Subcategoria' interface="action-sheet" [(ngModel)]="selectedSubcategory">
+      <ion-select-option *ngFor="let subcategory of categoriesList[this.selectedCategory].subcategory; let i = index" [value]="i">{{subcategory.title}}</ion-select-option>
+    </ion-select>
+
+    <ion-item>
+      <ion-input type="text" class="input-form" placeholder="Título do Serviço" [(ngModel)]="worker.title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" class="input-form" placeholder="Descrição" [(ngModel)]="worker.description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" class="input-form" placeholder="Preço" [(ngModel)]="worker.price"></ion-input>
+    </ion-item>
+    
+    <ion-button color="secondary" expand="block" (click)="submit()">Enviar</ion-button>
+    
+</ion-content>

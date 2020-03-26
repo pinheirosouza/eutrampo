@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="modalClose()">
+        <ion-icon  slot="icon-only" name="arrow-down"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Adicionar Subcategoria
+      </ion-title>
+  </ion-toolbar >
+</ion-header>
+
+<ion-content>
+
+  <ion-select placeholder='Categoria' interface="action-sheet" [(ngModel)]="selectedCategory" (ionCancel)="clearCategory()">
+    <ion-select-option *ngFor="let category of categoriesList; let i = index" [value]="i">{{category.title}}</ion-select-option>
+  </ion-select>
+
+    <ion-item>
+      <ion-input type="text" class="input-form" placeholder="Título do Serviço" [(ngModel)]="subcategory.title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ativo:</ion-label>
+      <ion-toggle [(ngModel)]="subcategory.status"></ion-toggle>
+    </ion-item>
+    
+    <ion-button color="secondary" expand="block" (click)="submit()">Enviar</ion-button>
+    
+</ion-content>

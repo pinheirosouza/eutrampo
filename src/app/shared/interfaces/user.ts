@@ -1,10 +1,10 @@
 export interface User {
     name?: string;
     bio?: string;
-    cpf?: number;
+    cpf?: string;
     gender?: string;
     // birthdate: req.body.birthdate,       
-    phone?: number;
+    phone?: string;
     email?: string;
     password?: any;
     userHiredServices?: number;

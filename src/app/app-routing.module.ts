@@ -75,11 +75,10 @@ const routes: Routes = [
       )
   },
   {
-    path: "add-service-modal",
+    path: "admin-home",
     loadChildren: () =>
-      import("./shared/modals/add-service-modal/add-service-modal.module").then(
-        m => m.AddServiceModalPageModule
-      )
+      import("./admin/pages/home/home.module").then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: "",
