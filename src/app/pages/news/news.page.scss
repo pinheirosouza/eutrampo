@@ -1,105 +1,21 @@
-// ion-content {
-//     --ion-background-color: rgb(102, 46, 146);
-// }
-// ion-title{
-//     float:left;
-//     margin-top: 6.5px;
-//     color: #662e92;
-//     font-weight: 700;
-// }
-// ion-icon#seta{
-//     margin-left: 4%;
-//     font-size: 30px;
-//     float: left;
-//     margin-top: 2px;
-// }
-// ion-card{
-//     background-color: whitesmoke;
-// }
-// ion-card-content{
-//     background-color: #d5c9e0;
-// }
-// ion-card-header{
-//     background-color: green;
-// }
-// ion-searchbar{
-//     --placeholder-color: unset;
-//     --placeholder-font-weight: bolder;
-//     --background: aliceblue;
-//     --icon-color: unset; 
-// }
-// ion-grid{
-//     background-color: aliceblue;
-// }
-// ion-row{
-//     background-color: aliceblue;
-//     width: 100%;
-// }
-// ion-row#titulo{
-//     background-color: #f7f7f7;
-//     width: 100%;
-//     height: 40%;
-// }
-// ion-row#header-noticia{
-//     background-color: aliceblue;
-//     height: 50px;
-    
-// }
-// ion-row#data{
-//     height: 5%;
-//  }
-// ion-avatar {
-//     float: left;
-//     margin-top: 5px;
-//     margin-left: 5px;
-//     width: 40px;
-//     height: 40px;
-// }
-// h1.nome_parceiro{
-//     margin-top: 0.5%;
-//     margin-left: 5px;
-//     color: black;
-//     font-size: 125%;
-//     line-height: normal;
-//     font-weight: bold;
-// }
-// h1.titulo_noticia{
-//     margin-top: 0.5%;
-//     margin-left: 5px;
-//     color: black;
-//     font-size: 125%;
-//     line-height: normal;
-//     font-weight: bold;
-// }
-// h2.data{
-//     margin-top: 0.5%;
-//     font-size: 90%;
-//     margin-left: 5px;
-// }
-// h2.noticia{
-//     font-size: 90%;
-//     color: black;
-//     margin-left: 5px;
-//     text-align: justify;
-// }
-// ion-col#noticia{
-//     width: 5%;
-// }
-// ion-item{
-//     --border-color: red;
-//     --background-color: blue;
-//     background-color: blue;
-//     margin-left: 4%;
-//     margin-right: 4%;
-//     padding-top: 2.5%;
-// }
-  
-  img.noticiaimg{
-    margin-top:5px;
-    margin-bottom: 5px;
-  }
-  
-  h1.titulo_noticia{
-    color:black;
-    text-align: center;
-  }
+ion-card {
+box-shadow:none !important;
+}
+
+.first-news-img{
+  height: 230px;
+}
+.news-img{
+  height: 130px;
+  width: 140px;
+}
+.first-news-logo{
+  height: 30px;
+}
+.first-news-logo-row{
+  text-align: center;
+}
+
+.center{
+  text-align: center;
+}

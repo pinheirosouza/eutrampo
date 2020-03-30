@@ -23,7 +23,21 @@ ion-toolbar {
 }
 
 ion-card {
-box-shadow:none !important
+box-shadow:none !important;
+}
+
+.first-news-img{
+  height: 230px;
+}
+.news-img{
+  height: 130px;
+  width: 140px;
+}
+.first-news-logo{
+  height: 30px;
+}
+.first-news-logo-row{
+  text-align: center;
 }
 
 .center{

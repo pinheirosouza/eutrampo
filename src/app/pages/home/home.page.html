@@ -3,7 +3,8 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-searchbar placeholder="Encontre Serviços" [(ngModel)]="searchTerm" (ionChange)="setFilteredServicos()"></ion-searchbar>
+    <ion-searchbar placeholder="Encontre Serviços" [(ngModel)]="searchTerm" (ionChange)="setFilteredServicos()">
+    </ion-searchbar>
     <!-- <ion-buttons (click)={} slot="end">
       <ion-icon style="font-size: 25px;" name="more"></ion-icon>
     </ion-buttons> -->
@@ -16,9 +17,8 @@
     <ion-list-header>
       Contrate um serviço
     </ion-list-header>
-
     <ion-card *ngFor="let worker of lista_workers; let i=index" (click)="showModal(worker)">
-      <ion-item>  
+      <ion-item>
         <ion-avatar slot="start">
           <img src="../../../assets/img/tester.png">
         </ion-avatar>
@@ -36,16 +36,14 @@
         </ion-col>
       </ion-item>
     </ion-card>
-
   </ion-list>
 
   <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
       Serviços
     </ion-list-header>
-
-    <ion-card *ngFor="let worker of lista_workers | slice:0:3" (click)="showModal(worker)">
-      <ion-item> 
+    <ion-card *ngFor="let worker of lista_workers | slice:0:5" (click)="showModal(worker)">
+      <ion-item>
         <ion-avatar slot="start">
           <img src="../../../assets/img/tester.png">
         </ion-avatar>
@@ -63,57 +61,78 @@
         </ion-col>
       </ion-item>
     </ion-card>
-
   </ion-list>
 
-  <!-- <ion-list *ngIf='searchTerm == ""'>
-    <ion-list-header>
-      Serviços Mais Contratados
-    </ion-list-header>
-
-    <ion-card *ngFor="let service of recent_services; let i=index" [href]=service.redirectTo>
-      <ion-item *ngIf='i<=4'>
-        <ion-avatar slot="start">
-          <img [src]="service.pic">
-        </ion-avatar>
-        <ion-col>
-          <ion-label>
-            <h2>{{service.name}}</h2>
-            <h3>{{service.servicetype}}</h3>
-            <p>{{service.provided}} Serviços Prestados</p>
-          </ion-label>
-        </ion-col>
-        <ion-col class="center" size="8px">
-          <ion-label>
-            <p>{{service.price | currency:"BRL":true:"1.2" }}</p>
-          </ion-label>
-        </ion-col>
-      </ion-item>
-    </ion-card>
-
-    <ion-item text-center routerLink="">
-      <ion-label>Buscar Serviços</ion-label>
-    </ion-item>
-
-  </ion-list> -->
 
   <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
       Oportunidades
     </ion-list-header>
-    <ion-card *ngFor="let oportunidade of lista_oportunidades; let i=index">
-      <ion-card-content *ngIf='i<=4'>
-        <h1 class="titulo_noticia">{{oportunidade.title}}</h1>
-        <a href={{oportunidade.link}}> 
-          <img class="noticiaimg" [src]="oportunidade.image">
-        </a>
-        <h3>{{oportunidade.description}}</h3>
-      </ion-card-content>
-    </ion-card>
+    <div *ngFor="let opportunity of lista_oportunidades | slice:0:1">
+      <ion-item [href]="opportunity.link">
+        <ion-grid>
+          <ion-col>
+            <ion-card class="first-news-img">
+              <img [src]="opportunity.image">
+            </ion-card>
+            <ion-row align-items-center>
+              <ion-col>
+                <img style="height: 30px" [src]="opportunity.src">
+              </ion-col>
+              <ion-col>
+                <div text-end>
+                  {{opportunity.time}}
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="padding-left: 10px;" text-start>
+              <div style="font-size:larger;">
+                {{opportunity.title}}
+              </div>
+            </ion-row>
+            <ion-row style="padding-left: 10px;padding-top: 8px;" text-start>
+              <div style="font-size:medium;">
+                {{opportunity.subtitle}}
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-grid>
+      </ion-item>
+    </div>
+
+    <div *ngFor="let opportunity of lista_oportunidades | slice:1:3">
+      <ion-item [href]="opportunity.link">
+        <ion-grid>
+          <ion-col>
+            <ion-row align-items-center>
+              <ion-col size="6">
+                <img style="height: 25px; margin-bottom: 5px" [src]="opportunity.src">
+                <div style="font-size:larger;">
+                  {{opportunity.title}}
+                </div>
+                <div style="font-size:small; margin-top:10px">
+                  {{opportunity.time}}
+                </div>
+              </ion-col>
+              <ion-col>
+                <ion-thumbnail class="news-img">
+                  <img [src]="opportunity.image" />
+                </ion-thumbnail>
+              </ion-col>
+            </ion-row>
+            <ion-row style="padding-left: 5px;padding-top: 8px;">
+              <div style="font-size:medium;">
+                {{opportunity.subtitle}}
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-grid>
+      </ion-item>
+    </div>
 
     <ion-item text-center routerLink="../opportunities">
-      <ion-label>Ver Mais Oportunidades</ion-label>
-    </ion-item> 
+      <ion-label>Ver mais oportunidades</ion-label>
+    </ion-item>
   </ion-list>
 
   <ion-list *ngIf='searchTerm == ""'>
@@ -121,20 +140,39 @@
       Notícias
     </ion-list-header>
 
-    <ion-card *ngFor="let noticia of lista_noticias; let i=index">
-      <ion-card-content *ngIf='i<=4'>
-        <h1 class="titulo_noticia">{{noticia.title}}</h1>
-        <a href={{noticia.link}}>
-          <img class="noticiaimg" [src]="noticia.image">
-        </a>
-        <h3>{{noticia.description}}</h3>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-item text-center [routerDirection]="'root'" routerLink="../news">
-      <ion-label>Ver Mais Notícias</ion-label>
-    </ion-item>  
-
+    <div *ngFor="let news of lista_noticias | slice:0:3">
+      <ion-item [href]="news.link">
+        <ion-grid>
+          <ion-col>
+            <ion-card class="first-news-img">
+              <img [src]="news.image">
+            </ion-card>
+            <ion-row align-items-center>
+              <ion-col>
+                <img style="height: 30px" [src]="news.src">
+              </ion-col>
+              <ion-col>
+                <div text-end>
+                  {{news.time}}
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="padding-left: 10px;" text-start>
+              <div style="font-size:larger;">
+                {{news.title}}
+              </div>
+            </ion-row>
+            <ion-row style="padding-left: 10px;padding-top: 8px;" text-start>
+              <div style="font-size:medium;">
+                {{news.subtitle}}
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-grid>
+      </ion-item>
+    </div>
+    
+    <ion-item text-center routerLink="../news">
+      <ion-label>Ver mais notícias</ion-label>
+    </ion-item>
   </ion-list>
-
-</ion-content>

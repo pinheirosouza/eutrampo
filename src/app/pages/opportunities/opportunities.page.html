@@ -4,23 +4,77 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title>
-        Oportunidades
+        Oportunidade
       </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+  <ion-list>
 
-  <ion-searchbar placeholder="Busque Oportunidades" [(ngModel)]="searchTerm" (ionChange)="setFilteredOportunidades()"></ion-searchbar>
-  <ion-card *ngFor="let oportunidade of lista_oportunidades">
+    <div *ngFor="let opportunity of lista_oportunidades | slice:0:1">
+      <ion-item [href]="opportunity.link">
+        <ion-grid>
+          <ion-col>
+            <ion-card class="first-opportunity-img">
+              <img [src]="opportunity.image">
+            </ion-card>
+            <ion-row align-items-center>
+              <ion-col>
+                <img style="height: 30px" [src]="opportunity.src">
+              </ion-col>
+              <ion-col>
+                <div text-end>
+                  {{opportunity.time}}
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="padding-left: 10px;" text-start>
+              <div style="font-size:larger;">
+                {{opportunity.title}}
+              </div>
+            </ion-row>
+            <ion-row style="padding-left: 10px;padding-top: 8px;" text-start>
+              <div style="font-size:medium;">
+                {{opportunity.subtitle}}
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-grid>
+      </ion-item>
+    </div>
+
+    <div *ngFor="let opportunity of lista_oportunidades; let first = first">
+      <ion-item *ngIf="!first" [href]="opportunity.link">
+        <ion-grid>
+          <ion-col>
+            <ion-row align-items-center>
+              <ion-col size="6">
+                <img style="height: 25px; margin-bottom: 5px" [src]="opportunity.src">
+                <div style="font-size:larger;">
+                  {{opportunity.title}}
+                </div>
+                <div style="font-size:small; margin-top:10px">
+                  {{opportunity.time}}
+                </div>
+              </ion-col>
+              <ion-col>
+                <ion-thumbnail class="news-img">
+                  <img [src]="opportunity.image" />
+                </ion-thumbnail>
+              </ion-col>
+            </ion-row>
+            <ion-row style="padding-left: 5px;padding-top: 8px;">
+              <div style="font-size:medium;">
+                {{opportunity.subtitle}}
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-grid>
+      </ion-item>
+    </div>
     
-    <ion-card-content>
-      <h1 class="titulo_noticia">{{oportunidade.title}}</h1>
-      <a href={{oportunidade.link}}> 
-        <img class="noticiaimg" [src]= "oportunidade.image">
-      </a>
-      <h3>{{oportunidade.description}}</h3>
-    </ion-card-content>
-  </ion-card> 
+  </ion-list>
 
 </ion-content>
