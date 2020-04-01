@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-button (click)="modalClose()">
@@ -8,9 +8,98 @@
     <ion-title>
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding-top>
+
+<ion-content fullscreen>
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed" >
+    <ion-fab-button (click)="modalClose()" size="small">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div class="image">
+    <img src="../../../../assets/img/workerModal/construcao.jpg">
+  </div>
+  <hr class="solid">
+
+  <ion-col no-padding>
+    <ion-row justify-content-center>
+      <div style="font-size:x-large;">
+        <b>Empreiteiro Pedro Souza</b>
+      </div>
+    </ion-row>
+    <ion-row justify-content-center>
+      <div style="font-size:larger;">
+        Construçao Civil • <span style="color: #662E93;"><b>Pedreiro</b></span>
+      </div>
+    </ion-row>
+  </ion-col>
+
+  <div class="description">
+    <ion-col>
+      <ion-row>
+        <div style="font-size:larger;">
+          <span style="color: #662E93;"><b>Descrição:</b></span>
+        </div>
+      </ion-row>
+      <ion-row>
+        <div style="font-size:medium;">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+          sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+          PageMaker including versions of Lorem Ipsum.
+        </div>
+      </ion-row>
+      <br>
+      <ion-row align-items-center>
+        <ion-col>
+          <div style="font-size:small;" text-start>
+            97 Serviços Prestados
+          </div>
+        </ion-col>
+        <ion-col>
+          <div style="font-size:small;" text-end>
+            Avaliação
+          </div>
+        </ion-col>
+      </ion-row>
+      <br>
+      <ion-row justify-content-center>
+        <div style="font-size: 280%;">
+          <b>R$75,00</b>
+        </div>
+      </ion-row>
+    </ion-col>
+  </div>
+  <ion-row justify-content-center>
+    <ion-button shape="round" color="secondary" (click)="presentActionSheet()">Contato</ion-button>
+  </ion-row>
+  <br>
+  
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-content>
   <ion-card>
     <ion-card-title padding-start>
       <h1>{{Obj_worker.title}}</h1>
@@ -37,46 +126,52 @@
       </ionic4-star-rating>
       <p>4.3</p>
     </ion-row>
-  </ion-col>
+  </ion-col> -->
 
 
 
 
-  <!-- <ion-button padding color="secondary" expand="full" (click)="presentActionSheet()">
+<!-- <ion-button padding color="secondary" expand="full" (click)="presentActionSheet()">
     Entrar em contato
   </ion-button> -->
 
-  <ion-fab style="margin-top: 10px; margin-bottom: 10px;" horizontal="center">
+<!-- <ion-fab style="margin-top: 10px; margin-bottom: 10px;" horizontal="center">
     <ion-fab-button color="light">
       <ion-icon name="call"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="end">
       <ion-fab-button (click)="openEmail()" color="dark">
         <ion-icon name="mail-unread"></ion-icon>
-      </ion-fab-button>
-      <!-- <ion-fab-button (click)="openCall()" color="dark">
+      </ion-fab-button> -->
+
+<!-- <ion-fab-button (click)="openCall()" color="dark">
         <ion-icon name="call"></ion-icon>
       </ion-fab-button> -->
-    </ion-fab-list>
-    <ion-fab-list side="start">
-      <!-- <ion-fab-button (click)="developing()" color="dark">
+
+<!-- </ion-fab-list>
+    <ion-fab-list side="start"> -->
+
+
+<!-- <ion-fab-button (click)="developing()" color="dark">
         <ion-icon name="logo-facebook"></ion-icon>
       </ion-fab-button> -->
-      <ion-fab-button (click)="developing()" color="dark">
+
+
+<!-- <ion-fab-button (click)="developing()" color="dark">
         <ion-icon name="chatboxes"></ion-icon>
       </ion-fab-button>
-    </ion-fab-list>
+    </ion-fab-list> -->
 
-    <!-- Temporary call button -->
+<!-- Temporary call button -->
 
-    <ion-fab-list side="bottom">
+<!-- <ion-fab-list side="bottom">
       <ion-fab-button (click)="openCall()" color="dark">
         <ion-icon name="call"></ion-icon>
       </ion-fab-button>
-    </ion-fab-list>
+    </ion-fab-list> -->
 
-    <!-- Temporary call button -->
+<!-- Temporary call button -->
 
-  </ion-fab>
+<!-- </ion-fab>
   <br>
-</ion-content>
+</ion-content> -->

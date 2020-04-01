@@ -41,20 +41,18 @@ export class ServiceComponent implements OnInit {
       header: "Selecione uma opção de contato",
       buttons: [
         {
-          text: "Chat",
-          icon: "chatboxes"
+          text: "Celular",
+          icon: "call",
+          handler: () => {
+            console.log('phone');
+          }
         },
         {
           text: "Email",
-          icon: "mail-unread"
-        },
-        // {
-        //   text: "Facebook Mensager",
-        //   icon: "logo-facebook"
-        // },
-        {
-          text: "Celular",
-          icon: "call"
+          icon: "mail-unread",
+          handler: () => {
+            console.log('mail');
+          }
         },
         {
           text: "Cancel",
