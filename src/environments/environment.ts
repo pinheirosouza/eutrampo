@@ -5,7 +5,8 @@
 
 export const environment = {
   production: false,
-  url: 'https://stagingeutrampo.herokuapp.com/admin/api/'
+  // url: 'https://stagingeutrampo.herokuapp.com/admin/api/',
+  url: 'https://stagingeutrampo.herokuapp.com/app/api/'
 };
 
 /*

@@ -67,7 +67,7 @@ export function jwtOptionsFactory(storage) {
     EmailComposer,
     Camera,
     FileTransfer,
-    UploadService
+    UploadService,
   ],
   bootstrap: [AppComponent]
 })

@@ -63,6 +63,7 @@
     </ion-card>
   </ion-list>
 
+  <hr class="solid" *ngIf='searchTerm == ""'>
 
   <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
@@ -130,10 +131,12 @@
       </ion-item>
     </div>
 
-    <ion-item text-center routerLink="../opportunities">
+    <ion-item text-center routerLink="../opportunities" lines="none">
       <ion-label>Ver mais oportunidades</ion-label>
     </ion-item>
   </ion-list>
+
+  <hr class="solid" *ngIf='searchTerm == ""'>
 
   <ion-list *ngIf='searchTerm == ""'>
     <ion-list-header>
@@ -172,7 +175,7 @@
       </ion-item>
     </div>
     
-    <ion-item text-center routerLink="../news">
+    <ion-item text-center routerLink="../news" lines="none">
       <ion-label>Ver mais notícias</ion-label>
     </ion-item>
   </ion-list>

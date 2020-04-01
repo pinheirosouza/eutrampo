@@ -10,10 +10,10 @@ import {
 })
 export class BuscacategoriesService {
   categoryURL =
-    "https://productioneutrampo.herokuapp.com/admin/api/category/listwithsubcategory";
-  workerURL = "https:/stagingeutrampo.herokuapp.com/admin/api/worker";
-  opoURL = "https://productioneutrampo.herokuapp.com/admin/api/opportunnities";
-  newsURL = "https://productioneutrampo.herokuapp.com/admin/api/news";
+    "https://stagingeutrampo.herokuapp.com/app/api/category/listwithsubcategory";
+  workerURL = "https:/stagingeutrampo.herokuapp.com/app/api/worker";
+  opoURL = "https://stagingeutrampo.herokuapp.com/app/api/opportunities";
+  newsURL = "https://stagingeutrampo.herokuapp.com/app/api/news";
 
   public lista_oportunidades: any;
   public lista_oportunidades_pesquisa = new Array<any>();

@@ -23,7 +23,8 @@ export class HomePage implements OnInit {
   constructor(
     public menuCtrl: MenuController,
     private modalCtrl: ModalController,
-    private providerCategories: BuscacategoriesService
+    private providerCategories: BuscacategoriesService,
+
   ) {}
 
   ngOnInit() {
@@ -124,4 +125,6 @@ export class HomePage implements OnInit {
 
     modal.present();
   }
+
+
 }
