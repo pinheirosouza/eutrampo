@@ -136,7 +136,6 @@ export class AppComponent {
       } else {
         this.router.navigate(["login"]);
       }
-      this.authService.checkToken()
     });
   }
 
