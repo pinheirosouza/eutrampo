@@ -1,20 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+// import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+// import { IonicModule } from '@ionic/angular';
 
-import { MapviewPageRoutingModule } from './mapview-routing.module';
+// import { MapviewPageRoutingModule } from './mapview-routing.module';
 
-import { MapviewPage } from './mapview.page';
+// import { MapviewPage } from './mapview.page';
 
-@NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    MapviewPageRoutingModule
-  ],
-  declarations: [MapviewPage]
-})
-export class MapviewPageModule {}
+// @NgModule({
+//   imports: [
+//     CommonModule,
+//     FormsModule,
+//     IonicModule,
+//     MapviewPageRoutingModule
+//   ],
+//   declarations: [MapviewPage]
+// })
+// export class MapviewPageModule {}

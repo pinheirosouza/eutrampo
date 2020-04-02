@@ -16,10 +16,10 @@ const routes: Routes = [
     path: 'cycleways',
     loadChildren: () => import('./cycleways/cycleways.module').then( m => m.CyclewaysPageModule)
   },
-  {
-    path: 'museums',
-    loadChildren: () => import('./museums/museums.module').then( m => m.MuseumsPageModule)
-  }
+  // {
+  //   path: 'museums',
+  //   loadChildren: () => import('./museums/museums.module').then( m => m.MuseumsPageModule)
+  // }
 ];
 
 @NgModule({

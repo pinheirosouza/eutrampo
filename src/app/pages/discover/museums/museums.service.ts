@@ -1,28 +1,28 @@
-import { Injectable } from '@angular/core';
-import { Museum } from './museums'
+// import { Injectable } from '@angular/core';
+// import { Museum } from './museums'
 
-@Injectable({
-  providedIn: 'root'
-})
-export class MuseumsService {
-  museums: [];
-  museum: Museum;
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class MuseumsService {
+//   museums: [];
+//   museum: Museum;
 
-  constructor() { }
+//   constructor() { }
 
-  setMuseums(data) {
-    this.museums = data;
-  }
+//   setMuseums(data) {
+//     this.museums = data;
+//   }
 
-  getMuseums() {
-    return this.museums;
-  }
+//   getMuseums() {
+//     return this.museums;
+//   }
 
-  setMuseum(data) {
-    this.museum = data;
-  }
+//   setMuseum(data) {
+//     this.museum = data;
+//   }
 
-  getMuseum() {
-    return this.museum;
-  }
-}
+//   getMuseum() {
+//     return this.museum;
+//   }
+// }

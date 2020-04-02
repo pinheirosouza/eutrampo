@@ -19,7 +19,6 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { environment } from "src/environments/environment";
-import { GoogleMaps } from "@ionic-native/google-maps";
 import { IonicStorageModule } from "@ionic/storage";
 import { HttpClientModule } from "@angular/common/http";
 
@@ -62,7 +61,6 @@ export function jwtOptionsFactory(storage) {
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    GoogleMaps,
     CallNumber,
     EmailComposer,
     Camera,
