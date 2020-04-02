@@ -13,31 +13,31 @@
     <ion-list>
         <ion-item [routerDirection]="'root'" routerLink="user">
           <ion-avatar slot="start">
-            <img src="{{ (user | async)?.img }}">
+            <img [src]="userData.image">
           </ion-avatar>
           <ion-label>
-            <h2>{{ (user | async)?.name }}</h2>
+            <h2>{{userData.name}}</h2>
             <ion-grid>
               <ion-row>
                 <ion-col>
-                  <h3>{{ (user | async)?.provided }} Prestações</h3>
+                  <h3>{{ userCounter.userHiredServices }} Prestações</h3>
                 </ion-col>
                 <ion-col>
-                  <h3>{{ (user | async)?.hired }} Contratações</h3>
+                  <h3>{{ userCounter.userPeformedServices }} Prestações</h3>
                 </ion-col>
               </ion-row>
             </ion-grid>
           </ion-label>
         </ion-item>
 
-        <ion-item [routerDirection]="'root'" routerLink="meus-servicos">
+        <ion-item [routerDirection]="'root'" routerLink="/provided">
           <ion-icon slot="start" name="hammer"></ion-icon>
           <ion-label>
             Meus Serviços
           </ion-label>
         </ion-item>
 
-        <ion-item [routerDirection]="'root'" routerLink="settings">
+        <ion-item (click)="developing()">
             <ion-icon slot="start" name="settings"></ion-icon>
             <ion-label>
               Preferências

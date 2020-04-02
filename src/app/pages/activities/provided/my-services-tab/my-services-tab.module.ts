@@ -1,3 +1,5 @@
+import { UpdateWorkerComponent } from './../../../../shared/modals/update-worker/update-worker.component';
+import { AddWorkerComponent } from 'src/app/shared/modals/add-worker/add-worker.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,8 +9,6 @@ import { IonicModule } from '@ionic/angular';
 import { MyServicesTabPageRoutingModule } from './my-services-tab-routing.module';
 
 import { MyServicesTabPage } from './my-services-tab.page';
-import { AddServiceModalPage } from 'src/app/shared/modals/add-service-modal/add-service-modal.page';
-import { AddServiceModalPageModule } from 'src/app/shared/modals/add-service-modal/add-service-modal.module';
 
 
 @NgModule({
@@ -17,10 +17,9 @@ import { AddServiceModalPageModule } from 'src/app/shared/modals/add-service-mod
     FormsModule,
     IonicModule,
     MyServicesTabPageRoutingModule,
-    AddServiceModalPageModule
   ],
-  declarations: [MyServicesTabPage],
-  entryComponents: [AddServiceModalPage]
+  declarations: [MyServicesTabPage, AddWorkerComponent, UpdateWorkerComponent],
+  entryComponents: [AddWorkerComponent, UpdateWorkerComponent]
 
 })
 export class MyServicesTabPageModule {}

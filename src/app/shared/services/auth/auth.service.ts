@@ -45,6 +45,22 @@ export class AuthService {
     });
   }
 
+  update(credentials, user_id){
+    return this.http.put(this.url+"users/"+ user_id, credentials).toPromise()
+  }
+
+  updatePassword(passwordChange, user_id){
+    return this.http.put(this.url+"users/change-password/"+user_id, passwordChange).toPromise()
+  }
+  // remove(user_id){
+  //   return this.http.delete(this.url+"/users/"+ user_id).pipe(
+  //     catchError(e => {
+  //       this.showAlert(e.error.msg);
+  //       throw new Error(e);
+  //     })
+  //   );
+  // }
+
   register(credentials) {
     return this.http.post(`${this.url}users`, credentials).pipe(
       catchError(e => {
@@ -74,18 +90,14 @@ export class AuthService {
     });
   }
 
-  getSpecialData() {
-    return this.http.get(`${this.url}/special`).pipe(
-      catchError(e => {
-        let status = e.status;
-        if (status === 401) {
-          this.showAlert("You are not authorized for this!");
-          this.logout();
-        }
-        throw new Error(e);
-      })
-    );
+  getUserData(user_id) {
+    return this.http.get(this.url + "users/" + user_id);
   }
+
+  getUserCounter(user_id) {
+    return this.http.get(this.url + "users/report/" + user_id);
+  }
+
 
   isAuthenticated() {
     return this.authenticationState.value;

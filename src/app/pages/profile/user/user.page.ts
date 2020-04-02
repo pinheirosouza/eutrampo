@@ -1,73 +1,39 @@
-import { AuthService } from './../../../shared/services/auth/auth.service';
-import { UserService } from '../../../shared/services/user/user.service'
-import { User } from './../../../shared/interfaces/user';
-import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
-
-
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { FormBuilder } from '@angular/forms';
- 
-const STORAGE_KEY = 'my_images';
+import { AuthService } from "./../../../shared/services/auth/auth.service";
+import { User } from "./../../../shared/interfaces/user";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.page.html',
-  styleUrls: ['./user.page.scss'],
+  selector: "app-user",
+  templateUrl: "./user.page.html",
+  styleUrls: ["./user.page.scss"]
 })
 export class UserPage implements OnInit {
-  images = [];
-  private imagteste;
+  public userUpdate: User = {};
+  public userData: User = {};
 
-  public user: Observable<User>;
-  public userUpdate: User ;
-
-  constructor(
-    private userService: UserService,
-    private authService: AuthService
-    ) { }
-
-  ngOnInit() {
-    // console.log(this.user)
-    // this.user = this.userService.readUser(this.authService.getId()).valueChanges();
-    // console.log(this.authService.getId());
-    // console.log(this.user)
+  constructor(private authService: AuthService) {
+    this.authService.getUserData(this.authService.user._id).subscribe(res => {
+      this.userData = res;
+      this.userUpdate = res;
+      console.log(this.userData);
+    });
   }
-  //  async selectImage() {
-  //   const actionSheet = await this.actionSheetController.create({
-  //       header: "Foto de Perfil",
-  //       buttons: [{
-  //               text: 'Carregar da Galeria',
-  //               handler: () => {
-  //                   this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
-  //               }
-  //           },
-  //           {
-  //               text: 'Usar Câmera',
-  //               handler: () => {
-  //                   this.takePicture(this.camera.PictureSourceType.CAMERA);
-  //               }
-  //           },
-  //           {
-  //               text: 'Excluir Foto',
-  //               handler: () => {
-  //                   this.takePicture(this.camera.PictureSourceType.CAMERA);
-  //               }
-  //           }
-            
-  //       ]
-  //   });
-  //   await actionSheet.present();
-  // }
 
-  // updateRecord(){
-  //   let user = this.userUpdate;
-  //   this.userService.updateUser(user);
-  // }
+  ngOnInit() {}
 
-  // deleteRecord() {
-  //   this.authService.deleteCurrentUser()
-  //   this.userService.deleteUser(this.authService.getId());
-  // }
+  updateUser() {
+    console.log("usuário antigo: ", this.userData);
+    console.log("usuário novo: ", this.userUpdate);
+    this.authService.update(this.userUpdate, this.authService.user._id).then(
+      res => console.log(res)
+    )
+    .catch(
+      err => console.log(err)
+    )
+    
+  }
 
+  // deleteUser(){
+  //   this.authService.remove(this.authService.user._id)
+  // }
 }

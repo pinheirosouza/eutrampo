@@ -1,0 +1,26 @@
+// ion-toolbar {
+//         --background-color: transparent;
+//         --ion-color-base: transparent !important;
+// }
+
+.image {
+    height: 250px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.description{
+  padding: 0 30px;  
+}
+
+hr.solid {
+    width: 55%;
+    margin-top: 20px;
+    border-top: 4px solid rgb(0, 0, 0);
+}
+
+ion-fab-button {
+    // --border-color: #FF6600;
+    --color: #000000;
+    --background: transparent!important;
+}

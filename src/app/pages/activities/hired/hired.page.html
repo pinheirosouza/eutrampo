@@ -11,7 +11,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let hired of hiredList | slice:0:6; let i=index" (click)="showModal()">
+    <ion-card *ngFor="let hired of hiredList; let i=index">
       <ion-item>  
         <ion-avatar slot="start">
           <img src="../../../assets/img/pedro.jpg">
