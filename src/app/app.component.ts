@@ -11,6 +11,7 @@ import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { Router, NavigationEnd, NavigationStart } from "@angular/router";
+import { DevelopingService } from './shared/services/developing/developing.service';
 
 @Component({
   selector: "app-root",
@@ -21,53 +22,58 @@ export class AppComponent {
   public appPages = [
     {
       title: "Página Inicial",
-      url: "/home",
+      click: "navigate(home)",
       icon: "home"
     },
     {
       title: "Serviços Contratados",
-      url: "/hired",
+      click: "navigate(hired)",
       icon: "bookmarks"
     },
     {
       title: "Serviços Prestados",
-      url: "/provided",
+      click: "navigate(provided)",
       icon: "hammer"
     },
     {
       title: "Conversas",
-      url: "/conversations",
-      icon: "chatboxes"
+      icon: "chatboxes",
+      click: "developing()"
     },
     {
       title: "Minha Agenda",
-      url: "/schedule",
+      click: "navigate(schedule)",
       icon: "calendar"
     },
     {
       title: "Notícias",
-      url: "/news",
+      click: "navigate(news)",
       icon: "paper"
     },
     {
       title: "Oportunidades",
-      url: "/opportunities",
+      click: "navigate(opportunities)",
       icon: "briefcase"
     },
     {
       title: "Explorar",
-      url: "/discover",
+      click: "navigate(discover)",
       icon: "compass"
     },
     {
       title: "Perfil",
-      url: "/profile",
+      click: "navigate(profile)",
       icon: "contact"
     },
     {
       title: "Admin",
-      url: "/admin-home",
+      click: "navigate(admin)",
       icon: "cog"
+    },
+    {
+      title: "Sair",
+      icon: "log-out",
+      click: "logout()"
     }
   ];
 
@@ -82,7 +88,8 @@ export class AppComponent {
     private router: Router,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private storage: Storage
+    private storage: Storage,
+    public developingService: DevelopingService
   ) {
     this.router.events.subscribe((event: NavigationEnd) => {
       if (event instanceof NavigationEnd) {
@@ -163,5 +170,13 @@ export class AppComponent {
       duration: 2000
     });
     toast.present();
+  }
+
+  developing(){
+    this.developingService.developing()
+  }
+
+  navigate(url){
+    this.router.navigate([url.toString()])
   }
 }

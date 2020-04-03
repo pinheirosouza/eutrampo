@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DevelopingService } from 'src/app/shared/services/developing/developing.service';
 
 
 @Component({
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProvidedPage implements OnInit {
 
-  constructor() {}
+  constructor( public developingService: DevelopingService ) {}
 
   ngOnInit() {}
+
+  developing(){
+    this.developingService.developing()
+  }
 }

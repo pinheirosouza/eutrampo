@@ -26,7 +26,8 @@
           <ion-label>
             <h2>{{worker.title}}</h2>
             <h3>{{worker.subcategory[0].title}}</h3>
-            <p>0 Serviços Prestados</p>
+            <p *ngIf="worker.provided">{{worker.provided}} Serviços Prestados</p>
+            <p *ngIf="!worker.provided">0 Serviços Prestados</p>
           </ion-label>
         </ion-col>
         <ion-col class="center" size="8px">

@@ -8,17 +8,89 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="home">
+              <ion-icon slot="start" name="home"></ion-icon>
               <ion-label>
-                {{p.title}}
+                Página Inicial
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="developing()">
+              <ion-icon slot="start" name="bookmarks"></ion-icon>
+              <ion-label>
+                Serviços Contratados
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="provided">
+              <ion-icon slot="start" name="hammer"></ion-icon>
+              <ion-label>
+                Serviços Prestados
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item (click)="developing()">
+              <ion-icon slot="start" name="chatboxes"></ion-icon>
+              <ion-label>
+                Conversas
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="schedule">
+              <ion-icon slot="start" name="calendar"></ion-icon>
+              <ion-label>
+                Minha Agenda
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="news">
+              <ion-icon slot="start" name="paper"></ion-icon>
+              <ion-label>
+                Notícias
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="opportunities">
+              <ion-icon slot="start" name="briefcase"></ion-icon>
+              <ion-label>
+                Oportunidades
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="discover">
+              <ion-icon slot="start" name="compass"></ion-icon>
+              <ion-label>
+                Explorar
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="profile">
+              <ion-icon slot="start" name="contact"></ion-icon>
+              <ion-label>
+                Perfil
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerLink="admin">
+              <ion-icon slot="start" name="cog"></ion-icon>
+              <ion-label>
+                Admin
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
           
           <!-- TODO: Colocar o botão de sair mais abaixo -->
-          <ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
             <ion-item (click)="logout()">
               <ion-icon slot="start" name="log-out"></ion-icon>
               <ion-label>
