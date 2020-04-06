@@ -36,15 +36,11 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  getImage(mode) {
-    console.log(mode);
-    // return mode;
-
-    var sourceType = mode;
+  getImage() {
+  
     const options: CameraOptions = {
       quality: 60,
       destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: sourceType,
       allowEdit: false,
       encodingType: this.camera.EncodingType.JPEG,
       saveToPhotoAlbum: false,

@@ -12,6 +12,8 @@ import { CalendarComponent } from 'ionic2-calendar/calendar';
 })
 export class SchedulePage implements OnInit {
 
+  public collapseCard: any;
+
   event = {
     title: '',
     description: '',
@@ -172,4 +174,5 @@ onTimeSelected(ev) {
   selected.setHours(selected.getHours() + 1);
   this.event.endTime = (selected.toISOString());
 }
+
 }

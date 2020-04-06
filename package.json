@@ -1,8 +1,8 @@
 {
-  "name": "pwa_eutrampo",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "name": "app.eutrampo",
+  "version": "0.0.2",
+  "author": "Time EuTrampo",
+  "homepage": "https://eutrampo.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
