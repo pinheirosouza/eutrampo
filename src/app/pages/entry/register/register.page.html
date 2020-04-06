@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        Cadastro
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+<ion-list>
+
+  <ion-avatar *ngIf="!image" (click)="getImage()" class="center">
+    <img src="../../../../assets/img/perfil.jpg">
+  </ion-avatar>
+
+  <ion-avatar *ngIf="image" (click)="getImage()" class="center">
+    <img [src]="image">
+  </ion-avatar>
+
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="userRegister.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">CPF</ion-label>
+    <ion-input [(ngModel)]="userRegister.cpf"></ion-input>
+  </ion-item>
+
+  <ion-radio-group>
+    <ion-list-header>
+      <ion-label>Gênero</ion-label>
+    </ion-list-header>
+    <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Masculino</ion-label>
+            <ion-radio item-left slot="start" color="secondary" value="masculino" [(ngModel)]="userRegister.gender"></ion-radio>
+          </ion-item>
+        </ion-col>
+        
+        <ion-col>
+          <ion-item>
+            <ion-label>Feminino</ion-label>
+            <ion-radio item-left slot="start" color="secondary" value="feminino" [(ngModel)]="userRegister.gender"></ion-radio>
+          </ion-item>
+        </ion-col>
+    </ion-row>
+  </ion-radio-group>
+  
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="userRegister.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Telefone</ion-label>
+    <ion-input [(ngModel)]="userRegister.phone"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password" [(ngModel)]="userRegister.password"></ion-input>
+  </ion-item>
+
+  <br>
+  <ion-button expand="block" color="secondary" (click)="register()" [disabled]="!userRegister.name || !userRegister.email || !userRegister.phone || !userRegister.password">Cadastrar</ion-button>
+
+  
+  </ion-list>
+</ion-content>
+

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color='secondary'>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        Explorar
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item [routerDirection]="'root'" routerLink="bus">
+          <ion-icon slot="start" name="bus"></ion-icon>
+          <ion-label>
+            Buscar Ônibus
+          </ion-label>
+        </ion-item>
+
+      <!-- <ion-item [routerDirection]="'root'" routerLink="cycleways">
+          <ion-icon slot="start" name="bicycle"></ion-icon>
+          <ion-label>
+            Ciclovias
+          </ion-label>
+        </ion-item> -->
+
+      <ion-item [routerDirection]="'root'" routerLink="museums">
+          <ion-icon slot="start" name="map"></ion-icon>
+          <ion-label>
+            Museus
+          </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

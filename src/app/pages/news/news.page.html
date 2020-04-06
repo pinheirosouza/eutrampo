@@ -1,9 +1,79 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>news</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        News
+      </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+  <ion-list>
+
+    <div *ngFor="let news of lista_noticias | slice:0:1">
+      <ion-item [href]="news.link">
+        <ion-grid>
+          <ion-col>
+            <ion-card class="first-news-img">
+              <img [src]="news.image">
+            </ion-card>
+            <ion-row align-items-center>
+              <ion-col>
+                <img style="height: 30px" [src]="news.src">
+              </ion-col>
+              <ion-col>
+                <div text-end>
+                  {{news.time}}
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="padding-left: 10px;" text-start>
+              <div style="font-size:larger;">
+                {{news.title}}
+              </div>
+            </ion-row>
+            <ion-row style="padding-left: 10px;padding-top: 8px;" text-start>
+              <div style="font-size:medium;">
+                {{news.subtitle}}
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-grid>
+      </ion-item>
+    </div>
+
+    <div *ngFor="let news of lista_noticias; let first = first">
+      <ion-item *ngIf="!first" [href]="news.link">
+        <ion-grid>
+          <ion-col>
+            <ion-row align-items-center>
+              <ion-col size="6">
+                <img style="height: 25px; margin-bottom: 5px" [src]="news.src">
+                <div style="font-size:larger;">
+                  {{news.title}}
+                </div>
+                <div style="font-size:small; margin-top:10px">
+                  {{news.time}}
+                </div>
+              </ion-col>
+              <ion-col>
+                <ion-thumbnail class="news-img">
+                  <img [src]="news.image" />
+                </ion-thumbnail>
+              </ion-col>
+            </ion-row>
+            <ion-row style="padding-left: 5px;padding-top: 8px;">
+              <div style="font-size:medium;">
+                {{news.subtitle}}
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-grid>
+      </ion-item>
+    </div>
+  </ion-list>
 
 </ion-content>

@@ -1,58 +1,95 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from "./shared/guards/auth/login.guard";
+import { AuthGuard } from "./shared/guards/auth/auth.guard";
+import { NgModule } from "@angular/core";
+import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: "login",
+    loadChildren: "./pages/entry/login/login.module#LoginPageModule",
+    canActivate: [LoginGuard]
   },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
+    path: "register",
+    loadChildren: "./pages/entry/register/register.module#RegisterPageModule",
+    canActivate: [LoginGuard]
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.UserPageModule)
+    path: "home",
+    loadChildren: "./pages/home/home.module#HomePageModule",
+    canActivate: [AuthGuard]
   },
   {
-    path: 'chat',
-    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+    path: "profile",
+    loadChildren: "./pages/profile/profile.module#ProfilePageModule",
+    canActivate: [AuthGuard]
   },
   {
-    path: 'provided',
-    loadChildren: () => import('./pages/activities/provided/provided.module').then( m => m.ProvidedPageModule)
+    path: "provided",
+    loadChildren:
+      "./pages/activities/provided/provided.module#ProvidedPageModule",
+    canActivate: [AuthGuard]
   },
   {
-    path: 'hired',
-    loadChildren: () => import('./pages/activities/hired/hired.module').then( m => m.HiredPageModule)
+    path: "hired",
+    loadChildren: "./pages/activities/hired/hired.module#HiredPageModule",
+    canActivate: [AuthGuard]
   },
   {
-    path: 'news',
-    loadChildren: () => import('./pages/news/news.module').then( m => m.NewsPageModule)
+    path: "news",
+    loadChildren: "./pages/news/news.module#NewsPageModule",
+    canActivate: [AuthGuard]
   },
   {
-    path: 'schedule',
-    loadChildren: () => import('./pages/schedule/schedule.module').then( m => m.SchedulePageModule)
+    path: "schedule",
+    loadChildren: "./pages/schedule/schedule.module#SchedulePageModule",
+    canActivate: [AuthGuard]
   },
   {
-    path: 'bus',
-    loadChildren: () => import('./pages/discover/bus/bus.module').then( m => m.BusPageModule)
+    path: "discover",
+    loadChildren: "./pages/discover/discover.module#DiscoverPageModule",
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: "conversations",
+    loadChildren:
+      "./pages/conversations/conversations.module#ConversationsPageModule",
+    canActivate: [AuthGuard]
   },
   {
-    path: 'museums',
-    loadChildren: () => import('./pages/discover/museums/museums.module').then( m => m.MuseumsPageModule)
+    path: "opportunities",
+    loadChildren:
+      "./pages/opportunities/opportunities.module#OpportunitiesPageModule",
+    canActivate: [AuthGuard]
+  },
+  // {
+  //   path: 'service-modal',
+  //   loadChildren: () => import('./shared/modals/service-modal/service-modal.module').then( m => m.ServiceModalPageModule)
+  // },
+  {
+    path: "admin-home",
+    loadChildren: () =>
+      import("./admin/pages/home/home.module").then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
-    path: 'cycleways',
-    loadChildren: () => import('./pages/discover/cycleways/cycleways.module').then( m => m.CyclewaysPageModule)
+    path: "",
+    redirectTo: "login",
+    pathMatch: "full"
   },
-  
+  {
+    path: "**",
+    redirectTo: "login"
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      useHash: true
+    })
   ],
   exports: [RouterModule]
 })

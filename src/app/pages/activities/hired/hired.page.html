@@ -1,9 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>hired</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Serviços Contratados
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-card *ngFor="let hired of hiredList; let i=index">
+      <ion-item>  
+        <ion-avatar slot="start">
+          <img src="../../../assets/img/pedro.jpg">
+        </ion-avatar>
+        <ion-col>
+          <ion-label>
+            <h2>{{hired.title}}</h2>
+            <h3>{{hired.servicetype}}</h3>
+            <p>{{hired.provided}} Serviços Prestados</p>
+          </ion-label>
+        </ion-col>
+        <ion-col class="center" size="8px">
+          <ion-label>
+            <p>{{hired.price | currency:"BRL":true:"1.2" }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-item>
+    </ion-card>
 
+  </ion-list>
+    
 </ion-content>

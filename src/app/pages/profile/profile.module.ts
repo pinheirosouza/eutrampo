@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserPageRoutingModule } from './profile-routing.module';
+import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 
@@ -13,8 +13,8 @@ import { ProfilePage } from './profile.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    UserPageRoutingModule
+    ProfilePageRoutingModule
   ],
   declarations: [ProfilePage]
 })
-export class UserPageModule {}
+export class ProfilePageModule {}

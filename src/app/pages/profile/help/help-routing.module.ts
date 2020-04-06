@@ -7,6 +7,18 @@ const routes: Routes = [
   {
     path: '',
     component: HelpPage
+  },
+  {
+    path: 'howeutrampoworks',
+    loadChildren: () => import('./howeutrampoworks/howeutrampoworks.module').then( m => m.HoweutrampoworksPageModule)
+  },
+  {
+    path: 'faq',
+    loadChildren: () => import('./faq/faq.module').then( m => m.FaqPageModule)
+  },
+  {
+    path: 'contacts',
+    loadChildren: () => import('./contacts/contacts.module').then( m => m.ContactsPageModule)
   }
 ];
 

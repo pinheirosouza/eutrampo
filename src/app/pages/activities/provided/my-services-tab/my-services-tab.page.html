@@ -1,0 +1,36 @@
+<ion-content>
+  <ion-fab padding horizontal="end" vertical="bottom" slot="fixed" position:fixed>
+    <ion-fab-button color="danger" (click)=addWorkerModal()>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let worker of workersList" >
+      <ion-item (click)="updateWorkerModal(worker)"> 
+        <ion-avatar slot="start">
+          <img src="../../../../../assets/img/tester.png">
+        </ion-avatar>
+        <ion-col>
+          <ion-label>
+            <h2>{{worker.title}}</h2>
+            <h3>{{worker.description}}</h3>
+            <p>{{worker.provided}} Serviços Prestados</p>
+          </ion-label>
+        </ion-col>
+        <ion-col class="center" size="8px">
+          <ion-label>
+            <p>{{worker.price | currency:"BRL":true:"1.2" }}</p>
+          </ion-label>
+        </ion-col>
+      </ion-item>
+    </ion-card>
+
+  </ion-list>
+
+    
+</ion-content>
+
+</ion-content>

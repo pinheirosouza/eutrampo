@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'provided',
+    loadChildren: () => import('../activities/provided/provided.module').then(m => m.ProvidedPageModule)
   }
 ];
 
@@ -30,4 +34,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UserPageRoutingModule {}
+export class ProfilePageRoutingModule {}

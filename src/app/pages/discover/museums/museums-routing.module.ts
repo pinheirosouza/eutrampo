@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: MuseumsPage
+  },  {
+    path: 'mapview',
+    loadChildren: () => import('./mapview/mapview.module').then( m => m.MapviewPageModule)
   }
+
 ];
 
 @NgModule({

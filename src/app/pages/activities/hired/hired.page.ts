@@ -1,4 +1,6 @@
+import { JobService } from './../../../shared/services/job/job.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-hired',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hired.page.scss'],
 })
 export class HiredPage implements OnInit {
+  
+  public hiredList: any;
 
-  constructor() { }
+  constructor(jobService: JobService){}
 
-  ngOnInit() {
+  ngOnInit(){
   }
 
 }

@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: UserPage
+  },
+  {
+    path: 'password',
+    loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
   }
 ];
 

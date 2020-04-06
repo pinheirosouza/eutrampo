@@ -8,13 +8,16 @@ import { ProvidedPageRoutingModule } from './provided-routing.module';
 
 import { ProvidedPage } from './provided.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProvidedPageRoutingModule
+    ProvidedPageRoutingModule,
   ],
   declarations: [ProvidedPage]
+
+
 })
 export class ProvidedPageModule {}

@@ -1,60 +1,142 @@
-import { Component } from '@angular/core';
+import { Storage } from "@ionic/storage";
+import { Component } from "@angular/core";
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {
+  Platform,
+  MenuController,
+  LoadingController,
+  ToastController
+} from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { AuthService } from "./shared/services/auth/auth.service";
+import { Router, NavigationEnd, NavigationStart } from "@angular/router";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"]
 })
 export class AppComponent {
   public appPages = [
     {
-      title: 'Página Inicial',
-      url: '/home',
-      icon: 'home'
+      title: "Página Inicial",
+      url: "/home",
+      icon: "home"
     },
     {
-      title: 'Serviços Contratados',
-      url: '/hired',
-      icon: 'bookmarks'
+      title: "Serviços Contratados",
+      url: "/hired",
+      icon: "bookmarks"
     },
     {
-      title: 'Serviços Prestados',
-      url: '/provided',
-      icon: 'hammer'
+      title: "Serviços Prestados",
+      url: "/provided",
+      icon: "hammer"
     },
     {
-      title: 'Conversas',
-      url: '/chat',
-      icon: 'chatboxes'
+      title: "Conversas",
+      url: "/conversations",
+      icon: "chatboxes"
     },
     {
-      title: 'Minha Agenda',
-      url: '/schedule',
-      icon: 'calendar'
+      title: "Minha Agenda",
+      url: "/schedule",
+      icon: "calendar"
     },
     {
-      title: 'Explorar',
-      url: '/discover',
-      icon: 'map'
+      title: "Notícias",
+      url: "/news",
+      icon: "paper"
     },
     {
-      title: 'Perfil',
-      url: '/profile',
-      icon: 'contact'
+      title: "Oportunidades",
+      url: "/opportunities",
+      icon: "briefcase"
     },
-    
+    {
+      title: "Explorar",
+      url: "/discover",
+      icon: "compass"
+    },
+    {
+      title: "Perfil",
+      url: "/profile",
+      icon: "contact"
+    },
+    {
+      title: "Admin",
+      url: "/admin-home",
+      icon: "cog"
+    }
   ];
+
+  hideMenu: boolean;
+  private loading: any;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private authService: AuthService,
+    private router: Router,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    private storage: Storage
   ) {
-    this.initializeApp();
+    this.router.events.subscribe((event: NavigationEnd) => {
+      if (event instanceof NavigationEnd) {
+        console.log(event.url);
+        switch (event.url) {
+          case "/login": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/register": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/conversations": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile/user": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile/settings": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile/help": {
+            this.hideMenu = true;
+            break;
+          }
+          case "/profile/about": {
+            this.hideMenu = true;
+            break;
+          }
+
+          default: {
+            this.hideMenu = false;
+            break;
+          }
+        }
+      }
+      console.log("Menu:", this.hideMenu);
+    });
+    
+    this.authService.authenticationState.subscribe(state => {
+      if (state) {
+        this.router.navigate(["home"]);
+      } else {
+        this.router.navigate(["login"]);
+      }
+    });
   }
 
   initializeApp() {
@@ -62,5 +144,24 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingCtrl.create({
+      message: "Aguarde"
+    });
+    return this.loading.present();
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      duration: 2000
+    });
+    toast.present();
   }
 }

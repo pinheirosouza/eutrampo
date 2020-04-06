@@ -1,5 +1,7 @@
 {
   "name": "pwa_eutrampo",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

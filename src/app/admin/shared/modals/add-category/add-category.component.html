@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="modalClose()">
+        <ion-icon  slot="icon-only" name="arrow-down"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Novo Serviço
+      </ion-title>
+  </ion-toolbar >
+</ion-header>
+
+<ion-content>
+
+    <ion-item>
+      <ion-input type="text" class="input-form" placeholder="Título do Serviço" [(ngModel)]="category.title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ativo:</ion-label>
+      <ion-toggle [(ngModel)]="category.status"></ion-toggle>
+    </ion-item>
+    
+    <ion-button color="secondary" expand="block" (click)="submit()">Enviar</ion-button>
+    
+</ion-content>
