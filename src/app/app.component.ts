@@ -11,6 +11,8 @@ import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AuthService } from "./shared/services/auth/auth.service";
 import { Router, NavigationEnd, NavigationStart } from "@angular/router";
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: "app-root",
@@ -78,11 +80,13 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private oneSignal: OneSignal,
     private authService: AuthService,
     private router: Router,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private storage: Storage
+    private storage: Storage,
+    private alertCtrl: AlertController
   ) {
     this.router.events.subscribe((event: NavigationEnd) => {
       if (event instanceof NavigationEnd) {
@@ -144,6 +148,50 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    
+      this.setupPush();
+    
+  }
+
+  setupPush() {
+    // I recommend to put these into your environment.ts
+    this.oneSignal.startInit('27ce2159-70ab-46ce-bd1c-5b9ffc4f0bb4', '1059100373802');
+ 
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
+ 
+    // Notifcation was received in general
+    this.oneSignal.handleNotificationReceived().subscribe(data => {
+      let msg = data.payload.body;
+      let title = data.payload.title;
+      let additionalData = data.payload.additionalData;
+      this.showAlert(title, msg, additionalData.task);
+    });
+ 
+    // Notification was really clicked/opened
+    this.oneSignal.handleNotificationOpened().subscribe(data => {
+      // Just a note that the data is a different place here!
+      let additionalData = data.notification.payload.additionalData;
+ 
+      this.showAlert('Notification opened', 'You already read this before', additionalData.task);
+    });
+ 
+    this.oneSignal.endInit();
+  }
+ 
+  async showAlert(title, msg, task) {
+    const alert = await this.alertCtrl.create({
+      header: title,
+      subHeader: msg,
+      buttons: [
+        {
+          text: `Action: ${task}`,
+          handler: () => {
+            // E.g: Navigate to a specific screen
+          }
+        }
+      ]
+    })
+    alert.present();
   }
 
   logout() {

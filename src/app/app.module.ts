@@ -27,6 +27,8 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { Storage } from "@ionic/storage";
 
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+
 export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
@@ -67,6 +69,7 @@ export function jwtOptionsFactory(storage) {
     Camera,
     FileTransfer,
     UploadService,
+    OneSignal
   ],
   bootstrap: [AppComponent]
 })
