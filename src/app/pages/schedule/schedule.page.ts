@@ -3,6 +3,8 @@ import { Component, ViewEncapsulation, ViewChild, OnInit, Inject, LOCALE_ID } fr
 import { AlertController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
+import { AuthService } from "./../../shared/services/auth/auth.service";
+
 
 @Component({
   selector: 'app-schedule',
@@ -15,6 +17,7 @@ export class SchedulePage implements OnInit {
   public collapseCard: any;
 
   event = {
+    by_user_id:'',
     title: '',
     description: '',
     startTime: '',
@@ -42,16 +45,29 @@ export class SchedulePage implements OnInit {
  
   @ViewChild(CalendarComponent,{static:false}) myCal: CalendarComponent;
  
-  constructor(private alertCtrl: AlertController, private scheduleService: ScheduleService, @Inject(LOCALE_ID) private locale: string) { }
+  constructor(private alertCtrl: AlertController,
+     private scheduleService: ScheduleService,
+     private authService: AuthService,
+     @Inject(LOCALE_ID) private locale: string) { 
+       
+     }
  
   ngOnInit() {
     this.resetEvent();
-    // this.eventSource = JSON.parse(JSON.stringify(this.scheduleService.getTarefas(id)))
+    console.log(this.authService.user._id)
+    let loadedEvents = JSON.parse(JSON.stringify(this.scheduleService.getTarefas(this.authService.user._id)))
+  
+    for(let i = 0; i<loadedEvents.length; i++){
+      this.eventSource.push(loadedEvents[i])
+    }
+
+    console.log(loadedEvents)
   }
   
  
   resetEvent() {
     this.event = {
+      by_user_id: '',
       title: '',
       description: '',
       startTime: new Date().toISOString(),
@@ -70,6 +86,7 @@ export class SchedulePage implements OnInit {
   // Create the right event format and reload source
   addNewEvent() {
     let eventCopy = {
+      by_user_id: this.authService.user._id,
       title: this.event.title,
       description: this.event.description,
       startTime:  new Date(this.event.startTime),
@@ -87,14 +104,16 @@ export class SchedulePage implements OnInit {
     }
  
     this.eventSource.push(eventCopy);
+
     this.myCal.loadEvents();
     this.resetEvent();
-    console.log(this.eventSource)
+  
     this.scheduleService.setTarefas(this.eventSource).then((res)=>{
       console.log(res)
       console.log("funcionou")
     })
-    .catch(()=>{
+    .catch((err)=>{
+      console.log(err)
       console.log("não funcionou")
     });
   }

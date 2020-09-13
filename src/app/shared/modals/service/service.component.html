@@ -78,10 +78,53 @@
   <ion-row justify-content-center>
     <ion-button shape="round" color="secondary" (click)="presentActionSheet()">Contato</ion-button>
   </ion-row>
+  <ion-row justify-content-center>
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title color='secondary'>Agendar</ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="!collapseCard" class="labelFormat">
+   
+        <ion-item>
+          <ion-input type="text" class="input-form" placeholder="Novo Evento" [(ngModel)]="event.title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" class="input-form" placeholder="Descrição" [(ngModel)]="event.description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" class="input-form" placeholder="Rua(opcional)" [(ngModel)]="event.address.complement"></ion-input>
+          <ion-input type="text" class="input-form" placeholder="Número(opcional)" [(ngModel)]="event.address.number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" class="input-form" placeholder="CEP(opcional)" [(ngModel)]="event.address.cep"></ion-input>
+          <ion-input type="text" class="input-form" placeholder="Bairro(opcional)" [(ngModel)]="event.address.neighborhood"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" class="input-form" placeholder="Cidade(opcional)" [(ngModel)]="event.address.city"></ion-input>
+          <ion-input type="text" class="input-form" placeholder="Estado(opcional)" [(ngModel)]="event.address.state"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="input-form">Início</ion-label>
+          <ion-datetime color="secondary" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" monthShortNames="Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label class="input-form">Fim</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat= "MMM YYYY D HH:mm" [(ngModel)]="event.endTime"  monthShortNames="Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label class="input-form">Dia inteiro</ion-label>
+          <ion-checkbox color="secondary" [(ngModel)]="event.allDay"></ion-checkbox>
+        </ion-item>
+        <ion-button  expand="block" color="secondary" (click)="addNewEvent()" [disabled]="event.title == '' || event.startTime=='' || event.endTime==''">Agendar</ion-button>
+   
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+  
   <br>
   
 
-</ion-content>
+</ion-content> 
 
 
 

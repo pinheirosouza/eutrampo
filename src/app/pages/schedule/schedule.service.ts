@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ScheduleService {
   tarefas: [];
   tarefa :{
+        by_user_id: any,
         title: any,
         description: any,
         startTime: Date,
@@ -28,25 +29,16 @@ export class ScheduleService {
 
   setTarefas(data : any) {
     this.tarefas = data;
-    let url= "https://stagingeutrampo.herokuapp.com/admin/api/appointment/user/"
+    let url= "https://stagingeutrampo.herokuapp.com/app/api/appointment"
     let headers= new HttpHeaders({'Content-type':'application/json'})
     return this.http.post(url, data, {headers : headers}).toPromise();
-    console.log(this.tarefas)
   }
 
   getTarefas(user_id) {
-    console.log("ta funcionando");
-    let url= "https://stagingeutrampo.herokuapp.com/admin/api/appointment/user/"+user_id
+    console.log("buscando");
+    let url= "https://stagingeutrampo.herokuapp.com/app/api/appointment/user/"+user_id
 
     return this.http.get(url).toPromise()
-    //return this.tarefas;
   }
 
-  setTarefa(data) {
-    this.tarefa = data;
-  }
-
-  getTarefa() {
-    return this.tarefa;
-  }
 }
