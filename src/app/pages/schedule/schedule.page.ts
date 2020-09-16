@@ -18,6 +18,8 @@ export class SchedulePage implements OnInit {
 
   event = {
     by_user_id:'',
+    //for_user_id:'',
+    //worker_id: '',
     title: '',
     description: '',
     startTime: '',
@@ -30,12 +32,15 @@ export class SchedulePage implements OnInit {
       state: '',
       complement: '',
       cep: '' },
+    price:''
   };
   mesAtual = {data:''};
  
   minDate = new Date().toISOString();
  
   eventSource = [];
+  loadedEvents = {};
+  loadedEventsSize;
   viewTitle;
  
   calendar = {
@@ -54,20 +59,41 @@ export class SchedulePage implements OnInit {
  
   ngOnInit() {
     this.resetEvent();
-    console.log(this.authService.user._id)
-    let loadedEvents = JSON.parse(JSON.stringify(this.scheduleService.getTarefas(this.authService.user._id)))
-  
-    for(let i = 0; i<loadedEvents.length; i++){
-      this.eventSource.push(loadedEvents[i])
-    }
 
-    console.log(loadedEvents)
+
+    JSON.parse(JSON.stringify(this.scheduleService.getTarefas(this.authService.user._id)
+    .then(res =>{
+      this.loadedEvents = res
+      console.log(this.loadedEvents)
+      this.loadedEventsSize = Object.keys(this.loadedEvents).length
+      for (let index = 0; index < this.loadedEventsSize; index++) {
+        this.loadedEvents[index].startTime = new Date(this.loadedEvents[index].startTime);
+        this.loadedEvents[index].endTime = new Date(this.loadedEvents[index].endTime);
+      if(this.loadedEvents[index].allDay) {
+          let start = this.loadedEvents[index].startTime;
+         let end = this.loadedEvents[index].endTime;
+     
+         this.loadedEvents[index].tartTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
+         this.loadedEvents[index].endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
+       }
+        this.eventSource.push(this.loadedEvents[index])
+        
+      }
+         
+    this.myCal.loadEvents();
+    }
+      )
+
+    ));
+
   }
   
- 
+
   resetEvent() {
     this.event = {
       by_user_id: '',
+      //for_user_id:'',
+     // worker_id: '',
       title: '',
       description: '',
       startTime: new Date().toISOString(),
@@ -80,6 +106,7 @@ export class SchedulePage implements OnInit {
         state: '',
         complement:'' ,
         cep:'' },
+      price:''
     };
   }
  
@@ -87,12 +114,15 @@ export class SchedulePage implements OnInit {
   addNewEvent() {
     let eventCopy = {
       by_user_id: this.authService.user._id,
+      //for_user_id:this.event.for_user_id,
+      //worker_id: this.event.worker_id,
       title: this.event.title,
       description: this.event.description,
       startTime:  new Date(this.event.startTime),
       endTime: new Date(this.event.endTime),
       allDay: this.event.allDay,
-      address: this.event.address
+      address: this.event.address,
+      price: this.event.price
     }
  
     if (eventCopy.allDay) {
@@ -104,11 +134,12 @@ export class SchedulePage implements OnInit {
     }
  
     this.eventSource.push(eventCopy);
+    console.log(this.eventSource)
 
     this.myCal.loadEvents();
     this.resetEvent();
   
-    this.scheduleService.setTarefas(this.eventSource).then((res)=>{
+    this.scheduleService.setTarefas(eventCopy).then((res)=>{
       console.log(res)
       console.log("funcionou")
     })
@@ -175,15 +206,16 @@ async onEventSelected(event) {
 }
  
 removeEvent(event){
-  console.log(event);
+  
   for(var i=0; i< this.eventSource.length; i++){
     if(event === this.eventSource[i]){
       this.eventSource.splice(i,1)
     }
   }
-  this.myCal.loadEvents();
+ 
   console.log(this.eventSource)
-  this.scheduleService.setTarefas(this.eventSource);
+  this.scheduleService.deleteTarefas(event._id);
+  this.myCal.loadEvents();
 }
 
 // Time slot was clicked
