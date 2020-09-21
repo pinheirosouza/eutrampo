@@ -1,4 +1,5 @@
 import { ServiceComponent } from "./../../shared/modals/service/service.component";
+import { CoronaComponent } from "./../../shared/modals/corona/corona.component";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
@@ -25,8 +26,8 @@ import { StarRatingModule } from "ionic4-star-rating";
       }
     ])
   ],
-  declarations: [HomePage, ServiceComponent],
-  entryComponents: [ServiceComponent]
+  declarations: [HomePage, ServiceComponent, CoronaComponent],
+  entryComponents: [ServiceComponent, CoronaComponent]
   
 })
 export class HomePageModule {}

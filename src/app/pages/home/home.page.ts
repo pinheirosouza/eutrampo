@@ -1,4 +1,5 @@
 import { ServiceComponent } from './../../shared/modals/service/service.component';
+import { CoronaComponent } from './../../shared/modals/corona/corona.component';
 import { Component, OnInit } from "@angular/core";
 import { MenuController, ModalController } from "@ionic/angular";
 import { BuscacategoriesService } from "./buscacategories.service";
@@ -117,13 +118,22 @@ export class HomePage implements OnInit {
   }
 
   async showModal(obj_worker) {
-    console.log("Worker= " + obj_worker);
+    console.log("Worker= " + obj_worker.user[0].name);
+
     const modal = await this.modalCtrl.create({
       component: ServiceComponent,
       componentProps: { oWorker: obj_worker }
     });
 
     modal.present();
+  }
+
+  async corongaPage(){
+    const modal = await this.modalCtrl.create({
+      component: CoronaComponent
+    });
+
+    modal.present()
   }
 
 
