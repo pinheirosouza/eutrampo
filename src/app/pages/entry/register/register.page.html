@@ -66,8 +66,17 @@
     <ion-input type="password" [(ngModel)]="userRegister.password"></ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-checkbox [(ngModel)]="accept" slot="start"></ion-checkbox>
+    <ion-label ion-label>
+      <p>Li e aceito os termos e condições de uso.</p>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <a href='https://drive.google.com/drive/folders/1KubWm8jtPbzw2Oe9bElWXColW_a1JIol?usp=sharing'>   Termos e condições de uso.</a>
+  </ion-item>
   <br>
-  <ion-button expand="block" color="secondary" (click)="register()" [disabled]="!userRegister.name || !userRegister.email || !userRegister.phone || !userRegister.password">Cadastrar</ion-button>
+  <ion-button expand="block" color="secondary" (click)="register()" [disabled]="!accept ||!userRegister.name || !userRegister.email || !userRegister.phone || !userRegister.password">Cadastrar</ion-button>
 
   
   </ion-list>

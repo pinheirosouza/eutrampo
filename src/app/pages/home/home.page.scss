@@ -65,6 +65,10 @@ hr.solid {
   border-top: 8px solid rgb(230, 229, 229);
 }
 
-#coronaID{
+.corona{
   box-shadow:1px 1px black !important;
+  color:  var(--ion-color-primary) !important;
+  ion-title{
+    color: var(--ion-color-secondary)!important ;
+  }
 }

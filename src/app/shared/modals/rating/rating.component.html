@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="modalClose()">
+        <ion-icon  slot="icon-only" name="arrow-down"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Avaliação
+      </ion-title>
+  </ion-toolbar >
+</ion-header>
+
+<ion-content padding>
+  <h3>Qualidade</h3>
+  <ionic4-star-rating #rating
+              activeIcon = "ios-star"
+              defaultIcon = "ios-star-outline"
+              activeColor = "#488aff" 
+              defaultColor = "#f4f4f4"
+              readonly="false"
+              rating="0"
+              fontSize = "25px"
+              (ratingChanged)="logRatingChange($event)">
+  </ionic4-star-rating>
+
+  <h3>Educação</h3>
+  <ionic4-star-rating #rating
+              activeIcon = "ios-star"
+              defaultIcon = "ios-star-outline"
+              activeColor = "#488aff" 
+              defaultColor = "#f4f4f4"
+              readonly="false"
+              rating="0"
+              fontSize = "25px"
+              (ratingChanged)="logRatingChange($event)">
+  </ionic4-star-rating>
+
+  <h3>Pontualidade</h3>
+  <ionic4-star-rating #rating
+              activeIcon = "ios-star"
+              defaultIcon = "ios-star-outline"
+              activeColor = "#488aff" 
+              defaultColor = "#f4f4f4"
+              readonly="false"
+              rating="0"
+              fontSize = "25px"
+              (ratingChanged)="logRatingChange($event)">
+  </ionic4-star-rating>
+
+
+  
+    <ion-button expand="block" color="secondary">Enviar</ion-button>
+  
+</ion-content>

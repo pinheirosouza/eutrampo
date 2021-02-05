@@ -7,6 +7,7 @@ import { StarRatingModule } from 'ionic4-star-rating';
 import { HiredPageRoutingModule } from './hired-routing.module';
 
 import { HiredPage } from './hired.page';
+import { RatingComponent } from 'src/app/shared/modals/rating/rating.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { HiredPage } from './hired.page';
     HiredPageRoutingModule,
     StarRatingModule
   ],
-  declarations: [HiredPage],
-  entryComponents: []
+  declarations: [HiredPage, RatingComponent],
+  entryComponents: [RatingComponent]
 })
 export class HiredPageModule {}

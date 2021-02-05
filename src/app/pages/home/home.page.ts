@@ -7,7 +7,7 @@ import { BuscacategoriesService } from "./buscacategories.service";
 @Component({
   selector: "app-home",
   templateUrl: "home.page.html",
-  styleUrls: ["home.page.scss"]
+  styleUrls: ["home.page.scss"],
 })
 export class HomePage implements OnInit {
   public lista_categories = new Array<any>();
@@ -66,7 +66,7 @@ export class HomePage implements OnInit {
         console.log("worker novo = ");
         console.log(this.lista_workers);
         this.providerCategories.setWorkers(this.lista_workers);
-        console.log("eork = ", this.lista_workers);
+        console.log("work = ", this.lista_workers);
       },
       error => {
         console.log("Erro " + error);
@@ -87,7 +87,7 @@ export class HomePage implements OnInit {
         this.providerCategories.setOportunidades(this.lista_oportunidades);
       },
       error => {
-        console.log("Eroo" + error);
+        console.log("Erro" + error);
       }
     );
   }
@@ -106,7 +106,7 @@ export class HomePage implements OnInit {
         this.providerCategories.setNoticias(this.lista_noticias);
       },
       error => {
-        console.log("Eroo" + error);
+        console.log("Erro" + error);
       }
     );
   }
@@ -128,7 +128,7 @@ export class HomePage implements OnInit {
     modal.present();
   }
 
-  async corongaPage(){
+  async coronaPage(){
     const modal = await this.modalCtrl.create({
       component: CoronaComponent
     });

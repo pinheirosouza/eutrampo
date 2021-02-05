@@ -1,5 +1,8 @@
 import { JobService } from './../../../shared/services/job/job.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+import { RatingComponent } from 'src/app/shared/modals/rating/rating.component';
 
 
 @Component({
@@ -10,10 +13,26 @@ import { Component, OnInit } from '@angular/core';
 export class HiredPage implements OnInit {
   
   public hiredList: any;
-
-  constructor(jobService: JobService){}
+  private customForm: FormGroup;
+ 
+  constructor(jobService: JobService, private modalCtrl: ModalController){}
 
   ngOnInit(){
   }
 
+  logRatingChange(rating){
+    console.log("changed rating: ",rating);
+    // do your stuff
 }
+
+  async avaliar(){
+    const modal = await this.modalCtrl.create({
+      component: RatingComponent,
+      //componentProps: { workerData : worker }
+    });
+    modal.present();
+  }
+}
+
+
+
