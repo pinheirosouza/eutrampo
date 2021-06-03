@@ -11,7 +11,7 @@ import {
 export class BuscacategoriesService {
   categoryURL =
     "https://stagingeutrampo.herokuapp.com/app/api/category/listwithsubcategory";
-  workerURL = "https:/stagingeutrampo.herokuapp.com/app/api/worker";
+  workerURL = "https:/eutrampo.herokuapp.com/app/api/worker";
   opoURL = "https://stagingeutrampo.herokuapp.com/app/api/opportunities";
   newsURL = "https://stagingeutrampo.herokuapp.com/app/api/news";
 

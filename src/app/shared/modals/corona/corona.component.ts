@@ -18,5 +18,6 @@ export class CoronaComponent implements OnInit {
     ngOnInit(){}
     modalClose() {
         this.modalCtrl.dismiss();
+        
       }
 }
