@@ -15,10 +15,10 @@ export class EvaluationService {
       return this.http.get(url)
     }
 
-    // setNewEvaluationById(id,rating){
-    //   let url = 'https://stagingeutrampo.herokuapp.com/admin/api/evaluation'
-    //   return this.http.get(url).toPromise()
-    // }
+    setNewEvaluationById(id,rating){
+      let url = 'https://stagingeutrampo.herokuapp.com/admin/api/evaluation'
+      return this.http.get(url).toPromise()
+    }
 
 
 

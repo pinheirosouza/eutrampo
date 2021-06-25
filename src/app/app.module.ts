@@ -23,10 +23,10 @@ import { IonicStorageModule } from "@ionic/storage";
 import { HttpClientModule } from "@angular/common/http";
 
 //Câmera
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+//import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { Storage } from "@ionic/storage";
-
+import { Platform } from '@ionic/angular';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 export function jwtOptionsFactory(storage) {
@@ -69,7 +69,8 @@ export function jwtOptionsFactory(storage) {
     Camera,
     FileTransfer,
     UploadService,
-    OneSignal
+    OneSignal,
+    Platform
   ],
   bootstrap: [AppComponent]
 })
