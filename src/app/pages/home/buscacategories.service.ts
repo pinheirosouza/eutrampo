@@ -9,8 +9,7 @@ import {
   providedIn: "root"
 })
 export class BuscacategoriesService {
-  categoryURL =
-    "https://stagingeutrampo.herokuapp.com/app/api/category/listwithsubcategory";
+  categoryURL = "https://stagingeutrampo.herokuapp.com/app/api/category/listwithsubcategory";
   workerURL = "https:/eutrampo.herokuapp.com/app/api/worker";
   opoURL = "https://stagingeutrampo.herokuapp.com/app/api/opportunities";
   newsURL = "https://stagingeutrampo.herokuapp.com/app/api/news";

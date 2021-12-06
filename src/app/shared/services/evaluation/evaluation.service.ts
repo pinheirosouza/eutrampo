@@ -11,12 +11,12 @@ export class EvaluationService {
     constructor(private http : HttpClient) { }
 
     getEvaluationById(id){
-      let url = 'https://stagingeutrampo.herokuapp.com/admin/api/evaluationRef/:'+id
+      let url = 'https://stagingeutrampo.herokuapp.com/app/api/evaluationRef/:'+id
       return this.http.get(url)
     }
 
     setNewEvaluationById(id,rating){
-      let url = 'https://stagingeutrampo.herokuapp.com/admin/api/evaluation'
+      let url = 'https://stagingeutrampo.herokuapp.com/app/api/evaluation'
       return this.http.get(url).toPromise()
     }
 
